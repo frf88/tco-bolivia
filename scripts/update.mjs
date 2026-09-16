@@ -85,9 +85,10 @@ for (const c of lineas.slice(iHeader + 2)) {
       for (const b of bancos) {
         const n = num(c[b.col]);
         if (!n) continue;
-        const s = ((d.stats ??= {})[b.nombre] ??= { min: v, max: v, sumVN: 0, sumN: 0 });
-        s.min = Math.min(s.min, v);
-        s.max = Math.max(s.max, v);
+        const monto = num(c[b.col + 1]);
+        const s = ((d.stats ??= {})[b.nombre] ??= { min: v, max: v, montoMin: monto, montoMax: monto, sumVN: 0, sumN: 0 });
+        if (v < s.min) (s.min = v), (s.montoMin = monto);
+        if (v > s.max) (s.max = v), (s.montoMax = monto);
         s.sumVN += v * n;
         s.sumN += n;
       }
@@ -104,6 +105,8 @@ const salida = [...dias.values()]
       Object.assign((d.bancos[nombre] ??= {}), {
         min: s.min,
         max: s.max,
+        montoMin: s.montoMin, // $us comprados al TC mínimo
+        montoMax: s.montoMax, // $us comprados al TC máximo
         prom: Math.round((s.sumVN / s.sumN) * 10000) / 10000, // promedio simple por transacción
       });
     }
@@ -112,6 +115,8 @@ const salida = [...dias.values()]
       ...resto,
       min: puntos[0]?.v ?? null,
       max: puntos.at(-1)?.v ?? null,
+      montoMin: puntos[0]?.w ?? null,
+      montoMax: puntos.at(-1)?.w ?? null,
       p10: percentilPonderado(puntos, 0.1),
       p50: percentilPonderado(puntos, 0.5),
       p90: percentilPonderado(puntos, 0.9),

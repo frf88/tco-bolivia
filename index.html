@@ -187,7 +187,7 @@ function render() {
 
   <section class="card">
     <h2>Detalle por banco · corte ${fDate(vigente.corte, true)}</h2>
-    <div class="muted" style="margin-bottom:8px">TC compra: promedio ponderado por monto (así calcula el BCB el TCO). Mín./Máx.: tipo de cambio más bajo y más alto que operó el banco ese día. Prom.: promedio simple por transacción. Cantidad: número de transacciones. Clic en un encabezado para ordenar.</div>
+    <div class="muted" style="margin-bottom:8px">TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Cantidad: número de transacciones. Clic en un encabezado para ordenar.</div>
     <div class="table-wrap"><table id="tBancos"></table></div>
   </section>
 
@@ -221,14 +221,14 @@ function renderBancos(dia, key, dir) {
   const maxShare = Math.max(...rows.map((r) => r.share || 0));
   const conProm = rows.filter((r) => r.prom != null && r.n);
   const promTotal = conProm.length ? conProm.reduce((a, r) => a + r.prom * r.n, 0) / conProm.reduce((a, r) => a + r.n, 0) : null;
-  const cols = [["nombre", "Banco"], ["tco", "TC compra"], ["min", "Mín."], ["max", "Máx."], ["prom", "Prom."], ["dif", "Dif. vs TCO"], ["monto", "Monto $us"], ["share", "% del monto"], ["n", "Cantidad"]];
+  const cols = [["nombre", "Banco"], ["tco", "TC compra"], ["min", "TC mín."], ["montoMin", "$us al mín."], ["max", "TC máx."], ["montoMax", "$us al máx."], ["prom", "TC prom."], ["dif", "Dif. vs TCO"], ["monto", "Monto $us"], ["share", "% del monto"], ["n", "Cantidad"]];
   const t = document.getElementById("tBancos");
   t.innerHTML = `<thead><tr>${cols.map(([k, l]) => `<th data-k="${k}">${l}${k === key ? (dir > 0 ? " ↑" : " ↓") : ""}</th>`).join("")}</tr></thead>
   <tbody>${rows.map((r) => `<tr><td>${r.nombre}</td><td><b>${fmt(r.tco)}</b></td>
-    <td>${fmt(r.min)}</td><td>${fmt(r.max)}</td><td>${fmt(r.prom)}</td>
+    <td>${fmt(r.min)}</td><td>${fmtInt(r.montoMin)}</td><td>${fmt(r.max)}</td><td>${fmtInt(r.montoMax)}</td><td>${fmt(r.prom)}</td>
     <td>${r.dif == null ? "–" : (r.dif > 0 ? "+" : "") + fmt(r.dif)}</td><td>${fmtInt(r.monto)}</td>
     <td><span class="share" style="width:${(r.share / maxShare) * 60}px"></span>${fmt(r.share, 1)}%</td><td>${fmtInt(r.n)}</td></tr>`).join("")}</tbody>
-  <tfoot><tr><td>Total bancos (TCO)</td><td>${fmt(dia.tco)}</td><td>${fmt(dia.min)}</td><td>${fmt(dia.max)}</td><td>${fmt(promTotal)}</td><td></td><td>${fmtInt(dia.monto)}</td><td>100%</td><td>${fmtInt(dia.n)}</td></tr></tfoot>`;
+  <tfoot><tr><td>Total bancos (TCO)</td><td>${fmt(dia.tco)}</td><td>${fmt(dia.min)}</td><td>${fmtInt(dia.montoMin)}</td><td>${fmt(dia.max)}</td><td>${fmtInt(dia.montoMax)}</td><td>${fmt(promTotal)}</td><td></td><td>${fmtInt(dia.monto)}</td><td>100%</td><td>${fmtInt(dia.n)}</td></tr></tfoot>`;
   t.querySelectorAll("th").forEach((th) => th.addEventListener("click", () => {
     const k = th.dataset.k; renderBancos(dia, k, k === key ? -dir : k === "nombre" ? 1 : -1);
   }));
