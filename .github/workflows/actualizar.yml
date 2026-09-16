@@ -1,0 +1,32 @@
+name: Actualizar TCO
+
+on:
+  schedule:
+    # 12:00, 18:00 y 00:00 UTC = 08:00, 14:00 y 20:00 hora Bolivia
+    - cron: "0 0,12,18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Descargar datos del BCB
+        run: node scripts/update.mjs
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898293+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Datos TCO $(TZ=America/La_Paz date +%F)"
+            git push
+          fi
