@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -22,6 +22,8 @@
   --bar: #86b6ef;
   --up: #b3261e;
   --down: #0a7a2f;
+  --pos: #e34948;
+  --neg: #2a78d6;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -38,6 +40,8 @@
     --bar: #1c5cab;
     --up: #f28b82;
     --down: #6fd08c;
+    --pos: #e66767;
+    --neg: #3987e5;
   }
 }
 :root[data-theme="dark"] {
@@ -45,7 +49,7 @@
   --bg: #121211; --surface: #1a1a19; --border: #2e2e2b; --grid: #262624;
   --text: #ffffff; --text-2: #c3c2b7; --text-3: #908f87;
   --series: #3987e5; --band: rgba(57, 135, 229, 0.22); --bar: #1c5cab;
-  --up: #f28b82; --down: #6fd08c;
+  --up: #f28b82; --down: #6fd08c; --pos: #e66767; --neg: #3987e5;
 }
 * { box-sizing: border-box; }
 body {
@@ -78,9 +82,16 @@ section h2 { font-size: 17px; margin: 0 0 2px; }
 table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
 th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--grid); white-space: nowrap; }
 th { font-weight: 600; color: var(--text-2); font-size: 13px; cursor: pointer; user-select: none; }
-th:first-child, td:first-child { text-align: left; }
+th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); z-index: 1; }
 tfoot td { font-weight: 650; border-bottom: 0; }
-.share { display: inline-block; height: 8px; background: var(--series); border-radius: 0 4px 4px 0; vertical-align: middle; margin-right: 6px; }
+.imp-cell { min-width: 200px; }
+.imp { position: relative; display: inline-block; width: 120px; height: 12px; vertical-align: middle; margin-right: 8px; }
+.imp::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--text-3); }
+.imp-bar { position: absolute; top: 0; bottom: 0; }
+.imp-bar.pos { left: 50%; background: var(--pos); border-radius: 0 4px 4px 0; }
+.imp-bar.neg { right: 50%; background: var(--neg); border-radius: 4px 0 0 4px; }
+.imp-val { display: inline-block; min-width: 48px; }
+.leg-sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin: 0 4px 0 8px; }
 details summary { cursor: pointer; font-weight: 600; }
 a { color: var(--series); }
 .btn { display: inline-block; border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; text-decoration: none; font-size: 13px; }
@@ -187,7 +198,7 @@ function render() {
 
   <section class="card">
     <h2>Detalle por banco · corte ${fDate(vigente.corte, true)}</h2>
-    <div class="muted" style="margin-bottom:8px">TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Cantidad: número de transacciones. Clic en un encabezado para ordenar.</div>
+    <div class="muted" style="margin-bottom:8px">TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Impacto en TCO: cuántos Bs sube o baja el TCO por cada banco = % del monto × (TC compra − TCO); la suma de todos da ≈ 0.<span class="leg-sw" style="background:var(--pos)"></span>sube<span class="leg-sw" style="background:var(--neg)"></span>baja. Cantidad: número de transacciones. Clic en un encabezado para ordenar.</div>
     <div class="table-wrap"><table id="tBancos"></table></div>
   </section>
 
@@ -216,19 +227,25 @@ function render() {
 function addDays(s, n) { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
 
 function renderBancos(dia, key, dir) {
-  const rows = Object.entries(dia.bancos).map(([nombre, b]) => ({ nombre, ...b, dif: b.tco != null ? b.tco - dia.tco : null, share: b.monto / dia.monto * 100 }));
+  const rows = Object.entries(dia.bancos).map(([nombre, b]) => ({ nombre, ...b, dif: b.tco != null ? b.tco - dia.tco : null, share: b.monto / dia.monto * 100,
+    imp: b.tco != null ? (b.monto / dia.monto) * (b.tco - dia.tco) : null }));
   rows.sort((a, b) => key === "nombre" ? dir * a.nombre.localeCompare(b.nombre) : dir * ((a[key] ?? -Infinity) - (b[key] ?? -Infinity)));
-  const maxShare = Math.max(...rows.map((r) => r.share || 0));
+  const maxImp = Math.max(...rows.map((r) => Math.abs(r.imp ?? 0)), 1e-9);
+  const barra = (v) => {
+    if (v == null) return "–";
+    const w = (Math.abs(v) / maxImp) * 50;
+    return `<span class="imp" title="${v > 0 ? "Sube" : "Baja"} el TCO en Bs ${fmt(Math.abs(v), 3)}"><span class="imp-bar ${v > 0 ? "pos" : "neg"}" style="width:${w}%"></span></span><span class="imp-val">${v > 0 ? "+" : v < 0 ? "−" : ""}${fmt(Math.abs(v), 3)}</span>`;
+  };
   const conProm = rows.filter((r) => r.prom != null && r.n);
   const promTotal = conProm.length ? conProm.reduce((a, r) => a + r.prom * r.n, 0) / conProm.reduce((a, r) => a + r.n, 0) : null;
-  const cols = [["nombre", "Banco"], ["tco", "TC compra"], ["min", "TC mín."], ["montoMin", "$us al mín."], ["max", "TC máx."], ["montoMax", "$us al máx."], ["prom", "TC prom."], ["dif", "Dif. vs TCO"], ["monto", "Monto $us"], ["share", "% del monto"], ["n", "Cantidad"]];
+  const cols = [["nombre", "Banco"], ["tco", "TC compra"], ["min", "TC mín."], ["montoMin", "$us al mín."], ["max", "TC máx."], ["montoMax", "$us al máx."], ["prom", "TC prom."], ["dif", "Dif. vs TCO"], ["monto", "Monto $us"], ["share", "% del monto"], ["imp", "Impacto en TCO (Bs)"], ["n", "Cantidad"]];
   const t = document.getElementById("tBancos");
   t.innerHTML = `<thead><tr>${cols.map(([k, l]) => `<th data-k="${k}">${l}${k === key ? (dir > 0 ? " ↑" : " ↓") : ""}</th>`).join("")}</tr></thead>
   <tbody>${rows.map((r) => `<tr><td>${r.nombre}</td><td><b>${fmt(r.tco)}</b></td>
     <td>${fmt(r.min)}</td><td>${fmtInt(r.montoMin)}</td><td>${fmt(r.max)}</td><td>${fmtInt(r.montoMax)}</td><td>${fmt(r.prom)}</td>
     <td>${r.dif == null ? "–" : (r.dif > 0 ? "+" : "") + fmt(r.dif)}</td><td>${fmtInt(r.monto)}</td>
-    <td><span class="share" style="width:${(r.share / maxShare) * 60}px"></span>${fmt(r.share, 1)}%</td><td>${fmtInt(r.n)}</td></tr>`).join("")}</tbody>
-  <tfoot><tr><td>Total bancos (TCO)</td><td>${fmt(dia.tco)}</td><td>${fmt(dia.min)}</td><td>${fmtInt(dia.montoMin)}</td><td>${fmt(dia.max)}</td><td>${fmtInt(dia.montoMax)}</td><td>${fmt(promTotal)}</td><td></td><td>${fmtInt(dia.monto)}</td><td>100%</td><td>${fmtInt(dia.n)}</td></tr></tfoot>`;
+    <td>${fmt(r.share, 1)}%</td><td class="imp-cell">${barra(r.imp)}</td><td>${fmtInt(r.n)}</td></tr>`).join("")}</tbody>
+  <tfoot><tr><td>Total bancos (TCO)</td><td>${fmt(dia.tco)}</td><td>${fmt(dia.min)}</td><td>${fmtInt(dia.montoMin)}</td><td>${fmt(dia.max)}</td><td>${fmtInt(dia.montoMax)}</td><td>${fmt(promTotal)}</td><td></td><td>${fmtInt(dia.monto)}</td><td>100%</td><td></td><td>${fmtInt(dia.n)}</td></tr></tfoot>`;
   t.querySelectorAll("th").forEach((th) => th.addEventListener("click", () => {
     const k = th.dataset.k; renderBancos(dia, k, k === key ? -dir : k === "nombre" ? 1 : -1);
   }));
