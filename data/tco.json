@@ -1,0 +1,4611 @@
+{
+ "fuente": "Banco Central de Bolivia",
+ "url": "https://www.bcb.gob.bo/bcb_tco_publico_descargar_csv.php",
+ "dias": [
+  {
+   "corte": "2026-06-26",
+   "vigDesde": "2026-06-27",
+   "vigHasta": "2026-06-29",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 85,
+     "monto": 3957089,
+     "tco": 9.72
+    },
+    "BANCO DE CREDITO": {
+     "n": 15,
+     "monto": 21481,
+     "tco": 9.46
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 1,
+     "monto": 7425,
+     "tco": 9.7
+    },
+    "BANCO ECONOMICO": {
+     "n": 11,
+     "monto": 5194132,
+     "tco": 9.77
+    },
+    "BANCO FORTALEZA": {
+     "n": 1,
+     "monto": 400000,
+     "tco": 9.82
+    },
+    "BANCO GANADERO": {
+     "n": 147,
+     "monto": 3046253,
+     "tco": 9.78
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 22,
+     "monto": 3150669,
+     "tco": 9.64
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 2,
+     "monto": 1440469,
+     "tco": 9.75
+    },
+    "BANCO SOLIDARIO": {
+     "n": 4,
+     "monto": 105300,
+     "tco": 9.63
+    },
+    "BANCO UNION": {
+     "n": 2,
+     "monto": 650,
+     "tco": 9.05
+    }
+   },
+   "n": 290,
+   "monto": 17323468,
+   "tco": 9.73,
+   "min": 7,
+   "max": 9.82,
+   "p10": 9.73,
+   "p50": 9.8,
+   "p90": 9.82
+  },
+  {
+   "corte": "2026-06-29",
+   "vigDesde": "2026-06-30",
+   "vigHasta": "2026-06-30",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 5,
+     "monto": 2707410,
+     "tco": 9.73
+    },
+    "BANCO DE CREDITO": {
+     "n": 15,
+     "monto": 99697,
+     "tco": 9.67
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 23,
+     "monto": 8870,
+     "tco": 9.63
+    },
+    "BANCO ECONOMICO": {
+     "n": 51,
+     "monto": 418104,
+     "tco": 9.79
+    },
+    "BANCO FIE": {
+     "n": 21,
+     "monto": 105419,
+     "tco": 9.73
+    },
+    "BANCO FORTALEZA": {
+     "n": 9,
+     "monto": 123435,
+     "tco": 9.73
+    },
+    "BANCO GANADERO": {
+     "n": 826,
+     "monto": 1721370,
+     "tco": 9.7
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 239,
+     "monto": 9831975,
+     "tco": 9.8
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 297,
+     "monto": 1421597,
+     "tco": 9.59
+    },
+    "BANCO PRODEM": {
+     "n": 21,
+     "monto": 10687,
+     "tco": 9.63
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 8,
+     "monto": 7544,
+     "tco": 9.73
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 730,
+     "tco": 9.73
+    },
+    "BANCO SOLIDARIO": {
+     "n": 27,
+     "monto": 246271,
+     "tco": 9.73
+    },
+    "BANCO UNION": {
+     "n": 116,
+     "monto": 676658,
+     "tco": 9.73
+    }
+   },
+   "n": 1659,
+   "monto": 17379767,
+   "tco": 9.76,
+   "min": 8,
+   "max": 10.11,
+   "p10": 9.72,
+   "p50": 9.805,
+   "p90": 9.805
+  },
+  {
+   "corte": "2026-06-30",
+   "vigDesde": "2026-07-01",
+   "vigHasta": "2026-07-01",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 59,
+     "monto": 1521341,
+     "tco": 9.79
+    },
+    "BANCO DE CREDITO": {
+     "n": 20,
+     "monto": 2024916,
+     "tco": 9.78
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 26,
+     "monto": 6332,
+     "tco": 9.66
+    },
+    "BANCO ECONOMICO": {
+     "n": 34,
+     "monto": 114942,
+     "tco": 9.72
+    },
+    "BANCO FIE": {
+     "n": 12,
+     "monto": 11564,
+     "tco": 9.66
+    },
+    "BANCO FORTALEZA": {
+     "n": 3,
+     "monto": 169833,
+     "tco": 9.71
+    },
+    "BANCO GANADERO": {
+     "n": 636,
+     "monto": 2793562,
+     "tco": 9.73
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 177,
+     "monto": 1250939,
+     "tco": 9.77
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 189,
+     "monto": 492923,
+     "tco": 9.57
+    },
+    "BANCO PRODEM": {
+     "n": 9,
+     "monto": 3759,
+     "tco": 9.56
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 244,
+     "tco": 9.76
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 6,
+     "monto": 602,
+     "tco": 9.76
+    },
+    "BANCO SOLIDARIO": {
+     "n": 32,
+     "monto": 1908014,
+     "tco": 9.79
+    },
+    "BANCO UNION": {
+     "n": 100,
+     "monto": 96187,
+     "tco": 9.76
+    }
+   },
+   "n": 1306,
+   "monto": 10395157,
+   "tco": 9.76,
+   "min": 8.3,
+   "max": 11.76,
+   "p10": 9.7,
+   "p50": 9.78,
+   "p90": 9.83
+  },
+  {
+   "corte": "2026-07-01",
+   "vigDesde": "2026-07-02",
+   "vigHasta": "2026-07-02",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 70,
+     "monto": 14976501,
+     "tco": 9.79
+    },
+    "BANCO DE CREDITO": {
+     "n": 36,
+     "monto": 993657,
+     "tco": 9.77
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 26,
+     "monto": 16886,
+     "tco": 9.66
+    },
+    "BANCO ECONOMICO": {
+     "n": 30,
+     "monto": 211466,
+     "tco": 9.76
+    },
+    "BANCO FIE": {
+     "n": 15,
+     "monto": 8284,
+     "tco": 9.66
+    },
+    "BANCO FORTALEZA": {
+     "n": 4,
+     "monto": 96871,
+     "tco": 9.75
+    },
+    "BANCO GANADERO": {
+     "n": 592,
+     "monto": 5914983,
+     "tco": 9.78
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 360,
+     "monto": 406827,
+     "tco": 9.56
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 2008,
+     "monto": 2980659,
+     "tco": 9.75
+    },
+    "BANCO PRODEM": {
+     "n": 13,
+     "monto": 5846,
+     "tco": 9.36
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 216,
+     "tco": 9.76
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 3620,
+     "tco": 9.36
+    },
+    "BANCO SOLIDARIO": {
+     "n": 23,
+     "monto": 2633673,
+     "tco": 9.76
+    },
+    "BANCO UNION": {
+     "n": 74,
+     "monto": 1623334,
+     "tco": 9.89
+    }
+   },
+   "n": 3257,
+   "monto": 29872825,
+   "tco": 9.78,
+   "min": 9.27,
+   "max": 9.9,
+   "p10": 9.73,
+   "p50": 9.795,
+   "p90": 9.81
+  },
+  {
+   "corte": "2026-07-02",
+   "vigDesde": "2026-07-03",
+   "vigHasta": "2026-07-03",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 54,
+     "monto": 8452401,
+     "tco": 9.81
+    },
+    "BANCO DE CREDITO": {
+     "n": 36,
+     "monto": 1239519,
+     "tco": 9.86
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 24,
+     "monto": 27711,
+     "tco": 9.77
+    },
+    "BANCO ECONOMICO": {
+     "n": 36,
+     "monto": 1620163,
+     "tco": 9.78
+    },
+    "BANCO FIE": {
+     "n": 12,
+     "monto": 40169,
+     "tco": 9.68
+    },
+    "BANCO FORTALEZA": {
+     "n": 2,
+     "monto": 16,
+     "tco": 9.78
+    },
+    "BANCO GANADERO": {
+     "n": 551,
+     "monto": 5565363,
+     "tco": 9.78
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 193,
+     "monto": 938532,
+     "tco": 9.72
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 1101,
+     "monto": 2567310,
+     "tco": 9.78
+    },
+    "BANCO PRODEM": {
+     "n": 8,
+     "monto": 4502,
+     "tco": 9.48
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 2262,
+     "tco": 9.78
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 2640,
+     "tco": 9.38
+    },
+    "BANCO SOLIDARIO": {
+     "n": 37,
+     "monto": 431372,
+     "tco": 9.77
+    },
+    "BANCO UNION": {
+     "n": 75,
+     "monto": 209115,
+     "tco": 9.78
+    }
+   },
+   "n": 2134,
+   "monto": 21101076,
+   "tco": 9.8,
+   "min": 9.29,
+   "max": 9.9,
+   "p10": 9.73,
+   "p50": 9.81,
+   "p90": 9.84
+  },
+  {
+   "corte": "2026-07-03",
+   "vigDesde": "2026-07-04",
+   "vigHasta": "2026-07-06",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 51,
+     "monto": 2150476,
+     "tco": 9.84
+    },
+    "BANCO DE CREDITO": {
+     "n": 24,
+     "monto": 1465788,
+     "tco": 9.88
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 10,
+     "monto": 11336,
+     "tco": 9.7
+    },
+    "BANCO ECONOMICO": {
+     "n": 38,
+     "monto": 1754919,
+     "tco": 9.89
+    },
+    "BANCO FIE": {
+     "n": 8,
+     "monto": 761,
+     "tco": 9.7
+    },
+    "BANCO FORTALEZA": {
+     "n": 3,
+     "monto": 1133622,
+     "tco": 9.81
+    },
+    "BANCO GANADERO": {
+     "n": 569,
+     "monto": 8446426,
+     "tco": 9.81
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 150,
+     "monto": 3817857,
+     "tco": 9.84
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 1075,
+     "monto": 2165993,
+     "tco": 9.8
+    },
+    "BANCO PRODEM": {
+     "n": 7,
+     "monto": 18491,
+     "tco": 9.7
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 64,
+     "tco": 9.8
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 5,
+     "monto": 3815,
+     "tco": 9.4
+    },
+    "BANCO SOLIDARIO": {
+     "n": 22,
+     "monto": 802413,
+     "tco": 9.85
+    },
+    "BANCO UNION": {
+     "n": 83,
+     "monto": 318733,
+     "tco": 9.8
+    }
+   },
+   "n": 2048,
+   "monto": 22090693,
+   "tco": 9.83,
+   "min": 9.29,
+   "max": 10.25,
+   "p10": 9.73,
+   "p50": 9.83,
+   "p90": 9.95
+  },
+  {
+   "corte": "2026-07-06",
+   "vigDesde": "2026-07-07",
+   "vigHasta": "2026-07-07",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 55,
+     "monto": 3646488,
+     "tco": 9.88
+    },
+    "BANCO DE CREDITO": {
+     "n": 12,
+     "monto": 1393544,
+     "tco": 9.93
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 30,
+     "monto": 17609,
+     "tco": 9.8
+    },
+    "BANCO ECONOMICO": {
+     "n": 28,
+     "monto": 1198507,
+     "tco": 9.89
+    },
+    "BANCO FIE": {
+     "n": 17,
+     "monto": 15603,
+     "tco": 9.73
+    },
+    "BANCO FORTALEZA": {
+     "n": 9,
+     "monto": 13299,
+     "tco": 9.76
+    },
+    "BANCO GANADERO": {
+     "n": 562,
+     "monto": 1696172,
+     "tco": 9.71
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 212,
+     "monto": 2540863,
+     "tco": 10
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 172,
+     "monto": 153596,
+     "tco": 9.8
+    },
+    "BANCO PRODEM": {
+     "n": 9,
+     "monto": 4406,
+     "tco": 9.73
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 4,
+     "monto": 7049,
+     "tco": 9.83
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 47414,
+     "tco": 9.43
+    },
+    "BANCO SOLIDARIO": {
+     "n": 34,
+     "monto": 962170,
+     "tco": 9.9
+    },
+    "BANCO UNION": {
+     "n": 64,
+     "monto": 180125,
+     "tco": 9.83
+    }
+   },
+   "n": 1211,
+   "monto": 11876844,
+   "tco": 9.89,
+   "min": 9.34,
+   "max": 10.15,
+   "p10": 9.73,
+   "p50": 9.9,
+   "p90": 10
+  },
+  {
+   "corte": "2026-07-07",
+   "vigDesde": "2026-07-08",
+   "vigHasta": "2026-07-08",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 65,
+     "monto": 5791895,
+     "tco": 9.97
+    },
+    "BANCO DE CREDITO": {
+     "n": 20,
+     "monto": 818300,
+     "tco": 9.91
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 11,
+     "monto": 33464,
+     "tco": 9.82
+    },
+    "BANCO ECONOMICO": {
+     "n": 29,
+     "monto": 1336920,
+     "tco": 9.99
+    },
+    "BANCO FIE": {
+     "n": 25,
+     "monto": 14763,
+     "tco": 9.79
+    },
+    "BANCO FORTALEZA": {
+     "n": 2,
+     "monto": 200,
+     "tco": 9.89
+    },
+    "BANCO GANADERO": {
+     "n": 545,
+     "monto": 6275603,
+     "tco": 9.95
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 141,
+     "monto": 1041185,
+     "tco": 10.01
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 159,
+     "monto": 5858183,
+     "tco": 9.95
+    },
+    "BANCO PRODEM": {
+     "n": 9,
+     "monto": 13867,
+     "tco": 9.79
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 1,
+     "monto": 2000,
+     "tco": 9.89
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 107,
+     "tco": 9.49
+    },
+    "BANCO SOLIDARIO": {
+     "n": 20,
+     "monto": 2513272,
+     "tco": 9.97
+    },
+    "BANCO UNION": {
+     "n": 79,
+     "monto": 159336,
+     "tco": 9.89
+    }
+   },
+   "n": 1109,
+   "monto": 23859096,
+   "tco": 9.96,
+   "min": 9.4,
+   "max": 10.16,
+   "p10": 9.89,
+   "p50": 9.98,
+   "p90": 10.11
+  },
+  {
+   "corte": "2026-07-08",
+   "vigDesde": "2026-07-09",
+   "vigHasta": "2026-07-09",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 85,
+     "monto": 3680119,
+     "tco": 10.09
+    },
+    "BANCO DE CREDITO": {
+     "n": 23,
+     "monto": 1264766,
+     "tco": 10.07
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 10,
+     "monto": 3320,
+     "tco": 9.86
+    },
+    "BANCO ECONOMICO": {
+     "n": 17,
+     "monto": 35333,
+     "tco": 9.92
+    },
+    "BANCO FIE": {
+     "n": 22,
+     "monto": 12445,
+     "tco": 9.86
+    },
+    "BANCO FORTALEZA": {
+     "n": 2,
+     "monto": 425000,
+     "tco": 10.07
+    },
+    "BANCO GANADERO": {
+     "n": 290,
+     "monto": 6582110,
+     "tco": 10.04
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 162,
+     "monto": 11639754,
+     "tco": 10.21
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 204,
+     "monto": 3606295,
+     "tco": 9.94
+    },
+    "BANCO PRODEM": {
+     "n": 13,
+     "monto": 57246,
+     "tco": 9.86
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 1101,
+     "tco": 9.96
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 422,
+     "tco": 9.56
+    },
+    "BANCO SOLIDARIO": {
+     "n": 36,
+     "monto": 1099352,
+     "tco": 10.06
+    },
+    "BANCO UNION": {
+     "n": 68,
+     "monto": 47994,
+     "tco": 9.96
+    }
+   },
+   "n": 938,
+   "monto": 28455257,
+   "tco": 10.1,
+   "min": 9.27,
+   "max": 10.349,
+   "p10": 9.86,
+   "p50": 10.1,
+   "p90": 10.349
+  },
+  {
+   "corte": "2026-07-09",
+   "vigDesde": "2026-07-10",
+   "vigHasta": "2026-07-10",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 50,
+     "monto": 3902015,
+     "tco": 10.23
+    },
+    "BANCO DE CREDITO": {
+     "n": 54,
+     "monto": 5187313,
+     "tco": 10.26
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 8,
+     "monto": 2932,
+     "tco": 10
+    },
+    "BANCO ECONOMICO": {
+     "n": 37,
+     "monto": 724752,
+     "tco": 10.24
+    },
+    "BANCO FIE": {
+     "n": 14,
+     "monto": 31651,
+     "tco": 10
+    },
+    "BANCO FORTALEZA": {
+     "n": 2,
+     "monto": 1814,
+     "tco": 7.5
+    },
+    "BANCO GANADERO": {
+     "n": 277,
+     "monto": 4104284,
+     "tco": 10.13
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 133,
+     "monto": 9884451,
+     "tco": 10.28
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 214,
+     "monto": 3667634,
+     "tco": 10.14
+    },
+    "BANCO PRODEM": {
+     "n": 15,
+     "monto": 70219,
+     "tco": 10
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 4,
+     "monto": 570,
+     "tco": 10.1
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 10,
+     "tco": 9.7
+    },
+    "BANCO SOLIDARIO": {
+     "n": 41,
+     "monto": 2131145,
+     "tco": 10.38
+    },
+    "BANCO UNION": {
+     "n": 80,
+     "monto": 59816,
+     "tco": 10.1
+    }
+   },
+   "n": 930,
+   "monto": 29768606,
+   "tco": 10.24,
+   "min": 7.5,
+   "max": 10.55,
+   "p10": 10.06,
+   "p50": 10.26,
+   "p90": 10.38
+  },
+  {
+   "corte": "2026-07-10",
+   "vigDesde": "2026-07-11",
+   "vigHasta": "2026-07-13",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 91,
+     "monto": 8250425,
+     "tco": 10.38
+    },
+    "BANCO DE CREDITO": {
+     "n": 34,
+     "monto": 5834653,
+     "tco": 10.57
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 16,
+     "monto": 5190,
+     "tco": 10.18
+    },
+    "BANCO ECONOMICO": {
+     "n": 30,
+     "monto": 3806369,
+     "tco": 10.54
+    },
+    "BANCO FIE": {
+     "n": 11,
+     "monto": 4985,
+     "tco": 10.19
+    },
+    "BANCO FORTALEZA": {
+     "n": 3,
+     "monto": 48871,
+     "tco": 10.27
+    },
+    "BANCO GANADERO": {
+     "n": 246,
+     "monto": 3484965,
+     "tco": 10.3
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 209,
+     "monto": 800634,
+     "tco": 10.33
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 225,
+     "monto": 10288924,
+     "tco": 10.24
+    },
+    "BANCO PRODEM": {
+     "n": 9,
+     "monto": 3750,
+     "tco": 10.14
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 1,
+     "monto": 68,
+     "tco": 10.24
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 112,
+     "tco": 9.84
+    },
+    "BANCO SOLIDARIO": {
+     "n": 37,
+     "monto": 4015518,
+     "tco": 10.57
+    },
+    "BANCO UNION": {
+     "n": 80,
+     "monto": 339509,
+     "tco": 10.24
+    }
+   },
+   "n": 994,
+   "monto": 36883973,
+   "tco": 10.4,
+   "min": 9.6,
+   "max": 10.75,
+   "p10": 10.2,
+   "p50": 10.4,
+   "p90": 10.62
+  },
+  {
+   "corte": "2026-07-13",
+   "vigDesde": "2026-07-14",
+   "vigHasta": "2026-07-14",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 48,
+     "monto": 2289085,
+     "tco": 10.53
+    },
+    "BANCO DE CREDITO": {
+     "n": 82,
+     "monto": 256829,
+     "tco": 10.38
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 16,
+     "monto": 2526,
+     "tco": 10.35
+    },
+    "BANCO ECONOMICO": {
+     "n": 29,
+     "monto": 432291,
+     "tco": 10.53
+    },
+    "BANCO FIE": {
+     "n": 23,
+     "monto": 398680,
+     "tco": 10.49
+    },
+    "BANCO FORTALEZA": {
+     "n": 6,
+     "monto": 70,
+     "tco": 10.4
+    },
+    "BANCO GANADERO": {
+     "n": 222,
+     "monto": 1560817,
+     "tco": 10.11
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 193,
+     "monto": 3619878,
+     "tco": 10.66
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 242,
+     "monto": 442571,
+     "tco": 10.34
+    },
+    "BANCO PRODEM": {
+     "n": 14,
+     "monto": 19587,
+     "tco": 10.3
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 1,
+     "monto": 252,
+     "tco": 10.4
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 99,
+     "tco": 10
+    },
+    "BANCO SOLIDARIO": {
+     "n": 27,
+     "monto": 2250803,
+     "tco": 10.55
+    },
+    "BANCO UNION": {
+     "n": 126,
+     "monto": 254558,
+     "tco": 10.4
+    }
+   },
+   "n": 1031,
+   "monto": 11528045,
+   "tco": 10.5,
+   "min": 9.6,
+   "max": 10.85,
+   "p10": 10.2,
+   "p50": 10.56,
+   "p90": 10.768
+  },
+  {
+   "corte": "2026-07-14",
+   "vigDesde": "2026-07-15",
+   "vigHasta": "2026-07-15",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 44,
+     "monto": 11966870,
+     "tco": 10.59
+    },
+    "BANCO DE CREDITO": {
+     "n": 112,
+     "monto": 4822134,
+     "tco": 10.73
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 8,
+     "monto": 9320,
+     "tco": 10.43
+    },
+    "BANCO ECONOMICO": {
+     "n": 39,
+     "monto": 2962605,
+     "tco": 10.72
+    },
+    "BANCO FIE": {
+     "n": 26,
+     "monto": 2222232,
+     "tco": 10.8
+    },
+    "BANCO FORTALEZA": {
+     "n": 3,
+     "monto": 50545,
+     "tco": 10.7
+    },
+    "BANCO GANADERO": {
+     "n": 237,
+     "monto": 5196937,
+     "tco": 10.58
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 163,
+     "monto": 14928796,
+     "tco": 10.81
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 177,
+     "monto": 392776,
+     "tco": 10.4
+    },
+    "BANCO PRODEM": {
+     "n": 15,
+     "monto": 11639,
+     "tco": 10.4
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 4,
+     "monto": 2129,
+     "tco": 10.5
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 6,
+     "monto": 1146,
+     "tco": 10.1
+    },
+    "BANCO SOLIDARIO": {
+     "n": 36,
+     "monto": 316661,
+     "tco": 10.52
+    },
+    "BANCO UNION": {
+     "n": 137,
+     "monto": 104882,
+     "tco": 10.5
+    }
+   },
+   "n": 1007,
+   "monto": 42988673,
+   "tco": 10.7,
+   "min": 9.6,
+   "max": 10.86,
+   "p10": 10.5,
+   "p50": 10.705,
+   "p90": 10.86
+  },
+  {
+   "corte": "2026-07-15",
+   "vigDesde": "2026-07-16",
+   "vigHasta": "2026-07-17",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 34,
+     "monto": 302164,
+     "tco": 10.71
+    },
+    "BANCO DE CREDITO": {
+     "n": 105,
+     "monto": 3198820,
+     "tco": 10.84
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 11,
+     "monto": 89048,
+     "tco": 10.69
+    },
+    "BANCO ECONOMICO": {
+     "n": 39,
+     "monto": 457222,
+     "tco": 10.67
+    },
+    "BANCO FIE": {
+     "n": 31,
+     "monto": 4732,
+     "tco": 10.6
+    },
+    "BANCO FORTALEZA": {
+     "n": 6,
+     "monto": 654089,
+     "tco": 10.77
+    },
+    "BANCO GANADERO": {
+     "n": 444,
+     "monto": 7088776,
+     "tco": 10.69
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 208,
+     "monto": 934189,
+     "tco": 10.69
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 299,
+     "monto": 2835854,
+     "tco": 10.75
+    },
+    "BANCO PRODEM": {
+     "n": 8,
+     "monto": 13772,
+     "tco": 10.6
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 5,
+     "monto": 1074,
+     "tco": 10.7
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 4,
+     "monto": 600,
+     "tco": 10.3
+    },
+    "BANCO SOLIDARIO": {
+     "n": 48,
+     "monto": 2004616,
+     "tco": 10.9
+    },
+    "BANCO UNION": {
+     "n": 210,
+     "monto": 543561,
+     "tco": 10.7
+    }
+   },
+   "n": 1452,
+   "monto": 18128517,
+   "tco": 10.75,
+   "min": 9.6,
+   "max": 10.995,
+   "p10": 10.6,
+   "p50": 10.77,
+   "p90": 10.9
+  },
+  {
+   "corte": "2026-07-17",
+   "vigDesde": "2026-07-18",
+   "vigHasta": "2026-07-20",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 121,
+     "monto": 8439237,
+     "tco": 10.93
+    },
+    "BANCO DE CREDITO": {
+     "n": 91,
+     "monto": 1705266,
+     "tco": 10.86
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 17,
+     "monto": 133165,
+     "tco": 10.74
+    },
+    "BANCO ECONOMICO": {
+     "n": 34,
+     "monto": 39890,
+     "tco": 10.75
+    },
+    "BANCO FIE": {
+     "n": 24,
+     "monto": 5701,
+     "tco": 10.65
+    },
+    "BANCO FORTALEZA": {
+     "n": 9,
+     "monto": 812621,
+     "tco": 10.8
+    },
+    "BANCO GANADERO": {
+     "n": 258,
+     "monto": 10013630,
+     "tco": 10.88
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 169,
+     "monto": 6464449,
+     "tco": 10.82
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 260,
+     "monto": 7903358,
+     "tco": 10.75
+    },
+    "BANCO PRODEM": {
+     "n": 9,
+     "monto": 1485,
+     "tco": 10.65
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 1211,
+     "tco": 10.75
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 6,
+     "monto": 585421,
+     "tco": 11.13
+    },
+    "BANCO SOLIDARIO": {
+     "n": 40,
+     "monto": 671115,
+     "tco": 10.99
+    },
+    "BANCO UNION": {
+     "n": 218,
+     "monto": 1040058,
+     "tco": 10.75
+    }
+   },
+   "n": 1259,
+   "monto": 37816606,
+   "tco": 10.85,
+   "min": 9.6,
+   "max": 11.15,
+   "p10": 10.75,
+   "p50": 10.9,
+   "p90": 10.961
+  },
+  {
+   "corte": "2026-07-20",
+   "vigDesde": "2026-07-21",
+   "vigHasta": "2026-07-21",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 46,
+     "monto": 6294201,
+     "tco": 10.94
+    },
+    "BANCO DE CREDITO": {
+     "n": 104,
+     "monto": 1724580,
+     "tco": 10.9
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 35,
+     "monto": 2739,
+     "tco": 10.76
+    },
+    "BANCO ECONOMICO": {
+     "n": 29,
+     "monto": 65265,
+     "tco": 10.84
+    },
+    "BANCO FIE": {
+     "n": 24,
+     "monto": 4003,
+     "tco": 10.75
+    },
+    "BANCO FORTALEZA": {
+     "n": 12,
+     "monto": 63063,
+     "tco": 10.79
+    },
+    "BANCO GANADERO": {
+     "n": 217,
+     "monto": 4292292,
+     "tco": 10.86
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 154,
+     "monto": 1003630,
+     "tco": 10.85
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 222,
+     "monto": 263127,
+     "tco": 10.78
+    },
+    "BANCO PRODEM": {
+     "n": 8,
+     "monto": 3923,
+     "tco": 10.75
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 5,
+     "monto": 457,
+     "tco": 10.85
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 6,
+     "monto": 6050,
+     "tco": 10.45
+    },
+    "BANCO SOLIDARIO": {
+     "n": 51,
+     "monto": 695397,
+     "tco": 11.01
+    },
+    "BANCO UNION": {
+     "n": 275,
+     "monto": 838491,
+     "tco": 10.9
+    }
+   },
+   "n": 1188,
+   "monto": 15257217,
+   "tco": 10.9,
+   "min": 9,
+   "max": 11.1,
+   "p10": 10.81,
+   "p50": 10.95,
+   "p90": 10.98
+  },
+  {
+   "corte": "2026-07-21",
+   "vigDesde": "2026-07-22",
+   "vigHasta": "2026-07-22",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 89,
+     "monto": 8519844,
+     "tco": 11
+    },
+    "BANCO DE CREDITO": {
+     "n": 65,
+     "monto": 840759,
+     "tco": 11.06
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 20,
+     "monto": 55805,
+     "tco": 10.96
+    },
+    "BANCO ECONOMICO": {
+     "n": 35,
+     "monto": 10840,
+     "tco": 10.8
+    },
+    "BANCO FIE": {
+     "n": 15,
+     "monto": 427580,
+     "tco": 10.9
+    },
+    "BANCO FORTALEZA": {
+     "n": 8,
+     "monto": 101420,
+     "tco": 10.96
+    },
+    "BANCO GANADERO": {
+     "n": 302,
+     "monto": 4328290,
+     "tco": 10.98
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 138,
+     "monto": 664484,
+     "tco": 10.91
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 236,
+     "monto": 1157721,
+     "tco": 10.91
+    },
+    "BANCO PRODEM": {
+     "n": 10,
+     "monto": 6503,
+     "tco": 10.8
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 11,
+     "monto": 1676,
+     "tco": 10.9
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 6,
+     "monto": 200187,
+     "tco": 10.9
+    },
+    "BANCO SOLIDARIO": {
+     "n": 45,
+     "monto": 7887965,
+     "tco": 11.06
+    },
+    "BANCO UNION": {
+     "n": 158,
+     "monto": 619773,
+     "tco": 10.9
+    }
+   },
+   "n": 1138,
+   "monto": 24822845,
+   "tco": 11,
+   "min": 9.6,
+   "max": 11.35,
+   "p10": 10.9,
+   "p50": 11.05,
+   "p90": 11.12
+  },
+  {
+   "corte": "2026-07-22",
+   "vigDesde": "2026-07-23",
+   "vigHasta": "2026-07-23",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 96,
+     "monto": 10191351,
+     "tco": 11.09
+    },
+    "BANCO DE CREDITO": {
+     "n": 57,
+     "monto": 4166320,
+     "tco": 11.12
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 19,
+     "monto": 5106,
+     "tco": 10.92
+    },
+    "BANCO ECONOMICO": {
+     "n": 37,
+     "monto": 2129943,
+     "tco": 11.19
+    },
+    "BANCO FIE": {
+     "n": 21,
+     "monto": 4591,
+     "tco": 10.9
+    },
+    "BANCO FORTALEZA": {
+     "n": 10,
+     "monto": 104772,
+     "tco": 10.98
+    },
+    "BANCO GANADERO": {
+     "n": 261,
+     "monto": 10339224,
+     "tco": 11.19
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 313,
+     "monto": 3134714,
+     "tco": 11.11
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 263,
+     "monto": 6776276,
+     "tco": 11.09
+    },
+    "BANCO PRODEM": {
+     "n": 8,
+     "monto": 12127,
+     "tco": 10.9
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 6,
+     "monto": 1178,
+     "tco": 11
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 5,
+     "monto": 1520,
+     "tco": 10.6
+    },
+    "BANCO SOLIDARIO": {
+     "n": 39,
+     "monto": 1991354,
+     "tco": 11.24
+    },
+    "BANCO UNION": {
+     "n": 81,
+     "monto": 179799,
+     "tco": 11
+    }
+   },
+   "n": 1216,
+   "monto": 39038276,
+   "tco": 11.13,
+   "min": 9.6,
+   "max": 11.4,
+   "p10": 10.99,
+   "p50": 11.135,
+   "p90": 11.28
+  },
+  {
+   "corte": "2026-07-23",
+   "vigDesde": "2026-07-24",
+   "vigHasta": "2026-07-24",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 95,
+     "monto": 10524285,
+     "tco": 11.22
+    },
+    "BANCO DE CREDITO": {
+     "n": 65,
+     "monto": 556143,
+     "tco": 11.18
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 17,
+     "monto": 20972,
+     "tco": 11.03
+    },
+    "BANCO ECONOMICO": {
+     "n": 35,
+     "monto": 443327,
+     "tco": 11.23
+    },
+    "BANCO FIE": {
+     "n": 15,
+     "monto": 2814,
+     "tco": 11.03
+    },
+    "BANCO FORTALEZA": {
+     "n": 8,
+     "monto": 546641,
+     "tco": 11.36
+    },
+    "BANCO GANADERO": {
+     "n": 369,
+     "monto": 6866825,
+     "tco": 11.19
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 196,
+     "monto": 3743530,
+     "tco": 11.27
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 220,
+     "monto": 3687810,
+     "tco": 11.11
+    },
+    "BANCO PRODEM": {
+     "n": 10,
+     "monto": 103793,
+     "tco": 11.03
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 8,
+     "monto": 6085,
+     "tco": 11.13
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 470,
+     "tco": 10.73
+    },
+    "BANCO SOLIDARIO": {
+     "n": 42,
+     "monto": 2006683,
+     "tco": 11.31
+    },
+    "BANCO UNION": {
+     "n": 65,
+     "monto": 55282,
+     "tco": 11.13
+    }
+   },
+   "n": 1148,
+   "monto": 28564660,
+   "tco": 11.21,
+   "min": 9.63,
+   "max": 11.45,
+   "p10": 11.1,
+   "p50": 11.23,
+   "p90": 11.34
+  },
+  {
+   "corte": "2026-07-24",
+   "vigDesde": "2026-07-25",
+   "vigHasta": "2026-07-27",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 102,
+     "monto": 12716265,
+     "tco": 11.38
+    },
+    "BANCO DE CREDITO": {
+     "n": 57,
+     "monto": 4815867,
+     "tco": 11.56
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 35,
+     "monto": 7462,
+     "tco": 11.11
+    },
+    "BANCO ECONOMICO": {
+     "n": 32,
+     "monto": 1922257,
+     "tco": 11.5
+    },
+    "BANCO FIE": {
+     "n": 16,
+     "monto": 3355,
+     "tco": 11.11
+    },
+    "BANCO FORTALEZA": {
+     "n": 6,
+     "monto": 986507,
+     "tco": 11.33
+    },
+    "BANCO GANADERO": {
+     "n": 280,
+     "monto": 9615144,
+     "tco": 11.38
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 221,
+     "monto": 823926,
+     "tco": 11.06
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 264,
+     "monto": 6862876,
+     "tco": 11.19
+    },
+    "BANCO PRODEM": {
+     "n": 15,
+     "monto": 2634,
+     "tco": 11.11
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 4,
+     "monto": 142044,
+     "tco": 11.21
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 7,
+     "monto": 2980,
+     "tco": 10.81
+    },
+    "BANCO SOLIDARIO": {
+     "n": 41,
+     "monto": 460326,
+     "tco": 11.42
+    },
+    "BANCO UNION": {
+     "n": 67,
+     "monto": 35890,
+     "tco": 11.21
+    }
+   },
+   "n": 1147,
+   "monto": 38397534,
+   "tco": 11.37,
+   "min": 9.63,
+   "max": 11.64,
+   "p10": 11.21,
+   "p50": 11.41,
+   "p90": 11.6
+  },
+  {
+   "corte": "2026-07-27",
+   "vigDesde": "2026-07-28",
+   "vigHasta": "2026-07-28",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 53,
+     "monto": 3636725,
+     "tco": 11.54
+    },
+    "BANCO DE CREDITO": {
+     "n": 69,
+     "monto": 4096951,
+     "tco": 11.74
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 36,
+     "monto": 12619,
+     "tco": 11.33
+    },
+    "BANCO ECONOMICO": {
+     "n": 39,
+     "monto": 3088493,
+     "tco": 11.45
+    },
+    "BANCO FIE": {
+     "n": 19,
+     "monto": 46440,
+     "tco": 11.51
+    },
+    "BANCO FORTALEZA": {
+     "n": 16,
+     "monto": 1067063,
+     "tco": 11.52
+    },
+    "BANCO GANADERO": {
+     "n": 214,
+     "monto": 4163882,
+     "tco": 11.41
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 239,
+     "monto": 3158392,
+     "tco": 11.55
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 255,
+     "monto": 507386,
+     "tco": 11.32
+    },
+    "BANCO PRODEM": {
+     "n": 23,
+     "monto": 22014,
+     "tco": 11.27
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 5,
+     "monto": 5293,
+     "tco": 11.37
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 4,
+     "monto": 350,
+     "tco": 10.97
+    },
+    "BANCO SOLIDARIO": {
+     "n": 38,
+     "monto": 1281388,
+     "tco": 11.54
+    },
+    "BANCO UNION": {
+     "n": 59,
+     "monto": 53381,
+     "tco": 11.37
+    }
+   },
+   "n": 1069,
+   "monto": 21140379,
+   "tco": 11.54,
+   "min": 9.6,
+   "max": 11.9,
+   "p10": 11.35,
+   "p50": 11.5,
+   "p90": 11.85
+  },
+  {
+   "corte": "2026-07-28",
+   "vigDesde": "2026-07-29",
+   "vigHasta": "2026-07-29",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 82,
+     "monto": 8944464,
+     "tco": 11.77
+    },
+    "BANCO DE CREDITO": {
+     "n": 68,
+     "monto": 1318312,
+     "tco": 11.78
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 26,
+     "monto": 24807,
+     "tco": 11.51
+    },
+    "BANCO ECONOMICO": {
+     "n": 37,
+     "monto": 1863927,
+     "tco": 11.83
+    },
+    "BANCO FIE": {
+     "n": 24,
+     "monto": 3025087,
+     "tco": 12.06
+    },
+    "BANCO FORTALEZA": {
+     "n": 7,
+     "monto": 2000224,
+     "tco": 12.07
+    },
+    "BANCO GANADERO": {
+     "n": 279,
+     "monto": 11345343,
+     "tco": 11.73
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 207,
+     "monto": 4864421,
+     "tco": 11.91
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 264,
+     "monto": 2514828,
+     "tco": 11.55
+    },
+    "BANCO PRODEM": {
+     "n": 16,
+     "monto": 5435,
+     "tco": 11.44
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 426,
+     "tco": 11.54
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 8,
+     "monto": 242466,
+     "tco": 11.39
+    },
+    "BANCO SOLIDARIO": {
+     "n": 43,
+     "monto": 2661721,
+     "tco": 11.74
+    },
+    "BANCO UNION": {
+     "n": 48,
+     "monto": 42014,
+     "tco": 11.54
+    }
+   },
+   "n": 1112,
+   "monto": 38853476,
+   "tco": 11.8,
+   "min": 9.63,
+   "max": 12.07,
+   "p10": 11.59,
+   "p50": 11.8,
+   "p90": 12.0635
+  },
+  {
+   "corte": "2026-07-29",
+   "vigDesde": "2026-07-30",
+   "vigHasta": "2026-07-30",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 71,
+     "monto": 8978675,
+     "tco": 12.01
+    },
+    "BANCO DE CREDITO": {
+     "n": 91,
+     "monto": 9214129,
+     "tco": 11.93
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 19,
+     "monto": 126013,
+     "tco": 11.92
+    },
+    "BANCO ECONOMICO": {
+     "n": 51,
+     "monto": 1308703,
+     "tco": 11.96
+    },
+    "BANCO FIE": {
+     "n": 27,
+     "monto": 3769,
+     "tco": 11.7
+    },
+    "BANCO FORTALEZA": {
+     "n": 13,
+     "monto": 329802,
+     "tco": 11.82
+    },
+    "BANCO GANADERO": {
+     "n": 368,
+     "monto": 3801257,
+     "tco": 11.82
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 234,
+     "monto": 3788154,
+     "tco": 11.92
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 280,
+     "monto": 12769237,
+     "tco": 11.77
+    },
+    "BANCO PRODEM": {
+     "n": 16,
+     "monto": 25950,
+     "tco": 11.7
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 6,
+     "monto": 6397,
+     "tco": 11.8
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 5,
+     "monto": 102330,
+     "tco": 11.4
+    },
+    "BANCO SOLIDARIO": {
+     "n": 52,
+     "monto": 1091580,
+     "tco": 11.96
+    },
+    "BANCO UNION": {
+     "n": 76,
+     "monto": 113341,
+     "tco": 11.8
+    }
+   },
+   "n": 1309,
+   "monto": 41659337,
+   "tco": 11.89,
+   "min": 9,
+   "max": 12.25,
+   "p10": 11.7,
+   "p50": 11.82,
+   "p90": 12.1
+  },
+  {
+   "corte": "2026-07-30",
+   "vigDesde": "2026-07-31",
+   "vigHasta": "2026-07-31",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 74,
+     "monto": 13240160,
+     "tco": 12.16
+    },
+    "BANCO DE CREDITO": {
+     "n": 88,
+     "monto": 7088267,
+     "tco": 12.24
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 31,
+     "monto": 17861,
+     "tco": 11.8
+    },
+    "BANCO ECONOMICO": {
+     "n": 48,
+     "monto": 155918,
+     "tco": 11.84
+    },
+    "BANCO FIE": {
+     "n": 23,
+     "monto": 525380,
+     "tco": 12.04
+    },
+    "BANCO FORTALEZA": {
+     "n": 13,
+     "monto": 1244318,
+     "tco": 12.33
+    },
+    "BANCO GANADERO": {
+     "n": 396,
+     "monto": 11208390,
+     "tco": 12.15
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 274,
+     "monto": 2275041,
+     "tco": 12
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 325,
+     "monto": 1483401,
+     "tco": 11.95
+    },
+    "BANCO PRODEM": {
+     "n": 15,
+     "monto": 11361,
+     "tco": 11.79
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 11,
+     "monto": 5585,
+     "tco": 11.89
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 660,
+     "tco": 11.49
+    },
+    "BANCO SOLIDARIO": {
+     "n": 49,
+     "monto": 556276,
+     "tco": 12.07
+    },
+    "BANCO UNION": {
+     "n": 88,
+     "monto": 913229,
+     "tco": 12.09
+    }
+   },
+   "n": 1438,
+   "monto": 38725847,
+   "tco": 12.15,
+   "min": 9.63,
+   "max": 12.4,
+   "p10": 11.95,
+   "p50": 12.2,
+   "p90": 12.265
+  },
+  {
+   "corte": "2026-07-31",
+   "vigDesde": "2026-08-01",
+   "vigHasta": "2026-08-03",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 60,
+     "monto": 7245017,
+     "tco": 12.19
+    },
+    "BANCO DE CREDITO": {
+     "n": 104,
+     "monto": 2089165,
+     "tco": 12.18
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 38,
+     "monto": 111039,
+     "tco": 12.16
+    },
+    "BANCO ECONOMICO": {
+     "n": 146,
+     "monto": 2599071,
+     "tco": 12.05
+    },
+    "BANCO FIE": {
+     "n": 33,
+     "monto": 551965,
+     "tco": 12.19
+    },
+    "BANCO FORTALEZA": {
+     "n": 14,
+     "monto": 576982,
+     "tco": 12.11
+    },
+    "BANCO GANADERO": {
+     "n": 370,
+     "monto": 9927452,
+     "tco": 12.08
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 314,
+     "monto": 5698732,
+     "tco": 12.13
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 410,
+     "monto": 6795664,
+     "tco": 12.17
+    },
+    "BANCO PRODEM": {
+     "n": 25,
+     "monto": 76628,
+     "tco": 12.05
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 14,
+     "monto": 26442,
+     "tco": 12.15
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 5,
+     "monto": 220289,
+     "tco": 12.1
+    },
+    "BANCO SOLIDARIO": {
+     "n": 53,
+     "monto": 3173792,
+     "tco": 12.04
+    },
+    "BANCO UNION": {
+     "n": 234,
+     "monto": 2070157,
+     "tco": 12.19
+    }
+   },
+   "n": 1820,
+   "monto": 41162394,
+   "tco": 12.13,
+   "min": 9.63,
+   "max": 12.3,
+   "p10": 11.95,
+   "p50": 12.15,
+   "p90": 12.26
+  },
+  {
+   "corte": "2026-08-03",
+   "vigDesde": "2026-08-04",
+   "vigHasta": "2026-08-04",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 66,
+     "monto": 2841500,
+     "tco": 11.96
+    },
+    "BANCO DE CREDITO": {
+     "n": 142,
+     "monto": 1976995,
+     "tco": 12.1
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 31,
+     "monto": 103665,
+     "tco": 12.12
+    },
+    "BANCO ECONOMICO": {
+     "n": 60,
+     "monto": 1252144,
+     "tco": 11.97
+    },
+    "BANCO FIE": {
+     "n": 40,
+     "monto": 55907,
+     "tco": 12.03
+    },
+    "BANCO FORTALEZA": {
+     "n": 7,
+     "monto": 1504777,
+     "tco": 12.31
+    },
+    "BANCO GANADERO": {
+     "n": 116,
+     "monto": 5863479,
+     "tco": 12.07
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 378,
+     "monto": 3372165,
+     "tco": 12.06
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 467,
+     "monto": 2757615,
+     "tco": 12.05
+    },
+    "BANCO PRODEM": {
+     "n": 36,
+     "monto": 43765,
+     "tco": 12.03
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 6,
+     "monto": 6283,
+     "tco": 12.13
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 11,
+     "monto": 26160,
+     "tco": 11.73
+    },
+    "BANCO SOLIDARIO": {
+     "n": 35,
+     "monto": 1577317,
+     "tco": 12.14
+    },
+    "BANCO UNION": {
+     "n": 313,
+     "monto": 5433130,
+     "tco": 12.14
+    }
+   },
+   "n": 1708,
+   "monto": 26814902,
+   "tco": 12.08,
+   "min": 9.63,
+   "max": 12.36,
+   "p10": 11.93,
+   "p50": 12.13,
+   "p90": 12.25
+  },
+  {
+   "corte": "2026-08-04",
+   "vigDesde": "2026-08-05",
+   "vigHasta": "2026-08-05",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 126,
+     "monto": 106804901,
+     "tco": 12.03
+    },
+    "BANCO DE CREDITO": {
+     "n": 374,
+     "monto": 1990108,
+     "tco": 11.97
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 11,
+     "monto": 2533,
+     "tco": 11.9
+    },
+    "BANCO ECONOMICO": {
+     "n": 54,
+     "monto": 4143980,
+     "tco": 11.92
+    },
+    "BANCO FIE": {
+     "n": 25,
+     "monto": 1066948,
+     "tco": 12.19
+    },
+    "BANCO FORTALEZA": {
+     "n": 8,
+     "monto": 337142,
+     "tco": 12.06
+    },
+    "BANCO GANADERO": {
+     "n": 769,
+     "monto": 13239973,
+     "tco": 11.98
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 445,
+     "monto": 5251692,
+     "tco": 11.98
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 541,
+     "monto": 14858962,
+     "tco": 12.02
+    },
+    "BANCO PRODEM": {
+     "n": 72,
+     "monto": 160064,
+     "tco": 11.98
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 18,
+     "monto": 26452,
+     "tco": 12.08
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 9,
+     "monto": 14353,
+     "tco": 11.68
+    },
+    "BANCO SOLIDARIO": {
+     "n": 56,
+     "monto": 3326125,
+     "tco": 12
+    },
+    "BANCO UNION": {
+     "n": 500,
+     "monto": 8717523,
+     "tco": 12.09
+    }
+   },
+   "n": 3008,
+   "monto": 159940755,
+   "tco": 12.02,
+   "min": 9.73,
+   "max": 12.2,
+   "p10": 11.95,
+   "p50": 12.035,
+   "p90": 12.08
+  },
+  {
+   "corte": "2026-08-05",
+   "vigDesde": "2026-08-06",
+   "vigHasta": "2026-08-10",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 159,
+     "monto": 30301395,
+     "tco": 11.86
+    },
+    "BANCO DE CREDITO": {
+     "n": 409,
+     "monto": 1650749,
+     "tco": 11.8
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 20,
+     "monto": 13769,
+     "tco": 11.82
+    },
+    "BANCO ECONOMICO": {
+     "n": 64,
+     "monto": 1960611,
+     "tco": 11.88
+    },
+    "BANCO FIE": {
+     "n": 24,
+     "monto": 213463,
+     "tco": 12.05
+    },
+    "BANCO FORTALEZA": {
+     "n": 16,
+     "monto": 105065,
+     "tco": 11.87
+    },
+    "BANCO GANADERO": {
+     "n": 197,
+     "monto": 13107514,
+     "tco": 11.87
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 287,
+     "monto": 6707597,
+     "tco": 11.87
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 554,
+     "monto": 4040013,
+     "tco": 11.75
+    },
+    "BANCO PRODEM": {
+     "n": 85,
+     "monto": 288044,
+     "tco": 11.82
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 12,
+     "monto": 58829,
+     "tco": 12.02
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 5,
+     "monto": 2714,
+     "tco": 11.62
+    },
+    "BANCO SOLIDARIO": {
+     "n": 49,
+     "monto": 1143658,
+     "tco": 11.85
+    },
+    "BANCO UNION": {
+     "n": 163,
+     "monto": 889618,
+     "tco": 11.92
+    }
+   },
+   "n": 2044,
+   "monto": 60483040,
+   "tco": 11.86,
+   "min": 9.63,
+   "max": 12.1799,
+   "p10": 11.8,
+   "p50": 11.87,
+   "p90": 12
+  },
+  {
+   "corte": "2026-08-10",
+   "vigDesde": "2026-08-11",
+   "vigHasta": "2026-08-11",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 120,
+     "monto": 19752071,
+     "tco": 11.76
+    },
+    "BANCO DE CREDITO": {
+     "n": 486,
+     "monto": 2235624,
+     "tco": 11.67
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 22,
+     "monto": 11516,
+     "tco": 11.79
+    },
+    "BANCO ECONOMICO": {
+     "n": 63,
+     "monto": 48413,
+     "tco": 11.1
+    },
+    "BANCO FIE": {
+     "n": 18,
+     "monto": 347302,
+     "tco": 11.76
+    },
+    "BANCO FORTALEZA": {
+     "n": 11,
+     "monto": 30067,
+     "tco": 11.74
+    },
+    "BANCO GANADERO": {
+     "n": 278,
+     "monto": 26287525,
+     "tco": 11.82
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 220,
+     "monto": 9453503,
+     "tco": 11.77
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 533,
+     "monto": 2739404,
+     "tco": 11.69
+    },
+    "BANCO PRODEM": {
+     "n": 97,
+     "monto": 349500,
+     "tco": 11.66
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 15,
+     "monto": 47533,
+     "tco": 11.86
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 4,
+     "monto": 3316,
+     "tco": 11.46
+    },
+    "BANCO SOLIDARIO": {
+     "n": 73,
+     "monto": 1154983,
+     "tco": 11.59
+    },
+    "BANCO UNION": {
+     "n": 96,
+     "monto": 248412,
+     "tco": 11.36
+    }
+   },
+   "n": 2036,
+   "monto": 62709169,
+   "tco": 11.77,
+   "min": 9.63,
+   "max": 12.13,
+   "p10": 11.66,
+   "p50": 11.8,
+   "p90": 11.88
+  },
+  {
+   "corte": "2026-08-11",
+   "vigDesde": "2026-08-12",
+   "vigHasta": "2026-08-12",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 193,
+     "monto": 72570741,
+     "tco": 11.73
+    },
+    "BANCO DE CREDITO": {
+     "n": 360,
+     "monto": 1028144,
+     "tco": 11.6
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 3,
+     "monto": 580,
+     "tco": 11.27
+    },
+    "BANCO ECONOMICO": {
+     "n": 68,
+     "monto": 718615,
+     "tco": 11.65
+    },
+    "BANCO FIE": {
+     "n": 19,
+     "monto": 909124,
+     "tco": 11.71
+    },
+    "BANCO FORTALEZA": {
+     "n": 8,
+     "monto": 148428,
+     "tco": 11.6
+    },
+    "BANCO GANADERO": {
+     "n": 178,
+     "monto": 11845324,
+     "tco": 11.69
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 220,
+     "monto": 1133686,
+     "tco": 11.54
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 291,
+     "monto": 910171,
+     "tco": 11.41
+    },
+    "BANCO PRODEM": {
+     "n": 98,
+     "monto": 409921,
+     "tco": 11.57
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 8,
+     "monto": 8301,
+     "tco": 11.77
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 200,
+     "tco": 11.37
+    },
+    "BANCO SOLIDARIO": {
+     "n": 44,
+     "monto": 5907069,
+     "tco": 11.76
+    },
+    "BANCO UNION": {
+     "n": 62,
+     "monto": 665315,
+     "tco": 10.73
+    }
+   },
+   "n": 1553,
+   "monto": 96255618,
+   "tco": 11.71,
+   "min": 9.63,
+   "max": 12.39,
+   "p10": 11.7,
+   "p50": 11.725,
+   "p90": 11.77
+  },
+  {
+   "corte": "2026-08-12",
+   "vigDesde": "2026-08-13",
+   "vigHasta": "2026-08-13",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 126,
+     "monto": 12318126,
+     "tco": 11.69
+    },
+    "BANCO DE CREDITO": {
+     "n": 369,
+     "monto": 5910414,
+     "tco": 11.69
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 2,
+     "monto": 1350,
+     "tco": 11.21
+    },
+    "BANCO ECONOMICO": {
+     "n": 73,
+     "monto": 531240,
+     "tco": 11.5
+    },
+    "BANCO FIE": {
+     "n": 14,
+     "monto": 187612,
+     "tco": 11.67
+    },
+    "BANCO FORTALEZA": {
+     "n": 18,
+     "monto": 2471870,
+     "tco": 11.61
+    },
+    "BANCO GANADERO": {
+     "n": 276,
+     "monto": 8382354,
+     "tco": 11.63
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 153,
+     "monto": 5048105,
+     "tco": 11.71
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 273,
+     "monto": 3082805,
+     "tco": 11.56
+    },
+    "BANCO PRODEM": {
+     "n": 69,
+     "monto": 271193,
+     "tco": 11.41
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 8,
+     "monto": 8462,
+     "tco": 11.47
+    },
+    "BANCO SOLIDARIO": {
+     "n": 32,
+     "monto": 647140,
+     "tco": 11.61
+    },
+    "BANCO UNION": {
+     "n": 30,
+     "monto": 51181,
+     "tco": 10.67
+    }
+   },
+   "n": 1443,
+   "monto": 38911851,
+   "tco": 11.66,
+   "min": 9.63,
+   "max": 12.15,
+   "p10": 11.54,
+   "p50": 11.7,
+   "p90": 11.755
+  },
+  {
+   "corte": "2026-08-13",
+   "vigDesde": "2026-08-14",
+   "vigHasta": "2026-08-14",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 128,
+     "monto": 12770296,
+     "tco": 11.64
+    },
+    "BANCO DE CREDITO": {
+     "n": 265,
+     "monto": 4781021,
+     "tco": 11.63
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 5,
+     "monto": 145788,
+     "tco": 11.55
+    },
+    "BANCO ECONOMICO": {
+     "n": 87,
+     "monto": 1144155,
+     "tco": 11.42
+    },
+    "BANCO FIE": {
+     "n": 16,
+     "monto": 77182,
+     "tco": 11.61
+    },
+    "BANCO FORTALEZA": {
+     "n": 15,
+     "monto": 212246,
+     "tco": 11.54
+    },
+    "BANCO GANADERO": {
+     "n": 184,
+     "monto": 5781733,
+     "tco": 11.59
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 184,
+     "monto": 10821109,
+     "tco": 11.66
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 226,
+     "monto": 2871760,
+     "tco": 11.57
+    },
+    "BANCO PRODEM": {
+     "n": 43,
+     "monto": 177954,
+     "tco": 11.36
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 6,
+     "monto": 13401,
+     "tco": 11.51
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 1500,
+     "tco": 11.26
+    },
+    "BANCO SOLIDARIO": {
+     "n": 36,
+     "monto": 3281690,
+     "tco": 11.6
+    },
+    "BANCO UNION": {
+     "n": 28,
+     "monto": 18225,
+     "tco": 10.16
+    }
+   },
+   "n": 1225,
+   "monto": 42098061,
+   "tco": 11.62,
+   "min": 9.63,
+   "max": 12.13,
+   "p10": 11.55,
+   "p50": 11.66,
+   "p90": 11.696
+  },
+  {
+   "corte": "2026-08-14",
+   "vigDesde": "2026-08-15",
+   "vigHasta": "2026-08-17",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 123,
+     "monto": 12800668,
+     "tco": 11.56
+    },
+    "BANCO DE CREDITO": {
+     "n": 317,
+     "monto": 3040586,
+     "tco": 11.62
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 11,
+     "monto": 32075,
+     "tco": 11.46
+    },
+    "BANCO ECONOMICO": {
+     "n": 54,
+     "monto": 782249,
+     "tco": 11.52
+    },
+    "BANCO FIE": {
+     "n": 28,
+     "monto": 1086452,
+     "tco": 11.63
+    },
+    "BANCO FORTALEZA": {
+     "n": 16,
+     "monto": 241180,
+     "tco": 11.54
+    },
+    "BANCO GANADERO": {
+     "n": 170,
+     "monto": 11167635,
+     "tco": 11.59
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 171,
+     "monto": 5524586,
+     "tco": 11.59
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 251,
+     "monto": 1159765,
+     "tco": 11.47
+    },
+    "BANCO PRODEM": {
+     "n": 24,
+     "monto": 50458,
+     "tco": 11.32
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 1,
+     "tco": 11.22
+    },
+    "BANCO SOLIDARIO": {
+     "n": 32,
+     "monto": 370467,
+     "tco": 11.51
+    },
+    "BANCO UNION": {
+     "n": 25,
+     "monto": 59954,
+     "tco": 11.52
+    }
+   },
+   "n": 1223,
+   "monto": 36316075,
+   "tco": 11.58,
+   "min": 9.63,
+   "max": 12,
+   "p10": 11.55,
+   "p50": 11.58,
+   "p90": 11.635
+  },
+  {
+   "corte": "2026-08-17",
+   "vigDesde": "2026-08-18",
+   "vigHasta": "2026-08-18",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 64,
+     "monto": 6497350,
+     "tco": 11.56
+    },
+    "BANCO DE CREDITO": {
+     "n": 371,
+     "monto": 2323703,
+     "tco": 11.59
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 29,
+     "monto": 2332,
+     "tco": 11.08
+    },
+    "BANCO ECONOMICO": {
+     "n": 52,
+     "monto": 333053,
+     "tco": 11.48
+    },
+    "BANCO FIE": {
+     "n": 31,
+     "monto": 240087,
+     "tco": 11.49
+    },
+    "BANCO FORTALEZA": {
+     "n": 7,
+     "monto": 335475,
+     "tco": 11.58
+    },
+    "BANCO GANADERO": {
+     "n": 167,
+     "monto": 12645125,
+     "tco": 11.55
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 162,
+     "monto": 3791902,
+     "tco": 11.58
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 259,
+     "monto": 2431329,
+     "tco": 11.48
+    },
+    "BANCO PRODEM": {
+     "n": 24,
+     "monto": 6305,
+     "tco": 11.28
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 2,
+     "monto": 247,
+     "tco": 11.5
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 251,
+     "tco": 11.18
+    },
+    "BANCO SOLIDARIO": {
+     "n": 43,
+     "monto": 613136,
+     "tco": 11.6
+    },
+    "BANCO UNION": {
+     "n": 28,
+     "monto": 58751,
+     "tco": 10.5
+    }
+   },
+   "n": 1242,
+   "monto": 29279047,
+   "tco": 11.55,
+   "min": 9.63,
+   "max": 12.15,
+   "p10": 11.52,
+   "p50": 11.5656,
+   "p90": 11.62
+  },
+  {
+   "corte": "2026-08-18",
+   "vigDesde": "2026-08-19",
+   "vigHasta": "2026-08-19",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 93,
+     "monto": 51436770,
+     "tco": 11.51
+    },
+    "BANCO DE CREDITO": {
+     "n": 314,
+     "monto": 1522230,
+     "tco": 11.52
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 9,
+     "monto": 2763,
+     "tco": 11.05
+    },
+    "BANCO ECONOMICO": {
+     "n": 41,
+     "monto": 403708,
+     "tco": 11.44
+    },
+    "BANCO FIE": {
+     "n": 17,
+     "monto": 48587,
+     "tco": 11.38
+    },
+    "BANCO FORTALEZA": {
+     "n": 8,
+     "monto": 124681,
+     "tco": 11.55
+    },
+    "BANCO GANADERO": {
+     "n": 168,
+     "monto": 6293207,
+     "tco": 11.54
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 167,
+     "monto": 4160935,
+     "tco": 11.52
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 198,
+     "monto": 2002197,
+     "tco": 11.5
+    },
+    "BANCO PRODEM": {
+     "n": 12,
+     "monto": 12065,
+     "tco": 11.25
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 2,
+     "monto": 1940,
+     "tco": 11.15
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 2551,
+     "tco": 11.15
+    },
+    "BANCO SOLIDARIO": {
+     "n": 34,
+     "monto": 3386444,
+     "tco": 11.52
+    },
+    "BANCO UNION": {
+     "n": 37,
+     "monto": 61103,
+     "tco": 10.5
+    }
+   },
+   "n": 1103,
+   "monto": 69459180,
+   "tco": 11.52,
+   "min": 9.73,
+   "max": 12.39,
+   "p10": 11.515,
+   "p50": 11.515,
+   "p90": 11.554
+  },
+  {
+   "corte": "2026-08-19",
+   "vigDesde": "2026-08-20",
+   "vigHasta": "2026-08-20",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 124,
+     "monto": 12808358,
+     "tco": 11.51
+    },
+    "BANCO DE CREDITO": {
+     "n": 332,
+     "monto": 2130880,
+     "tco": 11.52
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 12,
+     "monto": 17136,
+     "tco": 11.36
+    },
+    "BANCO ECONOMICO": {
+     "n": 30,
+     "monto": 990300,
+     "tco": 11.53
+    },
+    "BANCO FIE": {
+     "n": 28,
+     "monto": 217172,
+     "tco": 11.51
+    },
+    "BANCO FORTALEZA": {
+     "n": 8,
+     "monto": 738265,
+     "tco": 11.54
+    },
+    "BANCO GANADERO": {
+     "n": 139,
+     "monto": 4172245,
+     "tco": 11.53
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 172,
+     "monto": 11919870,
+     "tco": 11.53
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 235,
+     "monto": 309847,
+     "tco": 11.36
+    },
+    "BANCO PRODEM": {
+     "n": 15,
+     "monto": 4698,
+     "tco": 11.22
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 10000,
+     "tco": 11.12
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 180,
+     "tco": 11.12
+    },
+    "BANCO SOLIDARIO": {
+     "n": 42,
+     "monto": 898169,
+     "tco": 11.51
+    },
+    "BANCO UNION": {
+     "n": 19,
+     "monto": 80369,
+     "tco": 11.46
+    }
+   },
+   "n": 1161,
+   "monto": 34297489,
+   "tco": 11.52,
+   "min": 9.63,
+   "max": 12,
+   "p10": 11.5,
+   "p50": 11.515,
+   "p90": 11.57
+  },
+  {
+   "corte": "2026-08-20",
+   "vigDesde": "2026-08-21",
+   "vigHasta": "2026-08-21",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 93,
+     "monto": 7939410,
+     "tco": 11.52
+    },
+    "BANCO DE CREDITO": {
+     "n": 345,
+     "monto": 3532604,
+     "tco": 11.53
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 16,
+     "monto": 120321,
+     "tco": 11.48
+    },
+    "BANCO ECONOMICO": {
+     "n": 46,
+     "monto": 1492326,
+     "tco": 11.56
+    },
+    "BANCO FIE": {
+     "n": 20,
+     "monto": 14575,
+     "tco": 11.32
+    },
+    "BANCO FORTALEZA": {
+     "n": 9,
+     "monto": 98086,
+     "tco": 11.47
+    },
+    "BANCO GANADERO": {
+     "n": 142,
+     "monto": 7434731,
+     "tco": 11.52
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 177,
+     "monto": 3748640,
+     "tco": 11.45
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 250,
+     "monto": 5039002,
+     "tco": 11.51
+    },
+    "BANCO PRODEM": {
+     "n": 18,
+     "monto": 13867,
+     "tco": 11.22
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 5,
+     "monto": 1104,
+     "tco": 11.12
+    },
+    "BANCO SOLIDARIO": {
+     "n": 27,
+     "monto": 3189295,
+     "tco": 11.57
+    },
+    "BANCO UNION": {
+     "n": 27,
+     "monto": 87131,
+     "tco": 11.45
+    }
+   },
+   "n": 1175,
+   "monto": 32711090,
+   "tco": 11.52,
+   "min": 9.63,
+   "max": 12,
+   "p10": 11.5,
+   "p50": 11.525,
+   "p90": 11.58
+  },
+  {
+   "corte": "2026-08-21",
+   "vigDesde": "2026-08-22",
+   "vigHasta": "2026-08-24",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 139,
+     "monto": 5066455,
+     "tco": 11.51
+    },
+    "BANCO DE CREDITO": {
+     "n": 334,
+     "monto": 1863695,
+     "tco": 11.5
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 15,
+     "monto": 31836,
+     "tco": 11.38
+    },
+    "BANCO ECONOMICO": {
+     "n": 43,
+     "monto": 557386,
+     "tco": 11.53
+    },
+    "BANCO FIE": {
+     "n": 27,
+     "monto": 149951,
+     "tco": 11.32
+    },
+    "BANCO FORTALEZA": {
+     "n": 5,
+     "monto": 63890,
+     "tco": 11.48
+    },
+    "BANCO GANADERO": {
+     "n": 170,
+     "monto": 5501680,
+     "tco": 11.5
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 199,
+     "monto": 1245373,
+     "tco": 11.49
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 239,
+     "monto": 1562296,
+     "tco": 11.46
+    },
+    "BANCO PRODEM": {
+     "n": 22,
+     "monto": 8319,
+     "tco": 11.22
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 2,
+     "monto": 1029,
+     "tco": 11.12
+    },
+    "BANCO SOLIDARIO": {
+     "n": 36,
+     "monto": 1622604,
+     "tco": 11.55
+    },
+    "BANCO UNION": {
+     "n": 18,
+     "monto": 3765,
+     "tco": 10.5
+    }
+   },
+   "n": 1249,
+   "monto": 17678278,
+   "tco": 11.5,
+   "min": 9.63,
+   "max": 12.08,
+   "p10": 11.47,
+   "p50": 11.54,
+   "p90": 11.555
+  },
+  {
+   "corte": "2026-08-24",
+   "vigDesde": "2026-08-25",
+   "vigHasta": "2026-08-25",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 81,
+     "monto": 3577349,
+     "tco": 11.55
+    },
+    "BANCO DE CREDITO": {
+     "n": 347,
+     "monto": 914474,
+     "tco": 11.54
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 26,
+     "monto": 4717,
+     "tco": 11
+    },
+    "BANCO ECONOMICO": {
+     "n": 47,
+     "monto": 2477890,
+     "tco": 11.59
+    },
+    "BANCO FIE": {
+     "n": 19,
+     "monto": 93440,
+     "tco": 11.53
+    },
+    "BANCO FORTALEZA": {
+     "n": 11,
+     "monto": 510136,
+     "tco": 11.59
+    },
+    "BANCO GANADERO": {
+     "n": 164,
+     "monto": 8269534,
+     "tco": 11.53
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 232,
+     "monto": 1135863,
+     "tco": 11.28
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 264,
+     "monto": 1768375,
+     "tco": 11.57
+    },
+    "BANCO PRODEM": {
+     "n": 10,
+     "monto": 1339,
+     "tco": 11.2
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 1,
+     "monto": 700,
+     "tco": 11.1
+    },
+    "BANCO SOLIDARIO": {
+     "n": 36,
+     "monto": 1736939,
+     "tco": 11.58
+    },
+    "BANCO UNION": {
+     "n": 33,
+     "monto": 6970,
+     "tco": 10.5
+    }
+   },
+   "n": 1271,
+   "monto": 20497727,
+   "tco": 11.54,
+   "min": 9.63,
+   "max": 11.62,
+   "p10": 11.5,
+   "p50": 11.58,
+   "p90": 11.6
+  },
+  {
+   "corte": "2026-08-25",
+   "vigDesde": "2026-08-26",
+   "vigHasta": "2026-08-26",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 95,
+     "monto": 25462105,
+     "tco": 11.53
+    },
+    "BANCO DE CREDITO": {
+     "n": 383,
+     "monto": 2315219,
+     "tco": 11.62
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 18,
+     "monto": 9844,
+     "tco": 11.05
+    },
+    "BANCO ECONOMICO": {
+     "n": 55,
+     "monto": 1193528,
+     "tco": 11.61
+    },
+    "BANCO FIE": {
+     "n": 26,
+     "monto": 1034956,
+     "tco": 11.66
+    },
+    "BANCO FORTALEZA": {
+     "n": 9,
+     "monto": 82828,
+     "tco": 11.5
+    },
+    "BANCO GANADERO": {
+     "n": 214,
+     "monto": 5262517,
+     "tco": 11.57
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 245,
+     "monto": 6991372,
+     "tco": 11.71
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 278,
+     "monto": 1600491,
+     "tco": 11.55
+    },
+    "BANCO PRODEM": {
+     "n": 11,
+     "monto": 8352,
+     "tco": 11.24
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 2,
+     "monto": 4,
+     "tco": 11.14
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 1,
+     "tco": 11.14
+    },
+    "BANCO SOLIDARIO": {
+     "n": 49,
+     "monto": 1405828,
+     "tco": 11.59
+    },
+    "BANCO UNION": {
+     "n": 36,
+     "monto": 3722,
+     "tco": 10.5
+    }
+   },
+   "n": 1422,
+   "monto": 45370766,
+   "tco": 11.57,
+   "min": 9.63,
+   "max": 12,
+   "p10": 11.53,
+   "p50": 11.53,
+   "p90": 11.76
+  },
+  {
+   "corte": "2026-08-26",
+   "vigDesde": "2026-08-27",
+   "vigHasta": "2026-08-27",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 132,
+     "monto": 12735607,
+     "tco": 11.72
+    },
+    "BANCO DE CREDITO": {
+     "n": 377,
+     "monto": 4226139,
+     "tco": 11.71
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 25,
+     "monto": 8372,
+     "tco": 11.49
+    },
+    "BANCO ECONOMICO": {
+     "n": 32,
+     "monto": 367349,
+     "tco": 11.64
+    },
+    "BANCO FIE": {
+     "n": 22,
+     "monto": 1306468,
+     "tco": 11.78
+    },
+    "BANCO FORTALEZA": {
+     "n": 5,
+     "monto": 98333,
+     "tco": 11.6
+    },
+    "BANCO GANADERO": {
+     "n": 191,
+     "monto": 16277226,
+     "tco": 11.68
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 194,
+     "monto": 8613420,
+     "tco": 11.74
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 292,
+     "monto": 4938442,
+     "tco": 11.73
+    },
+    "BANCO PRODEM": {
+     "n": 13,
+     "monto": 6230,
+     "tco": 11.27
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 2,
+     "monto": 600,
+     "tco": 11.17
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 3,
+     "tco": 11.17
+    },
+    "BANCO SOLIDARIO": {
+     "n": 43,
+     "monto": 927612,
+     "tco": 11.68
+    },
+    "BANCO UNION": {
+     "n": 31,
+     "monto": 5826,
+     "tco": 10.5
+    }
+   },
+   "n": 1360,
+   "monto": 49511626,
+   "tco": 11.71,
+   "min": 9.63,
+   "max": 12.83,
+   "p10": 11.65,
+   "p50": 11.72,
+   "p90": 11.761
+  },
+  {
+   "corte": "2026-08-27",
+   "vigDesde": "2026-08-28",
+   "vigHasta": "2026-08-28",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 124,
+     "monto": 7015087,
+     "tco": 11.87
+    },
+    "BANCO DE CREDITO": {
+     "n": 353,
+     "monto": 2145904,
+     "tco": 11.85
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 32,
+     "monto": 627547,
+     "tco": 11.82
+    },
+    "BANCO ECONOMICO": {
+     "n": 39,
+     "monto": 1267529,
+     "tco": 11.79
+    },
+    "BANCO FIE": {
+     "n": 27,
+     "monto": 240795,
+     "tco": 11.81
+    },
+    "BANCO FORTALEZA": {
+     "n": 9,
+     "monto": 406059,
+     "tco": 11.66
+    },
+    "BANCO GANADERO": {
+     "n": 328,
+     "monto": 10431909,
+     "tco": 11.81
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 170,
+     "monto": 2399225,
+     "tco": 11.75
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 258,
+     "monto": 1221841,
+     "tco": 11.71
+    },
+    "BANCO PRODEM": {
+     "n": 19,
+     "monto": 6719,
+     "tco": 11.41
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 292,
+     "tco": 11.31
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 1000,
+     "tco": 11.31
+    },
+    "BANCO SOLIDARIO": {
+     "n": 73,
+     "monto": 2581518,
+     "tco": 11.94
+    },
+    "BANCO UNION": {
+     "n": 16,
+     "monto": 17444,
+     "tco": 10.5
+    }
+   },
+   "n": 1452,
+   "monto": 28362869,
+   "tco": 11.83,
+   "min": 9.63,
+   "max": 12.17,
+   "p10": 11.68,
+   "p50": 11.85,
+   "p90": 12.05
+  },
+  {
+   "corte": "2026-08-28",
+   "vigDesde": "2026-08-31",
+   "vigHasta": "2026-08-31",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 117,
+     "monto": 3334635,
+     "tco": 11.95
+    },
+    "BANCO DE CREDITO": {
+     "n": 383,
+     "monto": 2490179,
+     "tco": 12.08
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 40,
+     "monto": 49372,
+     "tco": 11.77
+    },
+    "BANCO ECONOMICO": {
+     "n": 50,
+     "monto": 2091028,
+     "tco": 11.98
+    },
+    "BANCO FIE": {
+     "n": 20,
+     "monto": 2877,
+     "tco": 11.63
+    },
+    "BANCO FORTALEZA": {
+     "n": 4,
+     "monto": 18594,
+     "tco": 11.89
+    },
+    "BANCO GANADERO": {
+     "n": 150,
+     "monto": 5889786,
+     "tco": 12.01
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 270,
+     "monto": 3226673,
+     "tco": 11.77
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 269,
+     "monto": 1595783,
+     "tco": 11.85
+    },
+    "BANCO PRODEM": {
+     "n": 9,
+     "monto": 633,
+     "tco": 11.53
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 7,
+     "monto": 13836,
+     "tco": 11.43
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 9,
+     "tco": 11.43
+    },
+    "BANCO SOLIDARIO": {
+     "n": 47,
+     "monto": 2620781,
+     "tco": 12.05
+    },
+    "BANCO UNION": {
+     "n": 22,
+     "monto": 569358,
+     "tco": 10.5
+    }
+   },
+   "n": 1389,
+   "monto": 21903543,
+   "tco": 11.92,
+   "min": 9.63,
+   "max": 12.25,
+   "p10": 11.73,
+   "p50": 12,
+   "p90": 12.19
+  },
+  {
+   "corte": "2026-08-31",
+   "vigDesde": "2026-09-01",
+   "vigHasta": "2026-09-01",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 100,
+     "monto": 3997904,
+     "tco": 12.14
+    },
+    "BANCO DE CREDITO": {
+     "n": 463,
+     "monto": 1519772,
+     "tco": 12.07
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 64,
+     "monto": 28880,
+     "tco": 11.73
+    },
+    "BANCO ECONOMICO": {
+     "n": 47,
+     "monto": 657031,
+     "tco": 12.11
+    },
+    "BANCO FIE": {
+     "n": 22,
+     "monto": 54532,
+     "tco": 11.96
+    },
+    "BANCO FORTALEZA": {
+     "n": 12,
+     "monto": 340464,
+     "tco": 11.9
+    },
+    "BANCO GANADERO": {
+     "n": 177,
+     "monto": 10084012,
+     "tco": 12.15
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 220,
+     "monto": 1014399,
+     "tco": 11.96
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 403,
+     "monto": 1109240,
+     "tco": 12.04
+    },
+    "BANCO PRODEM": {
+     "n": 14,
+     "monto": 4844,
+     "tco": 11.62
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 108,
+     "tco": 11.52
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 7,
+     "tco": 11.52
+    },
+    "BANCO SOLIDARIO": {
+     "n": 45,
+     "monto": 754922,
+     "tco": 12.13
+    },
+    "BANCO UNION": {
+     "n": 22,
+     "monto": 3903,
+     "tco": 10.5
+    }
+   },
+   "n": 1593,
+   "monto": 19570020,
+   "tco": 12.12,
+   "min": 9.63,
+   "max": 12.3,
+   "p10": 11.92,
+   "p50": 12.2,
+   "p90": 12.3
+  },
+  {
+   "corte": "2026-09-01",
+   "vigDesde": "2026-09-02",
+   "vigHasta": "2026-09-02",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 106,
+     "monto": 6857678,
+     "tco": 12.29
+    },
+    "BANCO DE CREDITO": {
+     "n": 348,
+     "monto": 7864821,
+     "tco": 12.35
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 29,
+     "monto": 25920,
+     "tco": 11.93
+    },
+    "BANCO ECONOMICO": {
+     "n": 51,
+     "monto": 1536004,
+     "tco": 12.24
+    },
+    "BANCO FIE": {
+     "n": 17,
+     "monto": 1524293,
+     "tco": 12.39
+    },
+    "BANCO FORTALEZA": {
+     "n": 9,
+     "monto": 309732,
+     "tco": 12.09
+    },
+    "BANCO GANADERO": {
+     "n": 252,
+     "monto": 9634149,
+     "tco": 12.17
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 61,
+     "monto": 1287492,
+     "tco": 12.25
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 407,
+     "monto": 4313357,
+     "tco": 12.21
+    },
+    "BANCO PRODEM": {
+     "n": 21,
+     "monto": 20429,
+     "tco": 11.82
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 5,
+     "monto": 1853,
+     "tco": 11.72
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 10,
+     "tco": 11.72
+    },
+    "BANCO SOLIDARIO": {
+     "n": 55,
+     "monto": 2035586,
+     "tco": 12.35
+    },
+    "BANCO UNION": {
+     "n": 13,
+     "monto": 4663,
+     "tco": 10.5
+    }
+   },
+   "n": 1376,
+   "monto": 35415989,
+   "tco": 12.26,
+   "min": 9.63,
+   "max": 12.45,
+   "p10": 12.12,
+   "p50": 12.3,
+   "p90": 12.4
+  },
+  {
+   "corte": "2026-09-02",
+   "vigDesde": "2026-09-03",
+   "vigHasta": "2026-09-03",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 75,
+     "monto": 26918665,
+     "tco": 12.26
+    },
+    "BANCO DE CREDITO": {
+     "n": 426,
+     "monto": 1249481,
+     "tco": 12.32
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 22,
+     "monto": 5170,
+     "tco": 11.96
+    },
+    "BANCO ECONOMICO": {
+     "n": 68,
+     "monto": 4314646,
+     "tco": 12.41
+    },
+    "BANCO FIE": {
+     "n": 20,
+     "monto": 3466510,
+     "tco": 12.45
+    },
+    "BANCO FORTALEZA": {
+     "n": 8,
+     "monto": 748365,
+     "tco": 12.54
+    },
+    "BANCO GANADERO": {
+     "n": 154,
+     "monto": 4363172,
+     "tco": 12.29
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 213,
+     "monto": 3414526,
+     "tco": 12.37
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 406,
+     "monto": 1856765,
+     "tco": 12.25
+    },
+    "BANCO PRODEM": {
+     "n": 13,
+     "monto": 2080,
+     "tco": 11.96
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 1329,
+     "tco": 11.86
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 500075,
+     "tco": 12.55
+    },
+    "BANCO SOLIDARIO": {
+     "n": 39,
+     "monto": 5552007,
+     "tco": 12.42
+    },
+    "BANCO UNION": {
+     "n": 40,
+     "monto": 243776,
+     "tco": 12.26
+    }
+   },
+   "n": 1489,
+   "monto": 52636568,
+   "tco": 12.32,
+   "min": 9.63,
+   "max": 12.58,
+   "p10": 12.255,
+   "p50": 12.255,
+   "p90": 12.4716
+  },
+  {
+   "corte": "2026-09-03",
+   "vigDesde": "2026-09-04",
+   "vigHasta": "2026-09-04",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 105,
+     "monto": 9492931,
+     "tco": 12.43
+    },
+    "BANCO DE CREDITO": {
+     "n": 542,
+     "monto": 4020744,
+     "tco": 12.4
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 34,
+     "monto": 46435,
+     "tco": 12.18
+    },
+    "BANCO ECONOMICO": {
+     "n": 45,
+     "monto": 254412,
+     "tco": 12.5
+    },
+    "BANCO FIE": {
+     "n": 23,
+     "monto": 1322930,
+     "tco": 12.56
+    },
+    "BANCO FORTALEZA": {
+     "n": 7,
+     "monto": 153115,
+     "tco": 12.19
+    },
+    "BANCO GANADERO": {
+     "n": 149,
+     "monto": 8799521,
+     "tco": 12.47
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 223,
+     "monto": 1912850,
+     "tco": 12.5
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 322,
+     "monto": 3232721,
+     "tco": 12.37
+    },
+    "BANCO PRODEM": {
+     "n": 22,
+     "monto": 11869,
+     "tco": 12.02
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 6,
+     "monto": 1553,
+     "tco": 11.92
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 3,
+     "monto": 2,
+     "tco": 11.92
+    },
+    "BANCO SOLIDARIO": {
+     "n": 53,
+     "monto": 3003232,
+     "tco": 12.57
+    },
+    "BANCO UNION": {
+     "n": 22,
+     "monto": 2014,
+     "tco": 10.5
+    }
+   },
+   "n": 1556,
+   "monto": 32254330,
+   "tco": 12.45,
+   "min": 9.63,
+   "max": 12.675,
+   "p10": 12.32,
+   "p50": 12.45,
+   "p90": 12.66
+  },
+  {
+   "corte": "2026-09-04",
+   "vigDesde": "2026-09-05",
+   "vigHasta": "2026-09-07",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 114,
+     "monto": 9516222,
+     "tco": 12.53
+    },
+    "BANCO DE CREDITO": {
+     "n": 522,
+     "monto": 4459706,
+     "tco": 12.56
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 19,
+     "monto": 61090,
+     "tco": 12.38
+    },
+    "BANCO ECONOMICO": {
+     "n": 58,
+     "monto": 4056039,
+     "tco": 12.59
+    },
+    "BANCO FIE": {
+     "n": 30,
+     "monto": 1553359,
+     "tco": 12.62
+    },
+    "BANCO FORTALEZA": {
+     "n": 11,
+     "monto": 700072,
+     "tco": 12.65
+    },
+    "BANCO GANADERO": {
+     "n": 281,
+     "monto": 20567034,
+     "tco": 12.62
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 359,
+     "monto": 10460837,
+     "tco": 12.59
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 467,
+     "monto": 4520051,
+     "tco": 12.45
+    },
+    "BANCO PRODEM": {
+     "n": 15,
+     "monto": 19061,
+     "tco": 12.15
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 2,
+     "monto": 5030,
+     "tco": 12.05
+    },
+    "BANCO SOLIDARIO": {
+     "n": 49,
+     "monto": 818573,
+     "tco": 12.6
+    },
+    "BANCO UNION": {
+     "n": 42,
+     "monto": 33370,
+     "tco": 11.56
+    }
+   },
+   "n": 1969,
+   "monto": 56770445,
+   "tco": 12.58,
+   "min": 9.63,
+   "max": 12.76,
+   "p10": 12.45,
+   "p50": 12.6,
+   "p90": 12.74
+  },
+  {
+   "corte": "2026-09-07",
+   "vigDesde": "2026-09-08",
+   "vigHasta": "2026-09-08",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 56,
+     "monto": 1978151,
+     "tco": 12.59
+    },
+    "BANCO DE CREDITO": {
+     "n": 561,
+     "monto": 2440267,
+     "tco": 12.67
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 20,
+     "monto": 2432,
+     "tco": 12.28
+    },
+    "BANCO ECONOMICO": {
+     "n": 48,
+     "monto": 387607,
+     "tco": 12.56
+    },
+    "BANCO FIE": {
+     "n": 38,
+     "monto": 864446,
+     "tco": 12.58
+    },
+    "BANCO FORTALEZA": {
+     "n": 10,
+     "monto": 76007,
+     "tco": 12.61
+    },
+    "BANCO GANADERO": {
+     "n": 153,
+     "monto": 4016082,
+     "tco": 12.52
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 215,
+     "monto": 4303984,
+     "tco": 12.68
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 468,
+     "monto": 3647091,
+     "tco": 12.55
+    },
+    "BANCO PRODEM": {
+     "n": 23,
+     "monto": 15894,
+     "tco": 12.28
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 7,
+     "monto": 3382,
+     "tco": 12.18
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 1,
+     "monto": 1,
+     "tco": 12.18
+    },
+    "BANCO SOLIDARIO": {
+     "n": 49,
+     "monto": 400265,
+     "tco": 12.51
+    },
+    "BANCO UNION": {
+     "n": 34,
+     "monto": 2530,
+     "tco": 11.3
+    }
+   },
+   "n": 1683,
+   "monto": 18138141,
+   "tco": 12.6,
+   "min": 9.63,
+   "max": 12.76,
+   "p10": 12.5,
+   "p50": 12.6,
+   "p90": 12.7
+  },
+  {
+   "corte": "2026-09-08",
+   "vigDesde": "2026-09-09",
+   "vigHasta": "2026-09-09",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 91,
+     "monto": 10870421,
+     "tco": 12.63
+    },
+    "BANCO DE CREDITO": {
+     "n": 614,
+     "monto": 2680727,
+     "tco": 12.63
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 13,
+     "monto": 56901,
+     "tco": 12.44
+    },
+    "BANCO ECONOMICO": {
+     "n": 52,
+     "monto": 672709,
+     "tco": 12.55
+    },
+    "BANCO FIE": {
+     "n": 27,
+     "monto": 589463,
+     "tco": 12.61
+    },
+    "BANCO FORTALEZA": {
+     "n": 17,
+     "monto": 563075,
+     "tco": 12.5
+    },
+    "BANCO GANADERO": {
+     "n": 225,
+     "monto": 11698735,
+     "tco": 12.7
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 212,
+     "monto": 3466680,
+     "tco": 12.44
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 395,
+     "monto": 1749489,
+     "tco": 12.5
+    },
+    "BANCO PRODEM": {
+     "n": 29,
+     "monto": 20980,
+     "tco": 12.3
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 5,
+     "monto": 3482,
+     "tco": 12.2
+    },
+    "BANCO SOLIDARIO": {
+     "n": 45,
+     "monto": 3293377,
+     "tco": 12.69
+    },
+    "BANCO UNION": {
+     "n": 40,
+     "monto": 4622055,
+     "tco": 12.74
+    }
+   },
+   "n": 1765,
+   "monto": 40288093,
+   "tco": 12.64,
+   "min": 9.63,
+   "max": 12.82,
+   "p10": 12.45,
+   "p50": 12.68,
+   "p90": 12.79
+  },
+  {
+   "corte": "2026-09-09",
+   "vigDesde": "2026-09-10",
+   "vigHasta": "2026-09-10",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 128,
+     "monto": 27809978,
+     "tco": 12.39
+    },
+    "BANCO DE CREDITO": {
+     "n": 568,
+     "monto": 6620625,
+     "tco": 12.28
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 12,
+     "monto": 556370,
+     "tco": 12.12
+    },
+    "BANCO ECONOMICO": {
+     "n": 43,
+     "monto": 3245050,
+     "tco": 12.22
+    },
+    "BANCO FIE": {
+     "n": 27,
+     "monto": 3698661,
+     "tco": 12.48
+    },
+    "BANCO FORTALEZA": {
+     "n": 15,
+     "monto": 2347031,
+     "tco": 12.57
+    },
+    "BANCO GANADERO": {
+     "n": 178,
+     "monto": 18927584,
+     "tco": 12.44
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 228,
+     "monto": 10415192,
+     "tco": 12.32
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 362,
+     "monto": 5604780,
+     "tco": 12.47
+    },
+    "BANCO PRODEM": {
+     "n": 31,
+     "monto": 88040,
+     "tco": 12.34
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 4,
+     "monto": 3001,
+     "tco": 12.24
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 282012,
+     "tco": 12.61
+    },
+    "BANCO SOLIDARIO": {
+     "n": 59,
+     "monto": 3889444,
+     "tco": 12.24
+    },
+    "BANCO UNION": {
+     "n": 47,
+     "monto": 10260720,
+     "tco": 12.74
+    }
+   },
+   "n": 1704,
+   "monto": 93748487,
+   "tco": 12.42,
+   "min": 9.63,
+   "max": 12.86,
+   "p10": 12.1,
+   "p50": 12.4,
+   "p90": 12.73
+  },
+  {
+   "corte": "2026-09-10",
+   "vigDesde": "2026-09-11",
+   "vigHasta": "2026-09-11",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 308,
+     "monto": 6567165,
+     "tco": 11.88
+    },
+    "BANCO DE CREDITO": {
+     "n": 547,
+     "monto": 782229,
+     "tco": 12.02
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 14,
+     "monto": 55259,
+     "tco": 12.12
+    },
+    "BANCO ECONOMICO": {
+     "n": 95,
+     "monto": 896310,
+     "tco": 11.78
+    },
+    "BANCO FIE": {
+     "n": 26,
+     "monto": 5068782,
+     "tco": 11.99
+    },
+    "BANCO FORTALEZA": {
+     "n": 13,
+     "monto": 311118,
+     "tco": 12.2
+    },
+    "BANCO GANADERO": {
+     "n": 256,
+     "monto": 4732232,
+     "tco": 12.28
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 367,
+     "monto": 9540753,
+     "tco": 12.16
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 298,
+     "monto": 805408,
+     "tco": 11.38
+    },
+    "BANCO PRODEM": {
+     "n": 56,
+     "monto": 93599,
+     "tco": 12.12
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 13,
+     "monto": 2728,
+     "tco": 12.02
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 7,
+     "tco": 12.02
+    },
+    "BANCO SOLIDARIO": {
+     "n": 53,
+     "monto": 1792656,
+     "tco": 11.93
+    },
+    "BANCO UNION": {
+     "n": 37,
+     "monto": 82202,
+     "tco": 11.49
+    }
+   },
+   "n": 2085,
+   "monto": 30730449,
+   "tco": 12.04,
+   "min": 9.63,
+   "max": 12.77,
+   "p10": 11.8,
+   "p50": 12,
+   "p90": 12.42
+  },
+  {
+   "corte": "2026-09-11",
+   "vigDesde": "2026-09-14",
+   "vigHasta": "2026-09-14",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 269,
+     "monto": 11631386,
+     "tco": 11.57
+    },
+    "BANCO DE CREDITO": {
+     "n": 549,
+     "monto": 418756,
+     "tco": 11.58
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 14,
+     "monto": 21248,
+     "tco": 11.67
+    },
+    "BANCO ECONOMICO": {
+     "n": 39,
+     "monto": 2208887,
+     "tco": 11.14
+    },
+    "BANCO FIE": {
+     "n": 17,
+     "monto": 42016,
+     "tco": 11.54
+    },
+    "BANCO FORTALEZA": {
+     "n": 7,
+     "monto": 8048,
+     "tco": 11.94
+    },
+    "BANCO GANADERO": {
+     "n": 241,
+     "monto": 2570477,
+     "tco": 11.71
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 3945,
+     "monto": 602731,
+     "tco": 11.68
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 272,
+     "monto": 1722792,
+     "tco": 11.4
+    },
+    "BANCO PRODEM": {
+     "n": 58,
+     "monto": 221423,
+     "tco": 11.74
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 4,
+     "monto": 2425,
+     "tco": 11.64
+    },
+    "BANCO SOLIDARIO": {
+     "n": 43,
+     "monto": 1269644,
+     "tco": 11.64
+    },
+    "BANCO UNION": {
+     "n": 30,
+     "monto": 3636,
+     "tco": 11.3
+    }
+   },
+   "n": 5488,
+   "monto": 20723470,
+   "tco": 11.53,
+   "min": 9.63,
+   "max": 12.87,
+   "p10": 11,
+   "p50": 11.69,
+   "p90": 12.04
+  },
+  {
+   "corte": "2026-09-14",
+   "vigDesde": "2026-09-15",
+   "vigHasta": "2026-09-15",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 138,
+     "monto": 7035444,
+     "tco": 10.91
+    },
+    "BANCO DE CREDITO": {
+     "n": 89,
+     "monto": 4112380,
+     "tco": 11
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 8,
+     "monto": 4407,
+     "tco": 10.93
+    },
+    "BANCO ECONOMICO": {
+     "n": 25,
+     "monto": 4903,
+     "tco": 10.8
+    },
+    "BANCO FIE": {
+     "n": 11,
+     "monto": 13888,
+     "tco": 11.03
+    },
+    "BANCO FORTALEZA": {
+     "n": 4,
+     "monto": 13365,
+     "tco": 11.43
+    },
+    "BANCO GANADERO": {
+     "n": 131,
+     "monto": 1388558,
+     "tco": 11.42
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 141,
+     "monto": 269947,
+     "tco": 10.86
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 182,
+     "monto": 522812,
+     "tco": 11.1
+    },
+    "BANCO PRODEM": {
+     "n": 18,
+     "monto": 2114,
+     "tco": 11.23
+    },
+    "BANCO SOLIDARIO": {
+     "n": 44,
+     "monto": 954937,
+     "tco": 10.84
+    },
+    "BANCO UNION": {
+     "n": 44,
+     "monto": 22220,
+     "tco": 11.3
+    }
+   },
+   "n": 835,
+   "monto": 14344975,
+   "tco": 10.99,
+   "min": 9.63,
+   "max": 12.77,
+   "p10": 10.55,
+   "p50": 11,
+   "p90": 11.53
+  },
+  {
+   "corte": "2026-09-15",
+   "vigDesde": "2026-09-16",
+   "vigHasta": "2026-09-16",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 240,
+     "monto": 17551369,
+     "tco": 9.84
+    },
+    "BANCO DE CREDITO": {
+     "n": 526,
+     "monto": 3192412,
+     "tco": 10.47
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 10,
+     "monto": 10847,
+     "tco": 10.4
+    },
+    "BANCO ECONOMICO": {
+     "n": 30,
+     "monto": 1151359,
+     "tco": 10.62
+    },
+    "BANCO FIE": {
+     "n": 20,
+     "monto": 3401136,
+     "tco": 10.39
+    },
+    "BANCO FORTALEZA": {
+     "n": 13,
+     "monto": 219597,
+     "tco": 10.53
+    },
+    "BANCO GANADERO": {
+     "n": 237,
+     "monto": 2014352,
+     "tco": 10.47
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 153,
+     "monto": 2034361,
+     "tco": 9.86
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 240,
+     "monto": 502488,
+     "tco": 9.72
+    },
+    "BANCO PRODEM": {
+     "n": 9,
+     "monto": 1397,
+     "tco": 10.69
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 3,
+     "monto": 392,
+     "tco": 10.59
+    },
+    "BANCO PYME ECOFUTURO": {
+     "n": 2,
+     "monto": 4010,
+     "tco": 10.59
+    },
+    "BANCO SOLIDARIO": {
+     "n": 41,
+     "monto": 6124218,
+     "tco": 10.59
+    },
+    "BANCO UNION": {
+     "n": 51,
+     "monto": 529104,
+     "tco": 10.64
+    }
+   },
+   "n": 1575,
+   "monto": 36737044,
+   "tco": 10.15,
+   "min": 9.49,
+   "max": 12.71,
+   "p10": 9.8,
+   "p50": 9.8,
+   "p90": 10.85
+  }
+ ]
+}

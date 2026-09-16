@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCO Bolivia</title>
+<meta name="description" content="Seguimiento diario del Tipo de Cambio Oficial (TCO) del dólar en Bolivia, con datos del Banco Central de Bolivia.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💱</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f5f2;
+  --surface: #fcfcfb;
+  --border: #e4e2dc;
+  --grid: #ecebe6;
+  --text: #0b0b0b;
+  --text-2: #52514e;
+  --text-3: #7a7974;
+  --series: #2a78d6;
+  --band: rgba(42, 120, 214, 0.16);
+  --bar: #86b6ef;
+  --up: #b3261e;
+  --down: #0a7a2f;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121211;
+    --surface: #1a1a19;
+    --border: #2e2e2b;
+    --grid: #262624;
+    --text: #ffffff;
+    --text-2: #c3c2b7;
+    --text-3: #908f87;
+    --series: #3987e5;
+    --band: rgba(57, 135, 229, 0.22);
+    --bar: #1c5cab;
+    --up: #f28b82;
+    --down: #6fd08c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121211; --surface: #1a1a19; --border: #2e2e2b; --grid: #262624;
+  --text: #ffffff; --text-2: #c3c2b7; --text-3: #908f87;
+  --series: #3987e5; --band: rgba(57, 135, 229, 0.22); --bar: #1c5cab;
+  --up: #f28b82; --down: #6fd08c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 32px 16px 48px; }
+header h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--text-2); max-width: 760px; }
+.muted { color: var(--text-3); font-size: 13px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 24px 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.kpi .label { font-size: 13px; color: var(--text-2); }
+.kpi .value { font-size: 30px; font-weight: 650; font-variant-numeric: tabular-nums; line-height: 1.2; margin: 4px 0 2px; }
+.kpi .value.hero { font-size: 40px; }
+.kpi .sub { font-size: 13px; color: var(--text-3); }
+.kpi .up, .kpi .down, td.up, td.down { color: var(--text); }
+section { margin-top: 16px; }
+section h2 { font-size: 17px; margin: 0 0 2px; }
+.section-hd { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { background: transparent; color: var(--text-2); border: 0; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button[aria-pressed="true"] { background: var(--series); color: #fff; }
+.chart { position: relative; height: 320px; }
+.chart.small { height: 180px; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-2); margin-top: 8px; }
+.legend i { display: inline-block; width: 16px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { font-weight: 600; color: var(--text-2); font-size: 13px; cursor: pointer; user-select: none; }
+th:first-child, td:first-child { text-align: left; }
+tfoot td { font-weight: 650; border-bottom: 0; }
+.share { display: inline-block; height: 8px; background: var(--series); border-radius: 0 4px 4px 0; vertical-align: middle; margin-right: 6px; }
+details summary { cursor: pointer; font-weight: 600; }
+a { color: var(--series); }
+.btn { display: inline-block; border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; text-decoration: none; font-size: 13px; }
+footer { margin-top: 32px; }
+.error { padding: 16px; border: 1px solid var(--up); border-radius: 12px; color: var(--up); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Tipo de Cambio Oficial (TCO) · Bolivia</h1>
+    <p>Bolivianos por dólar estadounidense. Según el BCB, el TCO es el promedio ponderado por monto de las compras de dólares que los bancos múltiples, PyME y el banco público hacen a sus clientes; se calcula con las operaciones de un día (fecha de corte) y rige al día siguiente.</p>
+  </header>
+
+  <div id="app"><p class="muted">Cargando datos…</p></div>
+
+  <footer class="muted">
+    Fuente: <a href="https://www.bcb.gob.bo/?q=content/tipo-de-cambio-oficial-del-d%C3%B3lar-estadounidense" target="_blank" rel="noopener">Banco Central de Bolivia</a>.
+    Se actualiza automáticamente 3 veces al día (08:00, 14:00 y 20:00 hora Bolivia). <span id="updated"></span>
+  </footer>
+</div>
+
+<script>
+const fmt = (v, d = 2) => v == null ? "–" : v.toLocaleString("es-BO", { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmtInt = (v) => v == null ? "–" : Math.round(v).toLocaleString("es-BO");
+const fmtUsd = (v) => v == null ? "–" : v >= 1e6 ? `$us ${fmt(v / 1e6, 1)} M` : `$us ${fmtInt(v)}`;
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const fDate = (s, year = false) => { const [y, m, d] = s.split("-"); return `${+d} ${MESES[m - 1]}${year ? " " + y : ""}`; };
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const hoyBO = () => new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
+
+let DIAS = [], rango = "all", charts = [];
+
+fetch("data/tco.json", { cache: "no-store" })
+  .then((r) => r.json())
+  .then((j) => { DIAS = j.dias; render(); })
+  .catch((e) => { document.getElementById("app").innerHTML = `<div class="error">No se pudieron cargar los datos: ${e.message}</div>`; });
+
+fetch("https://api.github.com/repos/frf88/tco-bolivia/commits?path=data/tco.json&per_page=1")
+  .then((r) => r.json())
+  .then((c) => { const d = new Date(c[0].commit.committer.date); document.getElementById("updated").textContent = `Última actualización de datos: ${d.toLocaleString("es-BO", { timeZone: "America/La_Paz" })}.`; })
+  .catch(() => {});
+
+function render() {
+  const hoy = hoyBO();
+  const vigente = DIAS.find((d) => d.vigDesde <= hoy && hoy <= d.vigHasta) ?? DIAS.at(-1);
+  const idx = DIAS.indexOf(vigente);
+  const prev = DIAS[idx - 1];
+  const delta = prev ? vigente.tco - prev.tco : null;
+  const deltaPct = prev ? (delta / prev.tco) * 100 : null;
+  const max = DIAS.reduce((a, d) => (d.tco > a.tco ? d : a));
+  const min = DIAS.reduce((a, d) => (d.tco < a.tco ? d : a));
+  const cls = delta > 0 ? "up" : delta < 0 ? "down" : "";
+  const flecha = delta > 0 ? "▲ sube" : delta < 0 ? "▼ baja" : "■ igual";
+  const hace30 = DIAS.filter((d) => d.vigDesde <= addDays(vigente.vigDesde, -30)).at(-1);
+  const d30 = hace30 ? ((vigente.tco / hace30.tco) - 1) * 100 : null;
+
+  document.getElementById("app").innerHTML = `
+  <div class="kpis">
+    <div class="card kpi">
+      <div class="label">TCO vigente ${vigente.vigDesde === vigente.vigHasta ? fDate(vigente.vigDesde, true) : `${fDate(vigente.vigDesde)} – ${fDate(vigente.vigHasta, true)}`}</div>
+      <div class="value hero">Bs ${fmt(vigente.tco)}</div>
+      <div class="sub ${cls}">${flecha} ${delta == null ? "–" : `${delta > 0 ? "+" : ""}${fmt(delta)} (${deltaPct > 0 ? "+" : ""}${fmt(deltaPct, 1)}%)`} <span class="muted">vs. anterior</span></div>
+    </div>
+    <div class="card kpi">
+      <div class="label">Variación 30 días</div>
+      <div class="value ${d30 > 0 ? "up" : d30 < 0 ? "down" : ""}">${d30 == null ? "–" : `${d30 > 0 ? "+" : ""}${fmt(d30, 1)}%`}</div>
+      <div class="sub">${hace30 ? `desde Bs ${fmt(hace30.tco)} (${fDate(hace30.vigDesde)})` : "Sin datos suficientes"}</div>
+    </div>
+    <div class="card kpi">
+      <div class="label">Máximo / mínimo de la serie</div>
+      <div class="value">${fmt(max.tco)} / ${fmt(min.tco)}</div>
+      <div class="sub">máx. ${fDate(max.vigDesde, true)} · mín. ${fDate(min.vigDesde, true)}</div>
+    </div>
+    <div class="card kpi">
+      <div class="label">Dólares comprados (corte ${fDate(vigente.corte)})</div>
+      <div class="value">${fmtUsd(vigente.monto)}</div>
+      <div class="sub">${fmtInt(vigente.n)} transacciones</div>
+    </div>
+  </div>
+
+  <section class="card">
+    <div class="section-hd">
+      <div>
+        <h2>Evolución del TCO</h2>
+        <div class="muted">Por fecha de vigencia. La banda muestra entre qué tipos de cambio se transó el 80% central de los dólares ese día.</div>
+      </div>
+      <div class="seg" role="group" aria-label="Rango de fechas">
+        <button data-r="30">1M</button><button data-r="90">3M</button><button data-r="all">Todo</button>
+      </div>
+    </div>
+    <div class="chart"><canvas id="cTco" aria-label="Gráfico de evolución del TCO"></canvas></div>
+    <div class="legend">
+      <span><i style="background:var(--series);height:3px"></i>TCO (Bs/$us)</span>
+      <span><i style="background:var(--band)"></i>Rango p10–p90 de las operaciones</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Monto comprado por los bancos</h2>
+    <div class="muted" style="margin-bottom:8px">Millones de $us por fecha de corte.</div>
+    <div class="chart small"><canvas id="cMonto" aria-label="Gráfico de monto transado"></canvas></div>
+  </section>
+
+  <section class="card">
+    <h2>Detalle por banco · corte ${fDate(vigente.corte, true)}</h2>
+    <div class="muted" style="margin-bottom:8px">Tipo de cambio de compra promedio ponderado de cada banco. Clic en un encabezado para ordenar.</div>
+    <div class="table-wrap"><table id="tBancos"></table></div>
+  </section>
+
+  <section class="card">
+    <details>
+      <summary>Tabla histórica (${DIAS.length} fechas de corte)</summary>
+      <p><a class="btn" href="data/tco_diario.csv" download>Descargar CSV</a></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Vigencia</th><th>Corte</th><th>TCO</th><th>Var.</th><th>Mín.</th><th>p10</th><th>Mediana</th><th>p90</th><th>Máx.</th><th>Monto $us</th><th>Trans.</th></tr></thead>
+        <tbody>${DIAS.slice().reverse().map((d, i, arr) => {
+          const p = arr[i + 1]; const v = p ? d.tco - p.tco : null;
+          return `<tr><td>${d.vigDesde === d.vigHasta ? d.vigDesde : `${d.vigDesde} al ${d.vigHasta}`}</td><td>${d.corte}</td><td><b>${fmt(d.tco)}</b></td>
+          <td class="${v > 0 ? "up" : v < 0 ? "down" : ""}">${v == null ? "–" : (v > 0 ? "+" : "") + fmt(v)}</td>
+          <td>${fmt(d.min)}</td><td>${fmt(d.p10)}</td><td>${fmt(d.p50)}</td><td>${fmt(d.p90)}</td><td>${fmt(d.max)}</td><td>${fmtInt(d.monto)}</td><td>${fmtInt(d.n)}</td></tr>`;
+        }).join("")}</tbody>
+      </table></div>
+    </details>
+  </section>`;
+
+  document.querySelectorAll(".seg button").forEach((b) => b.addEventListener("click", () => { rango = b.dataset.r; drawCharts(); }));
+  renderBancos(vigente, "monto", -1);
+  drawCharts();
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawCharts);
+}
+
+function addDays(s, n) { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+
+function renderBancos(dia, key, dir) {
+  const rows = Object.entries(dia.bancos).map(([nombre, b]) => ({ nombre, ...b, dif: b.tco != null ? b.tco - dia.tco : null, share: b.monto / dia.monto * 100 }));
+  rows.sort((a, b) => key === "nombre" ? dir * a.nombre.localeCompare(b.nombre) : dir * ((a[key] ?? -Infinity) - (b[key] ?? -Infinity)));
+  const maxShare = Math.max(...rows.map((r) => r.share || 0));
+  const cols = [["nombre", "Banco"], ["tco", "TC compra"], ["dif", "Dif. vs TCO"], ["monto", "Monto $us"], ["share", "% del monto"], ["n", "Trans."]];
+  const t = document.getElementById("tBancos");
+  t.innerHTML = `<thead><tr>${cols.map(([k, l]) => `<th data-k="${k}">${l}${k === key ? (dir > 0 ? " ↑" : " ↓") : ""}</th>`).join("")}</tr></thead>
+  <tbody>${rows.map((r) => `<tr><td>${r.nombre}</td><td>${fmt(r.tco)}</td>
+    <td>${r.dif == null ? "–" : (r.dif > 0 ? "+" : "") + fmt(r.dif)}</td><td>${fmtInt(r.monto)}</td>
+    <td><span class="share" style="width:${(r.share / maxShare) * 60}px"></span>${fmt(r.share, 1)}%</td><td>${fmtInt(r.n)}</td></tr>`).join("")}</tbody>
+  <tfoot><tr><td>Total bancos (TCO)</td><td>${fmt(dia.tco)}</td><td></td><td>${fmtInt(dia.monto)}</td><td>100%</td><td>${fmtInt(dia.n)}</td></tr></tfoot>`;
+  t.querySelectorAll("th").forEach((th) => th.addEventListener("click", () => {
+    const k = th.dataset.k; renderBancos(dia, k, k === key ? -dir : k === "nombre" ? 1 : -1);
+  }));
+}
+
+const crosshair = {
+  id: "crosshair",
+  afterDatasetsDraw(chart) {
+    const a = chart.tooltip?.getActiveElements?.();
+    if (!a?.length) return;
+    const { ctx, chartArea } = chart; const x = a[0].element.x;
+    ctx.save(); ctx.strokeStyle = css("--text-3"); ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(x, chartArea.top); ctx.lineTo(x, chartArea.bottom); ctx.stroke(); ctx.restore();
+  },
+};
+
+function drawCharts() {
+  document.querySelectorAll(".seg button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.r === rango));
+  charts.forEach((c) => c.destroy());
+  const last = DIAS.at(-1).vigDesde;
+  const data = rango === "all" ? DIAS : DIAS.filter((d) => d.vigDesde > addDays(last, -rango));
+  const labels = data.map((d) => d.vigDesde);
+  const grid = css("--grid"), text2 = css("--text-3"), series = css("--series");
+  Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+  Chart.defaults.color = text2;
+  const tooltipBase = {
+    backgroundColor: css("--surface"), titleColor: css("--text"), bodyColor: css("--text-2"),
+    borderColor: css("--border"), borderWidth: 1, padding: 10, displayColors: false,
+  };
+  const xAxis = { grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 16, callback(v) { return fDate(this.getLabelForValue(v)); } } };
+
+  charts = [
+    new Chart(document.getElementById("cTco"), {
+      type: "line",
+      data: {
+        labels,
+        datasets: [
+          { label: "p90", data: data.map((d) => d.p90), borderWidth: 0, pointRadius: 0, fill: false },
+          { label: "p10", data: data.map((d) => d.p10), borderWidth: 0, pointRadius: 0, fill: "-1", backgroundColor: css("--band") },
+          { label: "TCO", data: data.map((d) => d.tco), borderColor: series, backgroundColor: series, borderWidth: 2, tension: 0.2,
+            pointRadius: data.length > 60 ? 0 : 2.5, pointHoverRadius: 5, pointHoverBorderColor: css("--surface"), pointHoverBorderWidth: 2 },
+        ],
+      },
+      options: {
+        maintainAspectRatio: false, animation: false,
+        interaction: { mode: "index", intersect: false },
+        scales: { x: xAxis, y: { grid: { color: grid }, border: { display: false }, ticks: { callback: (v) => fmt(v) } } },
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...tooltipBase, callbacks: {
+            title: (it) => { const d = data[it[0].dataIndex]; return `Vigencia ${fDate(d.vigDesde, true)}${d.vigHasta !== d.vigDesde ? " – " + fDate(d.vigHasta) : ""}`; },
+            label: (it) => {
+              if (it.datasetIndex !== 2) return null;
+              const d = data[it.dataIndex];
+              return [`TCO: Bs ${fmt(d.tco)}`, `Rango p10–p90: ${fmt(d.p10)} – ${fmt(d.p90)}`, `Mín./máx.: ${fmt(d.min)} – ${fmt(d.max)}`, `Corte: ${fDate(d.corte)}`];
+            },
+          } },
+        },
+      },
+      plugins: [crosshair],
+    }),
+    new Chart(document.getElementById("cMonto"), {
+      type: "bar",
+      data: { labels: data.map((d) => d.corte), datasets: [{ data: data.map((d) => d.monto / 1e6), backgroundColor: css("--bar"), hoverBackgroundColor: series, borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: "bottom", categoryPercentage: 0.9, barPercentage: 0.9 }] },
+      options: {
+        maintainAspectRatio: false, animation: false,
+        scales: { x: xAxis, y: { grid: { color: grid }, border: { display: false }, ticks: { callback: (v) => fmt(v, 0) } } },
+        plugins: { legend: { display: false }, tooltip: { ...tooltipBase, callbacks: {
+          title: (it) => `Corte ${fDate(data[it[0].dataIndex].corte, true)}`,
+          label: (it) => { const d = data[it.dataIndex]; return [`Monto: ${fmtUsd(d.monto)}`, `Transacciones: ${fmtInt(d.n)}`]; },
+        } } },
+      },
+    }),
+  ];
+}
+</script>
+</body>
+</html>
