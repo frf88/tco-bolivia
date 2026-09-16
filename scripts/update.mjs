@@ -81,6 +81,17 @@ for (const c of lineas.slice(iHeader + 2)) {
     const v = num(tc);
     const w = num(c[colTotal + 1]);
     if (v != null && w) d.puntos.push({ v, w });
+    if (v != null) {
+      for (const b of bancos) {
+        const n = num(c[b.col]);
+        if (!n) continue;
+        const s = ((d.stats ??= {})[b.nombre] ??= { min: v, max: v, sumVN: 0, sumN: 0 });
+        s.min = Math.min(s.min, v);
+        s.max = Math.max(s.max, v);
+        s.sumVN += v * n;
+        s.sumN += n;
+      }
+    }
   }
 }
 
@@ -89,7 +100,14 @@ const salida = [...dias.values()]
   .sort((a, b) => a.corte.localeCompare(b.corte))
   .map((d) => {
     d.puntos.sort((a, b) => a.v - b.v);
-    const { puntos, ...resto } = d;
+    for (const [nombre, s] of Object.entries(d.stats ?? {})) {
+      Object.assign((d.bancos[nombre] ??= {}), {
+        min: s.min,
+        max: s.max,
+        prom: Math.round((s.sumVN / s.sumN) * 10000) / 10000, // promedio simple por transacción
+      });
+    }
+    const { puntos, stats, ...resto } = d;
     return {
       ...resto,
       min: puntos[0]?.v ?? null,
