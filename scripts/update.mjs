@@ -90,6 +90,7 @@ for (const c of lineas.slice(iHeader + 2)) {
         if (v < s.min) (s.min = v), (s.montoMin = monto);
         if (v > s.max) (s.max = v), (s.montoMax = monto);
         s.sumVN += v * n;
+        s.sumBs = (s.sumBs ?? 0) + v * (monto ?? 0);
         s.sumN += n;
       }
     }
@@ -107,6 +108,7 @@ const salida = [...dias.values()]
         max: s.max,
         montoMin: s.montoMin, // $us comprados al TC mínimo
         montoMax: s.montoMax, // $us comprados al TC máximo
+        montoBs: Math.round(s.sumBs), // Bs pagados = Σ TC × $us
         prom: Math.round((s.sumVN / s.sumN) * 10000) / 10000, // promedio simple por transacción
       });
     }
@@ -117,6 +119,7 @@ const salida = [...dias.values()]
       max: puntos.at(-1)?.v ?? null,
       montoMin: puntos[0]?.w ?? null,
       montoMax: puntos.at(-1)?.w ?? null,
+      montoBs: Math.round(puntos.reduce((a, x) => a + x.v * x.w, 0)),
       p10: percentilPonderado(puntos, 0.1),
       p50: percentilPonderado(puntos, 0.5),
       p90: percentilPonderado(puntos, 0.9),

@@ -198,7 +198,7 @@ function render() {
 
   <section class="card">
     <h2>Detalle por banco · corte ${fDate(vigente.corte, true)}</h2>
-    <div class="muted" style="margin-bottom:8px">TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Impacto en TCO: cuántos Bs sube o baja el TCO por cada banco = % del monto × (TC compra − TCO); la suma de todos da ≈ 0.<span class="leg-sw" style="background:var(--pos)"></span>sube<span class="leg-sw" style="background:var(--neg)"></span>baja. Cantidad: número de transacciones. Clic en un encabezado para ordenar.</div>
+    <div class="muted" style="margin-bottom:8px">Monto Bs: bolivianos pagados por los dólares comprados (Σ TC × $us). TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Impacto en TCO: cuántos Bs sube o baja el TCO por cada banco = % del monto × (TC compra − TCO); la suma de todos da ≈ 0.<span class="leg-sw" style="background:var(--pos)"></span>sube<span class="leg-sw" style="background:var(--neg)"></span>baja. Cantidad: número de transacciones. Clic en un encabezado para ordenar.</div>
     <div class="table-wrap"><table id="tBancos"></table></div>
   </section>
 
@@ -228,7 +228,9 @@ function addDays(s, n) { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.ge
 
 function renderBancos(dia, key, dir) {
   const rows = Object.entries(dia.bancos).map(([nombre, b]) => ({ nombre, ...b, dif: b.tco != null ? b.tco - dia.tco : null, share: b.monto / dia.monto * 100,
-    imp: b.tco != null ? (b.monto / dia.monto) * (b.tco - dia.tco) : null }));
+    // con TC sin redondear (Bs ÷ $us) la suma de impactos da exactamente 0
+    imp: b.montoBs && dia.montoBs ? (b.monto / dia.monto) * (b.montoBs / b.monto - dia.montoBs / dia.monto)
+      : b.tco != null ? (b.monto / dia.monto) * (b.tco - dia.tco) : null }));
   rows.sort((a, b) => key === "nombre" ? dir * a.nombre.localeCompare(b.nombre) : dir * ((a[key] ?? -Infinity) - (b[key] ?? -Infinity)));
   const maxImp = Math.max(...rows.map((r) => Math.abs(r.imp ?? 0)), 1e-9);
   const barra = (v) => {
@@ -238,14 +240,26 @@ function renderBancos(dia, key, dir) {
   };
   const conProm = rows.filter((r) => r.prom != null && r.n);
   const promTotal = conProm.length ? conProm.reduce((a, r) => a + r.prom * r.n, 0) / conProm.reduce((a, r) => a + r.n, 0) : null;
-  const cols = [["nombre", "Banco"], ["tco", "TC compra"], ["min", "TC mín."], ["montoMin", "$us al mín."], ["max", "TC máx."], ["montoMax", "$us al máx."], ["prom", "TC prom."], ["dif", "Dif. vs TCO"], ["monto", "Monto $us"], ["share", "% del monto"], ["imp", "Impacto en TCO (Bs)"], ["n", "Cantidad"]];
+  // [clave, encabezado, celda de banco, celda de total]
+  const cols = [
+    ["nombre", "Banco", (r) => r.nombre, () => "Total bancos (TCO)"],
+    ["monto", "Monto $us", (r) => fmtInt(r.monto), () => fmtInt(dia.monto)],
+    ["montoBs", "Monto Bs", (r) => fmtInt(r.montoBs), () => fmtInt(dia.montoBs)],
+    ["imp", "Impacto en TCO (Bs)", (r) => barra(r.imp), () => "", "imp-cell"],
+    ["n", "Cantidad", (r) => fmtInt(r.n), () => fmtInt(dia.n)],
+    ["tco", "TC compra", (r) => `<b>${fmt(r.tco)}</b>`, () => fmt(dia.tco)],
+    ["min", "TC mín.", (r) => fmt(r.min), () => fmt(dia.min)],
+    ["montoMin", "$us al mín.", (r) => fmtInt(r.montoMin), () => fmtInt(dia.montoMin)],
+    ["max", "TC máx.", (r) => fmt(r.max), () => fmt(dia.max)],
+    ["montoMax", "$us al máx.", (r) => fmtInt(r.montoMax), () => fmtInt(dia.montoMax)],
+    ["prom", "TC prom.", (r) => fmt(r.prom), () => fmt(promTotal)],
+    ["dif", "Dif. vs TCO", (r) => r.dif == null ? "–" : (r.dif > 0 ? "+" : "") + fmt(r.dif), () => ""],
+    ["share", "% del monto", (r) => `${fmt(r.share, 1)}%`, () => "100%"],
+  ];
   const t = document.getElementById("tBancos");
   t.innerHTML = `<thead><tr>${cols.map(([k, l]) => `<th data-k="${k}">${l}${k === key ? (dir > 0 ? " ↑" : " ↓") : ""}</th>`).join("")}</tr></thead>
-  <tbody>${rows.map((r) => `<tr><td>${r.nombre}</td><td><b>${fmt(r.tco)}</b></td>
-    <td>${fmt(r.min)}</td><td>${fmtInt(r.montoMin)}</td><td>${fmt(r.max)}</td><td>${fmtInt(r.montoMax)}</td><td>${fmt(r.prom)}</td>
-    <td>${r.dif == null ? "–" : (r.dif > 0 ? "+" : "") + fmt(r.dif)}</td><td>${fmtInt(r.monto)}</td>
-    <td>${fmt(r.share, 1)}%</td><td class="imp-cell">${barra(r.imp)}</td><td>${fmtInt(r.n)}</td></tr>`).join("")}</tbody>
-  <tfoot><tr><td>Total bancos (TCO)</td><td>${fmt(dia.tco)}</td><td>${fmt(dia.min)}</td><td>${fmtInt(dia.montoMin)}</td><td>${fmt(dia.max)}</td><td>${fmtInt(dia.montoMax)}</td><td>${fmt(promTotal)}</td><td></td><td>${fmtInt(dia.monto)}</td><td>100%</td><td></td><td>${fmtInt(dia.n)}</td></tr></tfoot>`;
+  <tbody>${rows.map((r) => `<tr>${cols.map(([, , cel, , cls]) => `<td${cls ? ` class="${cls}"` : ""}>${cel(r)}</td>`).join("")}</tr>`).join("")}</tbody>
+  <tfoot><tr>${cols.map(([, , , tot]) => `<td>${tot()}</td>`).join("")}</tr></tfoot>`;
   t.querySelectorAll("th").forEach((th) => th.addEventListener("click", () => {
     const k = th.dataset.k; renderBancos(dia, k, k === key ? -dir : k === "nombre" ? 1 : -1);
   }));
