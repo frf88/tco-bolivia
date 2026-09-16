@@ -198,7 +198,7 @@ function render() {
 
   <section class="card">
     <div class="section-hd" style="margin-bottom:2px"><h2 id="tituloBancos"></h2><button class="btn" id="btnUltimo" type="button" hidden>Volver al último corte</button></div>
-    <div class="muted" style="margin-bottom:8px">Monto Bs: bolivianos pagados por los dólares comprados (Σ TC × $us). TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Impacto en TCO: cuántos Bs sube o baja el TCO por cada banco = % del monto × (TC compra − TCO); la suma de todos da ≈ 0.<span class="leg-sw" style="background:var(--pos)"></span>sube<span class="leg-sw" style="background:var(--neg)"></span>baja. Cantidad: número de transacciones. Clic en un encabezado para ordenar. Clic en un día de los gráficos para ver su detalle.</div>
+    <div class="muted" style="margin-bottom:8px">Monto Bs: bolivianos pagados por los dólares comprados (Σ TC × $us). TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. Impacto en TCO: cuántos Bs sube o baja el TCO por cada banco = % del monto × (TC compra − TCO); la suma de todos da ≈ 0.<span class="leg-sw" style="background:var(--pos)"></span>sube<span class="leg-sw" style="background:var(--neg)"></span>baja. Cantidad: número de transacciones. Clic en un encabezado para ordenar. Clic en un día de los gráficos para ver su detalle.</div>
     <div class="table-wrap"><table id="tBancos"></table></div>
   </section>
 
@@ -252,23 +252,20 @@ function renderBancos(dia, key, dir) {
     const w = (Math.abs(v) / maxImp) * 50;
     return `<span class="imp" title="${v > 0 ? "Sube" : "Baja"} el TCO en Bs ${fmt(Math.abs(v), 3)}"><span class="imp-bar ${v > 0 ? "pos" : "neg"}" style="width:${w}%"></span></span><span class="imp-val">${v > 0 ? "+" : v < 0 ? "−" : ""}${fmt(Math.abs(v), 3)}</span>`;
   };
-  const conProm = rows.filter((r) => r.prom != null && r.n);
-  const promTotal = conProm.length ? conProm.reduce((a, r) => a + r.prom * r.n, 0) / conProm.reduce((a, r) => a + r.n, 0) : null;
   // [clave, encabezado, celda de banco, celda de total]
   const cols = [
     ["nombre", "Banco", (r) => r.nombre, () => "Total bancos (TCO)"],
     ["monto", "Monto $us", (r) => fmtInt(r.monto), () => fmtInt(dia.monto)],
     ["montoBs", "Monto Bs", (r) => fmtInt(r.montoBs), () => fmtInt(dia.montoBs)],
+    ["share", "% del monto", (r) => `${fmt(r.share, 1)}%`, () => "100%"],
     ["imp", "Impacto en TCO (Bs)", (r) => barra(r.imp), () => "", "imp-cell"],
     ["n", "Cantidad", (r) => fmtInt(r.n), () => fmtInt(dia.n)],
+    ["dif", "Dif. vs TCO", (r) => r.dif == null ? "–" : (r.dif > 0 ? "+" : "") + fmt(r.dif), () => ""],
     ["tco", "TC compra", (r) => `<b>${fmt(r.tco)}</b>`, () => fmt(dia.tco)],
     ["min", "TC mín.", (r) => fmt(r.min), () => fmt(dia.min)],
     ["montoMin", "$us al mín.", (r) => fmtInt(r.montoMin), () => fmtInt(dia.montoMin)],
     ["max", "TC máx.", (r) => fmt(r.max), () => fmt(dia.max)],
     ["montoMax", "$us al máx.", (r) => fmtInt(r.montoMax), () => fmtInt(dia.montoMax)],
-    ["prom", "TC prom.", (r) => fmt(r.prom), () => fmt(promTotal)],
-    ["dif", "Dif. vs TCO", (r) => r.dif == null ? "–" : (r.dif > 0 ? "+" : "") + fmt(r.dif), () => ""],
-    ["share", "% del monto", (r) => `${fmt(r.share, 1)}%`, () => "100%"],
   ];
   const t = document.getElementById("tBancos");
   t.innerHTML = `<thead><tr>${cols.map(([k, l]) => `<th data-k="${k}">${l}${k === key ? (dir > 0 ? " ↑" : " ↓") : ""}</th>`).join("")}</tr></thead>
