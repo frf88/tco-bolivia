@@ -123,7 +123,7 @@ const fDate = (s, year = false) => { const [y, m, d] = s.split("-"); return `${+
 const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const hoyBO = () => new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
 
-let DIAS = [], rango = "all", charts = [];
+let DIAS = [], rango = "all", charts = [], sel = null, ultimo = null, orden = ["monto", -1];
 
 fetch("data/tco.json", { cache: "no-store" })
   .then((r) => r.json())
@@ -197,8 +197,8 @@ function render() {
   </section>
 
   <section class="card">
-    <h2>Detalle por banco · corte ${fDate(vigente.corte, true)}</h2>
-    <div class="muted" style="margin-bottom:8px">Monto Bs: bolivianos pagados por los dólares comprados (Σ TC × $us). TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Impacto en TCO: cuántos Bs sube o baja el TCO por cada banco = % del monto × (TC compra − TCO); la suma de todos da ≈ 0.<span class="leg-sw" style="background:var(--pos)"></span>sube<span class="leg-sw" style="background:var(--neg)"></span>baja. Cantidad: número de transacciones. Clic en un encabezado para ordenar.</div>
+    <div class="section-hd" style="margin-bottom:2px"><h2 id="tituloBancos"></h2><button class="btn" id="btnUltimo" type="button" hidden>Volver al último corte</button></div>
+    <div class="muted" style="margin-bottom:8px">Monto Bs: bolivianos pagados por los dólares comprados (Σ TC × $us). TC compra: promedio ponderado por monto (así calcula el BCB el TCO). TC mín./máx.: tipo de cambio más bajo y más alto que operó el banco ese día, con los $us que compró a ese TC. TC prom.: promedio simple por transacción. Impacto en TCO: cuántos Bs sube o baja el TCO por cada banco = % del monto × (TC compra − TCO); la suma de todos da ≈ 0.<span class="leg-sw" style="background:var(--pos)"></span>sube<span class="leg-sw" style="background:var(--neg)"></span>baja. Cantidad: número de transacciones. Clic en un encabezado para ordenar. Clic en un día de los gráficos para ver su detalle.</div>
     <div class="table-wrap"><table id="tBancos"></table></div>
   </section>
 
@@ -219,14 +219,28 @@ function render() {
   </section>`;
 
   document.querySelectorAll(".seg button").forEach((b) => b.addEventListener("click", () => { rango = b.dataset.r; drawCharts(); }));
-  renderBancos(vigente, "monto", -1);
+  ultimo = sel = vigente.corte;
+  document.getElementById("btnUltimo").addEventListener("click", () => seleccionar(ultimo, false));
   drawCharts();
+  seleccionar(ultimo, false);
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawCharts);
 }
 
 function addDays(s, n) { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
 
+function seleccionar(corte, scroll = true) {
+  const dia = DIAS.find((d) => d.corte === corte);
+  if (!dia) return;
+  sel = corte;
+  document.getElementById("tituloBancos").textContent = `Detalle por banco · corte ${fDate(dia.corte, true)} (vigencia ${fDate(dia.vigDesde, true)})`;
+  document.getElementById("btnUltimo").hidden = corte === ultimo;
+  renderBancos(dia, ...orden);
+  charts.forEach((c) => c.update());
+  if (scroll) document.getElementById("tituloBancos").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function renderBancos(dia, key, dir) {
+  orden = [key, dir];
   const rows = Object.entries(dia.bancos).map(([nombre, b]) => ({ nombre, ...b, dif: b.tco != null ? b.tco - dia.tco : null, share: b.monto / dia.monto * 100,
     // con TC sin redondear (Bs ÷ $us) la suma de impactos da exactamente 0
     imp: b.montoBs && dia.montoBs ? (b.monto / dia.monto) * (b.montoBs / b.monto - dia.montoBs / dia.monto)
@@ -289,10 +303,20 @@ function drawCharts() {
     backgroundColor: css("--surface"), titleColor: css("--text"), bodyColor: css("--text-2"),
     borderColor: css("--border"), borderWidth: 1, padding: 10, displayColors: false,
   };
+  const footer = () => "Clic para ver el detalle por banco";
+  // clic en cualquier punto de la columna del día (no solo sobre la barra)
+  const clicable = (c) => {
+    c.canvas.style.cursor = "pointer";
+    c.canvas.onclick = (evt) => {
+      const el = c.getElementsAtEventForMode(evt, "index", { intersect: false }, true)[0];
+      if (el) seleccionar(data[el.index].corte);
+    };
+    return c;
+  };
   const xAxis = { grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 16, callback(v) { return fDate(this.getLabelForValue(v)); } } };
 
   charts = [
-    new Chart(document.getElementById("cTco"), {
+    clicable(new Chart(document.getElementById("cTco"), {
       type: "line",
       data: {
         labels,
@@ -300,7 +324,7 @@ function drawCharts() {
           { label: "p90", data: data.map((d) => d.p90), borderWidth: 0, pointRadius: 0, fill: false },
           { label: "p10", data: data.map((d) => d.p10), borderWidth: 0, pointRadius: 0, fill: "-1", backgroundColor: css("--band") },
           { label: "TCO", data: data.map((d) => d.tco), borderColor: series, backgroundColor: series, borderWidth: 2, tension: 0.2,
-            pointRadius: data.length > 60 ? 0 : 2.5, pointHoverRadius: 5, pointHoverBorderColor: css("--surface"), pointHoverBorderWidth: 2 },
+            pointRadius: (ctx) => data[ctx.dataIndex]?.corte === sel ? 5 : data.length > 60 ? 0 : 2.5, pointHoverRadius: 5, pointHoverBorderColor: css("--surface"), pointHoverBorderWidth: 2 },
         ],
       },
       options: {
@@ -316,23 +340,25 @@ function drawCharts() {
               const d = data[it.dataIndex];
               return [`TCO: Bs ${fmt(d.tco)}`, `Rango p10–p90: ${fmt(d.p10)} – ${fmt(d.p90)}`, `Mín./máx.: ${fmt(d.min)} – ${fmt(d.max)}`, `Corte: ${fDate(d.corte)}`];
             },
+            footer,
           } },
         },
       },
       plugins: [crosshair],
-    }),
-    new Chart(document.getElementById("cMonto"), {
+    })),
+    clicable(new Chart(document.getElementById("cMonto"), {
       type: "bar",
-      data: { labels: data.map((d) => d.corte), datasets: [{ data: data.map((d) => d.monto / 1e6), backgroundColor: css("--bar"), hoverBackgroundColor: series, borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: "bottom", categoryPercentage: 0.9, barPercentage: 0.9 }] },
+      data: { labels: data.map((d) => d.corte), datasets: [{ data: data.map((d) => d.monto / 1e6), backgroundColor: (ctx) => data[ctx.dataIndex]?.corte === sel ? series : css("--bar"), hoverBackgroundColor: series, borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: "bottom", categoryPercentage: 0.9, barPercentage: 0.9 }] },
       options: {
         maintainAspectRatio: false, animation: false,
         scales: { x: xAxis, y: { grid: { color: grid }, border: { display: false }, ticks: { callback: (v) => fmt(v, 0) } } },
         plugins: { legend: { display: false }, tooltip: { ...tooltipBase, callbacks: {
           title: (it) => `Corte ${fDate(data[it[0].dataIndex].corte, true)}`,
           label: (it) => { const d = data[it.dataIndex]; return [`Monto: ${fmtUsd(d.monto)}`, `Transacciones: ${fmtInt(d.n)}`]; },
+          footer,
         } } },
       },
-    }),
+    })),
   ];
 }
 </script>
