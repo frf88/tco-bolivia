@@ -2,8 +2,12 @@ name: Actualizar TCO
 
 on:
   schedule:
-    # 12:00, 18:00 y 00:00 UTC = 08:00, 14:00 y 20:00 hora Bolivia
-    - cron: "0 0,12,18 * * *"
+    # Hora Bolivia = UTC-4. El BCB publica el corte ~20:00 (a veces con atraso):
+    # cada 15 min de 19:30 a 23:45 hora Bolivia (23:30 a 03:45 UTC)
+    - cron: "30,45 23 * * *"
+    - cron: "*/15 0-3 * * *"
+    # respaldo: 08:00 y 14:00 hora Bolivia
+    - cron: "0 12,18 * * *"
   workflow_dispatch:
 
 permissions:
