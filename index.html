@@ -93,6 +93,8 @@ tfoot td { font-weight: 650; border-bottom: 0; }
 .imp-val { display: inline-block; min-width: 48px; }
 .leg-sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin: 0 4px 0 8px; }
 details summary { cursor: pointer; font-weight: 600; }
+.periodo-ctrl { display: flex; gap: 8px 12px; align-items: center; flex-wrap: wrap; }
+.periodo-ctrl input[type="date"] { font: inherit; font-size: 13px; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; margin-left: 4px; }
 a { color: var(--series); }
 .btn { display: inline-block; border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; text-decoration: none; font-size: 13px; }
 footer { margin-top: 32px; }
@@ -123,7 +125,7 @@ const fDate = (s, year = false) => { const [y, m, d] = s.split("-"); return `${+
 const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const hoyBO = () => new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
 
-let DIAS = [], rango = "all", charts = [], sel = null, ultimo = null, orden = ["monto", -1];
+let DIAS = [], rango = "all", charts = [], sel = null, ultimo = null, orden = ["monto", -1], ordenPeriodo = ["monto", -1];
 
 fetch("data/tco.json", { cache: "no-store" })
   .then((r) => r.json())
@@ -218,13 +220,41 @@ function render() {
         }).join("")}</tbody>
       </table></div>
     </details>
+  </section>
+
+  <section class="card">
+    <div class="section-hd">
+      <div>
+        <h2>Resumen por banco en un período</h2>
+        <div class="muted" id="tituloPeriodo"></div>
+      </div>
+      <div class="periodo-ctrl">
+        <div class="seg" id="segPeriodo" role="group" aria-label="Período">
+          <button data-desde="${addDays(vigente.corte, -6)}">7 días</button><button data-desde="${addDays(vigente.corte, -29)}">30 días</button><button data-desde="${vigente.corte.slice(0, 8)}01">Mes</button><button data-desde="${DIAS[0].corte}">Todo</button>
+        </div>
+        <label class="muted">Desde <input type="date" id="pDesde" min="${DIAS[0].corte}" max="${vigente.corte}"></label>
+        <label class="muted">Hasta <input type="date" id="pHasta" min="${DIAS[0].corte}" max="${vigente.corte}"></label>
+      </div>
+    </div>
+    <div class="muted" style="margin-bottom:8px">Suma de todas las fechas de corte del rango. TC compra: Bs ÷ $us de todo el período (promedio ponderado por monto). TC mín./máx.: el más bajo y más alto del período, con los $us comprados a ese TC. Impacto: cuánto sube o baja cada banco el TC del período.</div>
+    <div class="table-wrap"><table id="tPeriodo"></table></div>
   </section>`;
 
-  document.querySelectorAll(".seg button").forEach((b) => b.addEventListener("click", () => { rango = b.dataset.r; drawCharts(); }));
+  document.querySelectorAll(".seg:not(#segPeriodo) button").forEach((b) => b.addEventListener("click", () => { rango = b.dataset.r; drawCharts(); }));
   ultimo = sel = vigente.corte;
   document.getElementById("btnUltimo").addEventListener("click", () => seleccionar(ultimo, false));
   drawCharts();
   seleccionar(ultimo, false);
+  document.querySelectorAll("#segPeriodo button").forEach((b) => b.addEventListener("click", () => renderPeriodo(b.dataset.desde, ultimo)));
+  const alCambiarFecha = () => {
+    let d = document.getElementById("pDesde").value, h = document.getElementById("pHasta").value;
+    if (!d || !h) return;
+    if (d > h) [d, h] = [h, d];
+    renderPeriodo(d, h);
+  };
+  document.getElementById("pDesde").addEventListener("change", alCambiarFecha);
+  document.getElementById("pHasta").addEventListener("change", alCambiarFecha);
+  renderPeriodo(addDays(ultimo, -29), ultimo);
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawCharts);
 }
 
@@ -241,8 +271,43 @@ function seleccionar(corte, scroll = true) {
   if (scroll) document.getElementById("tituloBancos").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function renderBancos(dia, key, dir) {
-  orden = [key, dir];
+// Suma los cortes entre dos fechas en un objeto con la misma forma que un día
+function agregar(desde, hasta) {
+  const acum = () => ({ monto: 0, montoBs: 0, n: 0, min: Infinity, max: -Infinity, montoMin: 0, montoMax: 0 });
+  const sumar = (a, x) => {
+    if (!x.monto) return;
+    a.monto += x.monto; a.montoBs += x.montoBs ?? 0; a.n += x.n ?? 0;
+    // $us al mín./máx.: suma de los días que tocaron ese mismo TC extremo
+    if (x.min < a.min) (a.min = x.min), (a.montoMin = x.montoMin ?? 0); else if (x.min === a.min) a.montoMin += x.montoMin ?? 0;
+    if (x.max > a.max) (a.max = x.max), (a.montoMax = x.montoMax ?? 0); else if (x.max === a.max) a.montoMax += x.montoMax ?? 0;
+  };
+  const dias = DIAS.filter((d) => d.corte >= desde && d.corte <= hasta);
+  const total = { ...acum(), bancos: {}, dias: dias.length };
+  for (const d of dias) {
+    sumar(total, d);
+    for (const [nombre, b] of Object.entries(d.bancos)) sumar((total.bancos[nombre] ??= acum()), b);
+  }
+  const tc = (a) => (a.monto ? Math.round((a.montoBs / a.monto) * 10000) / 10000 : null);
+  for (const b of Object.values(total.bancos)) {
+    b.tco = tc(b);
+    if (!b.monto) b.min = b.max = null;
+  }
+  total.tco = tc(total);
+  return total;
+}
+
+function renderPeriodo(desde, hasta) {
+  document.querySelectorAll("#segPeriodo button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.desde === desde && hasta === DIAS.at(-1).corte));
+  document.getElementById("pDesde").value = desde;
+  document.getElementById("pHasta").value = hasta;
+  const t = agregar(desde, hasta);
+  document.getElementById("tituloPeriodo").textContent = `Del ${fDate(desde, true)} al ${fDate(hasta, true)} · ${t.dias} fechas de corte`;
+  if (!t.dias) { document.getElementById("tPeriodo").innerHTML = `<tbody><tr><td class="muted">No hay datos en ese rango.</td></tr></tbody>`; return; }
+  renderBancos(t, ...ordenPeriodo, "tPeriodo");
+}
+
+function renderBancos(dia, key, dir, tableId = "tBancos") {
+  if (tableId === "tBancos") orden = [key, dir]; else ordenPeriodo = [key, dir];
   const rows = Object.entries(dia.bancos).map(([nombre, b]) => ({ nombre, ...b, dif: b.tco != null ? b.tco - dia.tco : null, share: b.monto / dia.monto * 100,
     // con TC sin redondear (Bs ÷ $us) la suma de impactos da exactamente 0
     imp: b.montoBs && dia.montoBs ? (b.monto / dia.monto) * (b.montoBs / b.monto - dia.montoBs / dia.monto)
@@ -256,7 +321,7 @@ function renderBancos(dia, key, dir) {
   };
   // [clave, encabezado, celda de banco, celda de total]
   const cols = [
-    ["nombre", "Banco", (r) => r.nombre, () => "Total bancos (TCO)"],
+    ["nombre", "Banco", (r) => r.nombre, () => tableId === "tBancos" ? "Total bancos (TCO)" : "Total bancos (TC del período)"],
     ["monto", "Monto $us", (r) => fmtInt(r.monto), () => fmtInt(dia.monto)],
     ["montoBs", "Monto Bs", (r) => fmtInt(r.montoBs), () => fmtInt(dia.montoBs)],
     ["share", "% del monto", (r) => `${fmt(r.share, 1)}%`, () => "100%"],
@@ -269,12 +334,12 @@ function renderBancos(dia, key, dir) {
     ["max", "TC máx.", (r) => fmt(r.max), () => fmt(dia.max)],
     ["montoMax", "$us al máx.", (r) => fmtInt(r.montoMax), () => fmtInt(dia.montoMax)],
   ];
-  const t = document.getElementById("tBancos");
+  const t = document.getElementById(tableId);
   t.innerHTML = `<thead><tr>${cols.map(([k, l]) => `<th data-k="${k}">${l}${k === key ? (dir > 0 ? " ↑" : " ↓") : ""}</th>`).join("")}</tr></thead>
   <tbody>${rows.map((r) => `<tr>${cols.map(([, , cel, , cls]) => `<td${cls ? ` class="${cls}"` : ""}>${cel(r)}</td>`).join("")}</tr>`).join("")}</tbody>
   <tfoot><tr>${cols.map(([, , , tot]) => `<td>${tot()}</td>`).join("")}</tr></tfoot>`;
   t.querySelectorAll("th").forEach((th) => th.addEventListener("click", () => {
-    const k = th.dataset.k; renderBancos(dia, k, k === key ? -dir : k === "nombre" ? 1 : -1);
+    const k = th.dataset.k; renderBancos(dia, k, k === key ? -dir : k === "nombre" ? 1 : -1, tableId);
   }));
 }
 
@@ -290,7 +355,7 @@ const crosshair = {
 };
 
 function drawCharts() {
-  document.querySelectorAll(".seg button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.r === rango));
+  document.querySelectorAll(".seg:not(#segPeriodo) button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.r === rango));
   charts.forEach((c) => c.destroy());
   const last = DIAS.at(-1).vigDesde;
   const data = rango === "all" ? DIAS : DIAS.filter((d) => d.vigDesde > addDays(last, -rango));
