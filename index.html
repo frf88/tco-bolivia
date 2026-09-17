@@ -137,7 +137,9 @@ fetch("https://api.github.com/repos/frf88/tco-bolivia/commits?path=data/tco.json
 
 function render() {
   const hoy = hoyBO();
-  const vigente = DIAS.find((d) => d.vigDesde <= hoy && hoy <= d.vigHasta) ?? DIAS.at(-1);
+  // siempre el último corte publicado (puede regir desde mañana)
+  const vigente = DIAS.at(-1);
+  const futuro = vigente.vigDesde > hoy;
   const idx = DIAS.indexOf(vigente);
   const prev = DIAS[idx - 1];
   const delta = prev ? vigente.tco - prev.tco : null;
@@ -152,7 +154,7 @@ function render() {
   document.getElementById("app").innerHTML = `
   <div class="kpis">
     <div class="card kpi">
-      <div class="label">TCO vigente ${vigente.vigDesde === vigente.vigHasta ? fDate(vigente.vigDesde, true) : `${fDate(vigente.vigDesde)} – ${fDate(vigente.vigHasta, true)}`}</div>
+      <div class="label">TCO vigente ${futuro ? (vigente.vigDesde === addDays(hoy, 1) ? "desde mañana, " : "desde ") : ""}${vigente.vigDesde === vigente.vigHasta ? fDate(vigente.vigDesde, true) : `${fDate(vigente.vigDesde)} – ${fDate(vigente.vigHasta, true)}`}</div>
       <div class="value hero">Bs ${fmt(vigente.tco)}</div>
       <div class="sub ${cls}">${flecha} ${delta == null ? "–" : `${delta > 0 ? "+" : ""}${fmt(delta)} (${deltaPct > 0 ? "+" : ""}${fmt(deltaPct, 1)}%)`} <span class="muted">vs. anterior</span></div>
     </div>
