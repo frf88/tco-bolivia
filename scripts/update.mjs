@@ -141,5 +141,24 @@ const csv = [
 ].join("\n");
 await writeFile("data/tco_diario.csv", csv + "\n");
 
+// Dólar paralelo (paralelo.bo, CC-BY 4.0): copia de respaldo con días cerrados (sin hoy, que cambia cada minuto).
+// La página lo pide en vivo y usa este archivo solo si paralelo.bo no responde.
+try {
+  const r = await fetch("https://paralelo.bo/api/v1/historical.csv", { headers: { "User-Agent": "tco-bolivia (GitHub Actions)" } });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const hoy = hoyBolivia();
+  const serie = (await r.text())
+    .split(/\r?\n/)
+    .map((l) => l.split(","))
+    .filter(([f, v]) => /^\d{4}-\d{2}-\d{2}$/.test(f) && f >= salida[0].corte && f < hoy && !isNaN(parseFloat(v)))
+    .map(([f, v]) => [f, parseFloat(v)]);
+  if (serie.length) {
+    await writeFile("data/paralelo.json", JSON.stringify({ fuente: "paralelo.bo", licencia: "CC-BY 4.0", serie }));
+    console.log(`Paralelo: ${serie.length} días hasta ${serie.at(-1)[0]}`);
+  }
+} catch (e) {
+  console.error(`Paralelo no disponible: ${e.message}`);
+}
+
 const u = salida.at(-1);
 console.log(`OK: ${salida.length} fechas de corte. Último: corte ${u.corte}, vigencia ${u.vigDesde}, TCO ${u.tco}`);

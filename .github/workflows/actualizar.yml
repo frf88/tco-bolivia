@@ -23,6 +23,9 @@ jobs:
           node-version: 22
       - name: Descargar datos del BCB
         run: node scripts/update.mjs
+      - name: Foto del paralelo en Binance P2P
+        run: node scripts/binance.mjs
+        continue-on-error: true
       - name: Guardar cambios
         run: |
           git config user.name "github-actions[bot]"

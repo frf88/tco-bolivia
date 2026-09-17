@@ -23,6 +23,7 @@
   --up: #b3261e;
   --down: #0a7a2f;
   --pos: #e34948;
+  --paralelo: #eb6834;
   --neg: #2a78d6;
 }
 @media (prefers-color-scheme: dark) {
@@ -41,6 +42,7 @@
     --up: #f28b82;
     --down: #6fd08c;
     --pos: #e66767;
+    --paralelo: #d95926;
     --neg: #3987e5;
   }
 }
@@ -49,9 +51,10 @@
   --bg: #121211; --surface: #1a1a19; --border: #2e2e2b; --grid: #262624;
   --text: #ffffff; --text-2: #c3c2b7; --text-3: #908f87;
   --series: #3987e5; --band: rgba(57, 135, 229, 0.22); --bar: #1c5cab;
-  --up: #f28b82; --down: #6fd08c; --pos: #e66767; --neg: #3987e5;
+  --up: #f28b82; --down: #6fd08c; --pos: #e66767; --neg: #3987e5; --paralelo: #d95926;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
   margin: 0; background: var(--bg); color: var(--text);
   font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -111,7 +114,7 @@ footer { margin-top: 32px; }
   <div id="app"><p class="muted">Cargando datos…</p></div>
 
   <footer class="muted">
-    Fuente: <a href="https://www.bcb.gob.bo/?q=content/tipo-de-cambio-oficial-del-d%C3%B3lar-estadounidense" target="_blank" rel="noopener">Banco Central de Bolivia</a>.
+    Fuente: <a href="https://www.bcb.gob.bo/?q=content/tipo-de-cambio-oficial-del-d%C3%B3lar-estadounidense" target="_blank" rel="noopener">Banco Central de Bolivia</a>. Dólar paralelo: <a href="https://paralelo.bo" target="_blank" rel="noopener">paralelo.bo</a> (CC-BY 4.0).
     El BCB publica cerca de las 20:00; la página revisa cada 15 min de 19:30 a 23:45 y otra vez a las 08:00 y 14:00 (hora Bolivia). <span id="updated"></span>
   </footer>
 </div>
@@ -125,12 +128,37 @@ const fDate = (s, year = false) => { const [y, m, d] = s.split("-"); return `${+
 const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const hoyBO = () => new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
 
+let PARALELO = new Map(), BINANCE = new Map();
+// Paralelo de un día: Binance P2P (cálculo propio) si hay foto de ese día; si no, histórico de paralelo.bo
+const paralelo = (fecha) => {
+  const b = BINANCE.get(fecha);
+  if (b) return { v: b.compra, fuente: `Binance P2P (compra; venta ${fmt(b.venta)})` };
+  const p = PARALELO.get(fecha);
+  return p == null ? null : { v: p, fuente: "paralelo.bo" };
+};
 let DIAS = [], rango = "all", charts = [], sel = null, ultimo = null, orden = ["monto", -1], ordenPeriodo = ["monto", -1];
 
 fetch("data/tco.json", { cache: "no-store" })
   .then((r) => r.json())
   .then((j) => { DIAS = j.dias; render(); })
   .catch((e) => { document.getElementById("app").innerHTML = `<div class="error">No se pudieron cargar los datos: ${e.message}</div>`; });
+
+// Dólar paralelo: en vivo desde paralelo.bo (CC-BY 4.0); si falla, la copia guardada en el repo
+fetch("https://paralelo.bo/api/v1/historical.csv")
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+  .then((t) => t.split(/\r?\n/).map((l) => l.split(",")).filter(([f, v]) => /^\d{4}-\d{2}-\d{2}$/.test(f) && !isNaN(parseFloat(v))).map(([f, v]) => [f, parseFloat(v)]))
+  .catch(() => fetch("data/paralelo.json", { cache: "no-store" }).then((r) => r.json()).then((j) => j.serie))
+  .then((serie) => { PARALELO = new Map(serie); if (charts.length) drawCharts(); })
+  .catch(() => {});
+
+// Binance P2P: la última foto de cada día (hora Bolivia)
+fetch("data/binance.json", { cache: "no-store" })
+  .then((r) => r.json())
+  .then((j) => {
+    for (const f of j.fotos) BINANCE.set(new Date(Date.parse(f.t) - 4 * 3600e3).toISOString().slice(0, 10), f);
+    if (charts.length) drawCharts();
+  })
+  .catch(() => {});
 
 fetch("https://api.github.com/repos/frf88/tco-bolivia/commits?path=data/tco.json&per_page=1")
   .then((r) => r.json())
@@ -181,7 +209,7 @@ function render() {
     <div class="section-hd">
       <div>
         <h2>Evolución del TCO</h2>
-        <div class="muted">Por fecha de vigencia. La banda muestra entre qué tipos de cambio se transó el 80% central de los dólares ese día.</div>
+        <div class="muted">Por fecha de vigencia. La banda muestra entre qué tipos de cambio se transó el 80% central de los dólares ese día. La línea naranja es el dólar paralelo de ese mismo día.</div>
       </div>
       <div class="seg" role="group" aria-label="Rango de fechas">
         <button data-r="30">1M</button><button data-r="90">3M</button><button data-r="all">Todo</button>
@@ -191,6 +219,7 @@ function render() {
     <div class="legend">
       <span><i style="background:var(--series);height:3px"></i>TCO (Bs/$us)</span>
       <span><i style="background:var(--band)"></i>Rango p10–p90 de las operaciones</span>
+      <span><i style="background:var(--paralelo);height:3px"></i>Dólar paralelo: Binance P2P desde el 17 sep 2026 (promedio de los 10 mejores anuncios confiables que compran USDT); antes, <a href="https://paralelo.bo" target="_blank" rel="noopener">paralelo.bo</a></span>
     </div>
   </section>
 
@@ -389,6 +418,8 @@ function drawCharts() {
           { label: "p10", data: data.map((d) => d.p10), borderWidth: 0, pointRadius: 0, fill: "-1", backgroundColor: css("--band") },
           { label: "TCO", data: data.map((d) => d.tco), borderColor: series, backgroundColor: series, borderWidth: 2, tension: 0.2,
             pointRadius: (ctx) => data[ctx.dataIndex]?.corte === sel ? 5 : data.length > 60 ? 0 : 2.5, pointHoverRadius: 5, pointHoverBorderColor: css("--surface"), pointHoverBorderWidth: 2 },
+          { label: "Paralelo", data: data.map((d) => paralelo(d.vigDesde)?.v ?? null), borderColor: css("--paralelo"), backgroundColor: css("--paralelo"),
+            borderWidth: 2, tension: 0.2, pointRadius: 0, pointHoverRadius: 5, pointHoverBorderColor: css("--surface"), pointHoverBorderWidth: 2 },
         ],
       },
       options: {
@@ -400,8 +431,12 @@ function drawCharts() {
           tooltip: { ...tooltipBase, callbacks: {
             title: (it) => { const d = data[it[0].dataIndex]; return `Vigencia ${fDate(d.vigDesde, true)}${d.vigHasta !== d.vigDesde ? " – " + fDate(d.vigHasta) : ""}`; },
             label: (it) => {
-              if (it.datasetIndex !== 2) return null;
               const d = data[it.dataIndex];
+              if (it.datasetIndex === 3) {
+                const { v: p, fuente } = paralelo(d.vigDesde);
+                return [`Paralelo: Bs ${fmt(p)} · brecha ${p > d.tco ? "+" : ""}${fmt(p - d.tco)} (${p > d.tco ? "+" : ""}${fmt((p / d.tco - 1) * 100, 1)}%)`, `Fuente: ${fuente}`];
+              }
+              if (it.datasetIndex !== 2) return null;
               return [`TCO: Bs ${fmt(d.tco)}`, `Rango p10–p90: ${fmt(d.p10)} – ${fmt(d.p90)}`, `Mín./máx.: ${fmt(d.min)} – ${fmt(d.max)}`, `Corte: ${fDate(d.corte)}`];
             },
             footer,
