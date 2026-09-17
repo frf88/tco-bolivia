@@ -13,6 +13,11 @@ on:
 permissions:
   contents: write
 
+# una sola escritura de datos a la vez (compartido con "Paralelo Binance")
+concurrency:
+  group: datos
+  cancel-in-progress: false
+
 jobs:
   actualizar:
     runs-on: ubuntu-latest
@@ -23,9 +28,6 @@ jobs:
           node-version: 22
       - name: Descargar datos del BCB
         run: node scripts/update.mjs
-      - name: Foto del paralelo en Binance P2P
-        run: node scripts/binance.mjs
-        continue-on-error: true
       - name: Guardar cambios
         run: |
           git config user.name "github-actions[bot]"
@@ -35,5 +37,6 @@ jobs:
             echo "Sin cambios"
           else
             git commit -m "Datos TCO $(TZ=America/La_Paz date +%F)"
+            git pull --rebase
             git push
           fi

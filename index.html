@@ -132,7 +132,10 @@ let PARALELO = new Map(), BINANCE = new Map();
 // Paralelo de un día: Binance P2P (cálculo propio) si hay foto de ese día; si no, histórico de paralelo.bo
 const paralelo = (fecha) => {
   const b = BINANCE.get(fecha);
-  if (b) return { v: b.compra, fuente: `Binance P2P (compra; venta ${fmt(b.venta)})` };
+  if (b) {
+    const hora = new Date(Date.parse(b.t) - 4 * 3600e3).toISOString().slice(11, 16);
+    return { v: b.compra, fuente: `Binance P2P a las ${hora} (compra; venta ${fmt(b.venta)})` };
+  }
   const p = PARALELO.get(fecha);
   return p == null ? null : { v: p, fuente: "paralelo.bo" };
 };
@@ -219,7 +222,7 @@ function render() {
     <div class="legend">
       <span><i style="background:var(--series);height:3px"></i>TCO (Bs/$us)</span>
       <span><i style="background:var(--band)"></i>Rango p10–p90 de las operaciones</span>
-      <span><i style="background:var(--paralelo);height:3px"></i>Dólar paralelo: Binance P2P desde el 17 sep 2026 (promedio de los 10 mejores anuncios confiables que compran USDT); antes, <a href="https://paralelo.bo" target="_blank" rel="noopener">paralelo.bo</a></span>
+      <span><i style="background:var(--paralelo);height:3px"></i>Dólar paralelo: Binance P2P desde el 17 sep 2026, actualizado cada 30 min (promedio de los 10 mejores anuncios confiables que compran USDT; en días pasados, la última foto del día); antes, <a href="https://paralelo.bo" target="_blank" rel="noopener">paralelo.bo</a></span>
     </div>
   </section>
 

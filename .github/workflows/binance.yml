@@ -1,0 +1,33 @@
+name: Paralelo Binance
+
+on:
+  schedule:
+    # foto del paralelo en Binance P2P cada 30 min, todo el día
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: datos
+  cancel-in-progress: false
+
+jobs:
+  foto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Foto del paralelo en Binance P2P
+        run: node scripts/binance.mjs
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898293+github-actions[bot]@users.noreply.github.com"
+          git add data/binance.json
+          git commit -m "Paralelo Binance $(TZ=America/La_Paz date '+%F %H:%M')"
+          git pull --rebase
+          git push
