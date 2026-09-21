@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comercio exterior Bolivia</title>
+<meta name="description" content="Precios diarios de los principales productos que Bolivia exporta e importa, y comercio exterior mensual del INE.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚢</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+<style>
+.precios { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.precio .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.precio .nombre { font-weight: 650; }
+.precio .peso { font-size: 12px; color: var(--text-3); text-align: right; }
+.precio .value { font-size: 26px; font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.precio .value small { font-size: 13px; font-weight: 400; color: var(--text-3); }
+.precio .sub { font-size: 13px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.spark { position: relative; height: 90px; margin-top: 8px; }
+.chart.mid { height: 280px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Comercio exterior · Bolivia</h1>
+    <nav class="tabs"><a href="./">Tipo de cambio</a><a href="comercio.html" aria-current="page">Comercio exterior</a></nav>
+    <p>De dónde vienen y a dónde van los dólares. Arriba, los precios internacionales diarios de lo que Bolivia más exporta (y del petróleo, por la importación de combustibles). Abajo, el comercio exterior mensual del INE, que se publica con unos dos meses de atraso.</p>
+  </header>
+
+  <div id="app"><p class="muted">Cargando datos…</p></div>
+
+  <footer class="muted">
+    Fuentes: oro, plata, soya y petróleo WTI: futuros en Yahoo Finance · zinc y estaño: precio oficial LME (cash-settlement) vía <a href="https://www.westmetall.com/en/markdaten.php" target="_blank" rel="noopener">Westmetall</a> · comercio mensual: <a href="https://www.ine.gob.bo/index.php/estadisticas-economicas/comercio-exterior/cuadros-estadisticos-exportaciones/" target="_blank" rel="noopener">INE</a> (cifras preliminares).
+    Se actualiza a las 08:00 y 19:30 (hora Bolivia). <span id="updated"></span>
+  </footer>
+</div>
+
+<script>
+const fmt = (v, d = 2) => v == null || isNaN(v) ? "–" : v.toLocaleString("es-BO", { minimumFractionDigits: d, maximumFractionDigits: d });
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const fDate = (s, year = false) => { const [y, m, d] = s.split("-"); return `${+d} ${MESES[m - 1]}${year ? " " + y : ""}`; };
+const fMes = (s) => { const [y, m] = s.split("-"); return `${MESES[m - 1]} ${y}`; };
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const signo = (v, d = 1) => v == null || isNaN(v) ? "–" : `${v > 0 ? "▲ +" : v < 0 ? "▼ " : "■ "}${fmt(v, d)}%`;
+const addDays = (s, n) => { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+
+const ORDEN = ["oro", "plata", "zinc", "estano", "soya", "petroleo"];
+// fila del INE que corresponde a cada precio, para mostrar su peso en las exportaciones
+const FILA_INE = { oro: "oro", plata: "plata", zinc: "zinc", estano: "estano", soya: "soya" };
+let D, rango = 90, charts = [];
+
+fetch("data/comercio.json", { cache: "no-store" })
+  .then((r) => r.json())
+  .then((j) => { D = j; render(); })
+  .catch((e) => { document.getElementById("app").innerHTML = `<div class="error">No se pudieron cargar los datos: ${e.message}</div>`; });
+
+function acumulado(meses, valores, anio, hastaMes) {
+  return meses.reduce((a, m, i) => (m.startsWith(anio + "-") && m.slice(5) <= hastaMes ? a + (valores[i] ?? 0) : a), 0);
+}
+
+function render() {
+  const ex = D.ine.exportaciones, im = D.ine.importaciones;
+  const ultimoMes = ex.meses.at(-1), anio = ultimoMes.slice(0, 4), mm = ultimoMes.slice(5);
+  const expAnio = acumulado(ex.meses, ex.series.total, anio, mm), expPrev = acumulado(ex.meses, ex.series.total, anio - 1, mm);
+  const impAnio = acumulado(im.meses, im.cif, anio, mm), impPrev = acumulado(im.meses, im.cif, anio - 1, mm);
+  const peso = (clave) => FILA_INE[clave] && ex.series[FILA_INE[clave]] ? acumulado(ex.meses, ex.series[FILA_INE[clave]], anio, mm) / expAnio * 100 : null;
+  const periodo = `ene–${MESES[mm - 1]} ${anio}`;
+  document.getElementById("updated").textContent = D.actualizado ? `Última actualización: ${new Date(D.actualizado).toLocaleString("es-BO", { timeZone: "America/La_Paz" })}.` : "";
+
+  document.getElementById("app").innerHTML = `
+  <section class="card">
+    <div class="section-hd">
+      <div>
+        <h2>Precios internacionales · diario</h2>
+        <div class="muted">Cierre de cada día hábil. El % de exportaciones es el peso del producto en lo exportado ${periodo} según el INE.</div>
+      </div>
+      <div class="seg" role="group" aria-label="Rango de fechas">
+        <button data-r="30">1M</button><button data-r="90">3M</button><button data-r="365">1A</button><button data-r="730">2A</button>
+      </div>
+    </div>
+    <div class="precios">${ORDEN.filter((k) => D.precios[k]).map((k) => {
+      const p = D.precios[k], s = p.serie, [f, v] = s.at(-1), prev = s.at(-2)?.[1];
+      const h30 = s.filter(([x]) => x <= addDays(f, -30)).at(-1)?.[1];
+      const pe = peso(k);
+      return `<div class="card precio">
+        <div class="top"><span class="nombre">${p.nombre}</span><span class="peso">${pe != null ? `${fmt(pe, 1)}% de las exportaciones` : "referencia de importación de combustibles"}</span></div>
+        <div class="value">${fmt(v, v >= 1000 ? 0 : 2)} <small>${p.unidad}</small></div>
+        <div class="sub">${signo((v / prev - 1) * 100)} vs. día anterior · ${signo((v / h30 - 1) * 100)} en 30 días</div>
+        <div class="muted">${fDate(f, true)} · ${p.fuente}</div>
+        <div class="spark"><canvas data-precio="${k}" aria-label="Evolución del precio de ${p.nombre}"></canvas></div>
+      </div>`;
+    }).join("")}</div>
+  </section>
+
+  <div class="kpis">
+    <div class="card kpi"><div class="label">Exportaciones ${periodo}</div><div class="value">$us ${fmt(expAnio, 0)} M</div><div class="sub">${signo((expAnio / expPrev - 1) * 100)} vs. mismo período ${anio - 1}</div></div>
+    <div class="card kpi"><div class="label">Importaciones (CIF) ${periodo}</div><div class="value">$us ${fmt(impAnio, 0)} M</div><div class="sub">${signo((impAnio / impPrev - 1) * 100)} vs. mismo período ${anio - 1}</div></div>
+    <div class="card kpi"><div class="label">Saldo comercial ${periodo}</div><div class="value">${expAnio - impAnio >= 0 ? "+" : "−"}$us ${fmt(Math.abs(expAnio - impAnio), 0)} M</div><div class="sub">${expAnio - impAnio >= 0 ? "superávit" : "déficit"} · ${anio - 1}: ${expPrev - impPrev >= 0 ? "+" : "−"}${fmt(Math.abs(expPrev - impPrev), 0)} M</div></div>
+    <div class="card kpi"><div class="label">Último mes publicado (INE)</div><div class="value">${fMes(ultimoMes)}</div><div class="sub">cifras preliminares</div></div>
+  </div>
+
+  <section class="card">
+    <h2>Exportaciones vs importaciones · mensual</h2>
+    <div class="muted" style="margin-bottom:8px">Millones de $us. Exportaciones FOB, importaciones CIF (así calcula el INE el saldo comercial).</div>
+    <div class="chart mid"><canvas id="cComercio" aria-label="Exportaciones e importaciones mensuales"></canvas></div>
+    <div class="legend"><span><i style="background:var(--series)"></i>Exportaciones</span><span><i style="background:var(--paralelo)"></i>Importaciones</span></div>
+  </section>
+
+  <section class="card">
+    <h2>Exportaciones por producto · mensual</h2>
+    <div class="muted" style="margin-bottom:8px">Millones de $us FOB. Los últimos 6 meses publicados y el acumulado del año contra el mismo período del año anterior.</div>
+    <div class="table-wrap"><table id="tProductos"></table></div>
+  </section>`;
+
+  renderProductos(ex, anio, mm);
+  document.querySelectorAll(".seg button").forEach((b) => b.addEventListener("click", () => { rango = +b.dataset.r; drawCharts(); }));
+  drawCharts();
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawCharts);
+}
+
+function renderProductos(ex, anio, mm) {
+  const filas = [["total", "<b>Total</b>"], ["minerales", "Minerales"], ["oro", "· Oro"], ["plata", "· Plata"], ["zinc", "· Zinc"], ["estano", "· Estaño"],
+    ["hidrocarburos", "Hidrocarburos"], ["gas", "· Gas natural"], ["noTradicionales", "No tradicionales"], ["soya", "· Soya"]];
+  const ult = ex.meses.slice(-6);
+  const i0 = ex.meses.length - 6;
+  document.getElementById("tProductos").innerHTML = `<thead><tr><th>Producto</th>${ult.map((m) => `<th>${fMes(m)}</th>`).join("")}<th>Acum. ${anio}</th><th>Var. vs ${anio - 1}</th></tr></thead>
+  <tbody>${filas.filter(([k]) => ex.series[k]).map(([k, l]) => {
+    const s = ex.series[k], a = acumulado(ex.meses, s, anio, mm), b = acumulado(ex.meses, s, anio - 1, mm);
+    return `<tr><td>${l}</td>${ult.map((_, j) => `<td>${fmt(s[i0 + j], 1)}</td>`).join("")}<td><b>${fmt(a, 1)}</b></td><td>${b ? signo((a / b - 1) * 100) : "–"}</td></tr>`;
+  }).join("")}</tbody>`;
+}
+
+function drawCharts() {
+  document.querySelectorAll(".seg button").forEach((b) => b.setAttribute("aria-pressed", +b.dataset.r === rango));
+  charts.forEach((c) => c.destroy());
+  charts = [];
+  Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+  Chart.defaults.color = css("--text-3");
+  const tooltip = { backgroundColor: css("--surface"), titleColor: css("--text"), bodyColor: css("--text-2"), borderColor: css("--border"), borderWidth: 1, padding: 8, displayColors: false };
+
+  for (const canvas of document.querySelectorAll("canvas[data-precio]")) {
+    const p = D.precios[canvas.dataset.precio];
+    const desde = addDays(p.serie.at(-1)[0], -rango);
+    const s = p.serie.filter(([f]) => f >= desde);
+    const dec = s.at(-1)[1] >= 1000 ? 0 : 2;
+    charts.push(new Chart(canvas, {
+      type: "line",
+      data: { labels: s.map(([f]) => f), datasets: [{ data: s.map(([, v]) => v), borderColor: css("--series"), borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, tension: 0.2, fill: false }] },
+      options: {
+        maintainAspectRatio: false, animation: false, interaction: { mode: "index", intersect: false },
+        scales: { x: { display: false }, y: { display: true, position: "right", grid: { color: css("--grid") }, border: { display: false }, ticks: { maxTicksLimit: 3, callback: (v) => fmt(v, dec) } } },
+        plugins: { legend: { display: false }, tooltip: { ...tooltip, callbacks: { title: (it) => fDate(it[0].label, true), label: (it) => `${fmt(it.parsed.y, dec)} ${p.unidad}` } } },
+      },
+    }));
+  }
+
+  const ex = D.ine.exportaciones, im = D.ine.importaciones;
+  const meses = ex.meses.filter((m) => m >= "2024-01");
+  const cifDe = new Map(im.meses.map((m, i) => [m, im.cif[i]]));
+  const expDe = new Map(ex.meses.map((m, i) => [m, ex.series.total[i]]));
+  charts.push(new Chart(document.getElementById("cComercio"), {
+    type: "bar",
+    data: {
+      labels: meses,
+      datasets: [
+        { label: "Exportaciones", data: meses.map((m) => expDe.get(m)), backgroundColor: css("--series"), borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: "bottom", categoryPercentage: 0.8, barPercentage: 0.9 },
+        { label: "Importaciones", data: meses.map((m) => cifDe.get(m) ?? null), backgroundColor: css("--paralelo"), borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: "bottom", categoryPercentage: 0.8, barPercentage: 0.9 },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false, animation: false, interaction: { mode: "index", intersect: false },
+      scales: {
+        x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 12, callback(v) { return fMes(this.getLabelForValue(v)); } } },
+        y: { grid: { color: css("--grid") }, border: { display: false }, ticks: { callback: (v) => fmt(v, 0) } },
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { ...tooltip, callbacks: {
+          title: (it) => fMes(it[0].label),
+          label: (it) => `${it.dataset.label}: $us ${fmt(it.parsed.y, 1)} M`,
+          footer: (it) => { const m = it[0].label, s = (expDe.get(m) ?? 0) - (cifDe.get(m) ?? 0); return `Saldo: ${s >= 0 ? "+" : "−"}$us ${fmt(Math.abs(s), 1)} M`; },
+        } },
+      },
+    },
+  }));
+}
+</script>
+</body>
+</html>

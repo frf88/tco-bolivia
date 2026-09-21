@@ -1,0 +1,38 @@
+name: Comercio exterior
+
+on:
+  schedule:
+    # 08:00 y 19:30 hora Bolivia (12:00 y 23:30 UTC)
+    - cron: "0 12 * * *"
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: datos
+  cancel-in-progress: false
+
+jobs:
+  comercio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Precios internacionales e INE
+        run: node scripts/comercio.mjs
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898293+github-actions[bot]@users.noreply.github.com"
+          git add data/comercio.json
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Comercio exterior $(TZ=America/La_Paz date +%F)"
+            git pull --rebase
+            git push
+          fi
