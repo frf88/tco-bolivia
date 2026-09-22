@@ -96,3 +96,8 @@ footer { margin-top: 32px; }
 .tabs { display: flex; gap: 4px; margin: 12px 0 16px; border-bottom: 1px solid var(--border); }
 .tabs a { padding: 8px 14px; text-decoration: none; color: var(--text-2); border-bottom: 2px solid transparent; margin-bottom: -1px; font-weight: 600; font-size: 14px; }
 .tabs a[aria-current="page"] { color: var(--text); border-bottom-color: var(--series); }
+.link-refresh { background: none; border: 0; padding: 0 0 0 6px; margin: 0; color: var(--text-3); font-size: 12px; cursor: pointer; opacity: 0.5; vertical-align: baseline; font-family: inherit; }
+.link-refresh:hover { opacity: 1; color: var(--series); }
+.link-refresh:disabled { cursor: default; }
+.link-refresh.spin { display: inline-block; animation: girar 0.8s linear infinite; opacity: 1; color: var(--series); }
+@keyframes girar { to { transform: rotate(360deg); } }

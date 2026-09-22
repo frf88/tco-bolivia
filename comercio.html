@@ -33,6 +33,7 @@
   <footer class="muted">
     Fuentes: oro, plata, soya y petróleo WTI: futuros en Yahoo Finance · zinc y estaño: precio oficial LME (cash-settlement) vía <a href="https://www.westmetall.com/en/markdaten.php" target="_blank" rel="noopener">Westmetall</a> · comercio mensual: <a href="https://www.ine.gob.bo/index.php/estadisticas-economicas/comercio-exterior/cuadros-estadisticos-exportaciones/" target="_blank" rel="noopener">INE</a> (cifras preliminares).
     Se actualiza a las 08:00 y 19:30 (hora Bolivia). <span id="updated"></span>
+    <button id="btnRefresh" class="link-refresh" title="Forzar recarga de los datos, sin esperar al caché">↻</button>
   </footer>
 </div>
 
@@ -50,10 +51,24 @@ const ORDEN = ["oro", "plata", "zinc", "estano", "soya", "petroleo"];
 const FILA_INE = { oro: "oro", plata: "plata", zinc: "zinc", estano: "estano", soya: "soya" };
 let D, rango = 90, charts = [];
 
-fetch("data/comercio.json", { cache: "no-store" })
-  .then((r) => r.json())
-  .then((j) => { D = j; render(); })
-  .catch((e) => { document.getElementById("app").innerHTML = `<div class="error">No se pudieron cargar los datos: ${e.message}</div>`; });
+// bust=cache-busting: agrega ?t= para saltarse el caché del navegador y del CDN de GitHub Pages
+function cargarDatos(bust) {
+  const q = bust ? `?t=${Date.now()}` : "";
+  return fetch(`data/comercio.json${q}`, { cache: "no-store" })
+    .then((r) => r.json())
+    .then((j) => { D = j; render(); })
+    .catch((e) => { document.getElementById("app").innerHTML = `<div class="error">No se pudieron cargar los datos: ${e.message}</div>`; });
+}
+cargarDatos(false);
+
+document.getElementById("btnRefresh").addEventListener("click", async (e) => {
+  const b = e.currentTarget;
+  b.disabled = true;
+  b.classList.add("spin");
+  await cargarDatos(true);
+  b.classList.remove("spin");
+  b.disabled = false;
+});
 
 function acumulado(meses, valores, anio, hastaMes) {
   return meses.reduce((a, m, i) => (m.startsWith(anio + "-") && m.slice(5) <= hastaMes ? a + (valores[i] ?? 0) : a), 0);
