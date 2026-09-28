@@ -49,7 +49,7 @@ const paralelo = (fecha) => {
 let DIAS = [], rango = "all", charts = [], sel = null, ultimo = null, orden = ["monto", -1], ordenPeriodo = ["monto", -1];
 
 // --- Lectura en vivo del CSV del BCB (para el botón de refresh; usa un proxy porque el BCB no habilita CORS)
-const bcbNum = (s) => { s = (s ?? "").replace(/"/g, "").trim(); return s === "" || s === "-" ? null : Number(s.replace(/\./g, "").replace(",", ".")); };
+const bcbNum = (s) => { s = (s ?? "").replace(/"/g, "").replace(/^=/, "").trim(); return s === "" || s === "-" ? null : Number(s.replace(/\./g, "").replace(",", ".")); };
 function bcbPercentil(puntos, p) {
   const total = puntos.reduce((a, x) => a + x.w, 0);
   let acum = 0;

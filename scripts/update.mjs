@@ -8,7 +8,8 @@ const hoyBolivia = () =>
   new Date(Date.now() - 4 * 3600 * 1000).toISOString().slice(0, 10); // UTC-4
 
 const num = (s) => {
-  s = (s ?? "").replace(/"/g, "").trim();
+  // desde sep-2026 el BCB exporta N° y Monto como texto de Excel: "=""1.234"""
+  s = (s ?? "").replace(/"/g, "").replace(/^=/, "").trim();
   if (s === "" || s === "-") return null;
   return Number(s.replace(/\./g, "").replace(",", "."));
 };
@@ -127,6 +128,8 @@ const salida = [...dias.values()]
   });
 
 if (salida.length === 0) throw new Error("No se obtuvieron datos");
+// si el BCB vuelve a cambiar el formato, falla aquí en vez de publicar montos vacíos sobre el histórico
+if (!(salida.at(-1).monto > 0) || !(salida.at(-1).n > 0)) throw new Error(`El formato del CSV cambió: la fecha de corte ${salida.at(-1).corte} quedó sin monto/cantidad`);
 
 await mkdir("data", { recursive: true });
 await writeFile(
