@@ -2,8 +2,8 @@ name: Paralelo Binance
 
 on:
   schedule:
-    # foto del paralelo en Binance P2P cada hora, a los :20 (no en punto: GitHub demora más los cron que caen justo al inicio de la hora)
-    - cron: "20 * * * *"
+    # foto del paralelo en Binance P2P cada hora, a los :28 (no en punto: GitHub demora más los cron que caen justo al inicio de la hora)
+    - cron: "28 * * * *"
   workflow_dispatch:
 
 permissions:
