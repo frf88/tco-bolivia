@@ -35,7 +35,7 @@ const fDate = (s, year = false) => { const [y, m, d] = s.split("-"); return `${+
 const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const hoyBO = () => new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
 
-let PARALELO = new Map(), BINANCE = new Map();
+let PARALELO = new Map(), BINANCE = new Map(), BINANCE_FOTOS = [], binanceAbierto = false;
 // Paralelo de un día: Binance P2P (cálculo propio) si hay foto de ese día; si no, histórico de paralelo.bo
 const paralelo = (fecha) => {
   const b = BINANCE.get(fecha);
@@ -145,6 +145,7 @@ function cargarDatos(bust) {
     fetch(`data/binance.json${q}`, { cache: "no-store" })
       .then((r) => r.json())
       .then((j) => {
+        BINANCE_FOTOS = j.fotos;
         for (const f of j.fotos) BINANCE.set(new Date(Date.parse(f.t) - 4 * 3600e3).toISOString().slice(0, 10), f);
         if (charts.length) drawCharts();
       })
@@ -224,6 +225,11 @@ function render() {
       <span><i style="background:var(--band)"></i>Rango p10–p90 de las operaciones</span>
       <span><i style="background:var(--paralelo);height:3px"></i>Dólar paralelo: Binance P2P desde el 17 sep 2026, actualizado cada 30 min (promedio de los 10 mejores anuncios confiables que compran USDT; en días pasados, la última foto del día); antes, <a href="https://paralelo.bo" target="_blank" rel="noopener">paralelo.bo</a></span>
     </div>
+    <details id="detBinance" ${binanceAbierto ? "open" : ""} style="margin-top:12px">
+      <summary>Ver el paralelo cada 30 min (Binance, últimos 30 días)</summary>
+      <div class="muted" style="margin:8px 0">Cada punto es una foto de Binance P2P; los huecos son horas sin foto guardada.</div>
+      <div class="chart small"><canvas id="cBinanceIntradia" aria-label="Evolución del paralelo en Binance cada 30 minutos"></canvas></div>
+    </details>
   </section>
 
   <section class="card">
@@ -273,6 +279,7 @@ function render() {
   </section>`;
 
   document.querySelectorAll(".seg:not(#segPeriodo) button").forEach((b) => b.addEventListener("click", () => { rango = b.dataset.r; drawCharts(); }));
+  document.getElementById("detBinance").addEventListener("toggle", (e) => { binanceAbierto = e.target.open; if (binanceAbierto) dibujarBinanceIntradia(); });
   ultimo = sel = vigente.corte;
   document.getElementById("btnUltimo").addEventListener("click", () => seleccionar(ultimo, false));
   drawCharts();
@@ -287,7 +294,41 @@ function render() {
   document.getElementById("pDesde").addEventListener("change", alCambiarFecha);
   document.getElementById("pHasta").addEventListener("change", alCambiarFecha);
   renderPeriodo(addDays(ultimo, -29), ultimo);
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawCharts);
+  if (binanceAbierto) dibujarBinanceIntradia();
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { drawCharts(); if (binanceAbierto) dibujarBinanceIntradia(); });
+}
+
+let chartBinanceIntradia = null;
+function dibujarBinanceIntradia() {
+  const canvas = document.getElementById("cBinanceIntradia");
+  if (!canvas) return;
+  chartBinanceIntradia?.destroy();
+  const desde = Date.now() - 30 * 24 * 3600e3;
+  const puntos = BINANCE_FOTOS.filter((f) => Date.parse(f.t) >= desde);
+  const fHora = (t) => { const d = new Date(Date.parse(t) - 4 * 3600e3); return `${d.getUTCDate()} ${MESES[d.getUTCMonth()]}, ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`; };
+  if (puntos.length < 2) {
+    canvas.parentElement.innerHTML = `<p class="muted">Todavía no hay suficientes fotos guardadas en los últimos 30 días.</p>`;
+    return;
+  }
+  chartBinanceIntradia = new Chart(canvas, {
+    type: "line",
+    data: { labels: puntos.map((f) => fHora(f.t)), datasets: [
+      { label: "Paralelo", data: puntos.map((f) => f.compra), borderColor: css("--paralelo"), backgroundColor: css("--paralelo"),
+        borderWidth: 2, tension: 0.2, pointRadius: 0, pointHoverRadius: 4, pointHoverBorderColor: css("--surface"), pointHoverBorderWidth: 2 },
+    ] },
+    options: {
+      maintainAspectRatio: false, animation: false, interaction: { mode: "index", intersect: false },
+      scales: {
+        x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkipPadding: 24 } },
+        y: { grid: { color: css("--grid") }, border: { display: false }, ticks: { callback: (v) => fmt(v) } },
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor: css("--surface"), titleColor: css("--text"), bodyColor: css("--text-2"), borderColor: css("--border"), borderWidth: 1, padding: 10, displayColors: false,
+          callbacks: { label: (it) => { const f = puntos[it.dataIndex]; return [`Compra: Bs ${fmt(f.compra)}`, `Venta: Bs ${fmt(f.venta)}`]; } } },
+      },
+    },
+  });
 }
 
 function addDays(s, n) { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }

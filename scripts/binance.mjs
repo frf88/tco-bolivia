@@ -51,5 +51,8 @@ let datos = { fuente: "Binance P2P USDT/BOB", metodo: "promedio de los 10 mejore
 try { datos = JSON.parse(await readFile("data/binance.json", "utf8")); } catch {}
 const foto = { t: new Date().toISOString().slice(0, 16) + "Z", compra: compra.precio, venta: venta.precio, n: [compra.n, venta.n] };
 datos.fotos.push(foto);
+// la página solo grafica los últimos 30 días; se guardan 120 para no perder margen de análisis, y el archivo no crece sin límite
+const limite = Date.now() - 120 * 24 * 3600e3;
+datos.fotos = datos.fotos.filter((f) => Date.parse(f.t) >= limite);
 await writeFile("data/binance.json", JSON.stringify(datos));
 console.log(`Binance P2P: compra ${foto.compra} · venta ${foto.venta} (${foto.n.join("/")} anuncios)`);
