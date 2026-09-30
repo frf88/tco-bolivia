@@ -223,12 +223,12 @@ function render() {
     <div class="legend">
       <span><i style="background:var(--series);height:3px"></i>TCO (Bs/$us)</span>
       <span><i style="background:var(--band)"></i>Rango p10–p90 de las operaciones</span>
-      <span><i style="background:var(--paralelo);height:3px"></i>Dólar paralelo: Binance P2P desde el 17 sep 2026, actualizado cada hora (promedio de los 10 mejores anuncios confiables que compran USDT; en días pasados, la última foto del día); antes, <a href="https://paralelo.bo" target="_blank" rel="noopener">paralelo.bo</a></span>
+      <span><i style="background:var(--paralelo);height:3px"></i>Dólar paralelo: Binance P2P desde el 17 sep 2026, con una foto nueva algunas veces por día (promedio de los 10 mejores anuncios confiables que compran USDT; en días pasados, la última foto del día); antes, <a href="https://paralelo.bo" target="_blank" rel="noopener">paralelo.bo</a></span>
     </div>
     <details id="detBinance" ${binanceAbierto ? "open" : ""} style="margin-top:12px">
-      <summary>Ver el paralelo hora a hora (Binance, últimos 30 días)</summary>
-      <div class="muted" style="margin:8px 0">Cada punto es una foto de Binance P2P, tomada a los :20 de cada hora; los huecos son horas sin foto guardada.</div>
-      <div class="chart small"><canvas id="cBinanceIntradia" aria-label="Evolución del paralelo en Binance hora a hora"></canvas></div>
+      <summary>Ver el paralelo por foto (Binance, últimos 30 días)</summary>
+      <div class="muted" style="margin:8px 0">Cada punto es una foto de Binance P2P. Se intenta tomar una cada hora, pero GitHub no lo garantiza; a veces pasan varias horas entre una foto y la siguiente.</div>
+      <div class="chart small"><canvas id="cBinanceIntradia" aria-label="Evolución del paralelo en Binance por foto"></canvas></div>
     </details>
   </section>
 
