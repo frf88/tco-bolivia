@@ -10986,8 +10986,8 @@
   },
   {
    "corte": "2026-09-30",
-   "vigDesde": "2026-01-01",
-   "vigHasta": "2026-01-01",
+   "vigDesde": "2026-10-01",
+   "vigHasta": "2026-10-01",
    "bancos": {
     "BANCO BISA": {
      "n": 377,
