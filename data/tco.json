@@ -12853,6 +12853,167 @@
    "p10": 11.5,
    "p50": 11.68,
    "p90": 11.72
+  },
+  {
+   "corte": "2026-10-15",
+   "vigDesde": "2026-10-16",
+   "vigHasta": "2026-10-16",
+   "bancos": {
+    "BANCO BISA": {
+     "n": 303,
+     "monto": 13374043.45,
+     "tco": 11.68,
+     "min": 10.98,
+     "max": 11.9,
+     "montoMin": 13470.33,
+     "montoMax": 84.53,
+     "montoBs": 156078323,
+     "prom": 11.5722
+    },
+    "BANCO DE CREDITO": {
+     "n": 852,
+     "monto": 6751596.07,
+     "tco": 11.72,
+     "min": 11.1111,
+     "max": 11.98,
+     "montoMin": 0.63,
+     "montoMax": 7559.94,
+     "montoBs": 78976732,
+     "prom": 11.6034
+    },
+    "BANCO DE LA NACIÓN ARGENTINA": {
+     "n": 25,
+     "monto": 69482.77,
+     "tco": 11.7,
+     "min": 10.98,
+     "max": 11.7,
+     "montoMin": 4482.77,
+     "montoMax": 45000,
+     "montoBs": 808321,
+     "prom": 11.0348
+    },
+    "BANCO ECONOMICO": {
+     "n": 28,
+     "monto": 2273095.05,
+     "tco": 11.7,
+     "min": 10.68,
+     "max": 11.7,
+     "montoMin": 13527.34,
+     "montoMax": 2155092.71,
+     "montoBs": 26574939,
+     "prom": 10.7893
+    },
+    "BANCO FIE": {
+     "n": 16,
+     "monto": 371250.65,
+     "tco": 11.65,
+     "min": 10.78,
+     "max": 11.72,
+     "montoMin": 12054.45,
+     "montoMax": 32887,
+     "montoBs": 4312524,
+     "prom": 11.0619
+    },
+    "BANCO FORTALEZA": {
+     "n": 11,
+     "monto": 797478.56,
+     "tco": 11.68,
+     "min": 10,
+     "max": 11.68,
+     "montoMin": 217.92,
+     "montoMax": 770013.95,
+     "montoBs": 9310059,
+     "prom": 11.3582
+    },
+    "BANCO GANADERO": {
+     "n": 441,
+     "monto": 9463673.14,
+     "tco": 11.68,
+     "min": 10,
+     "max": 12,
+     "montoMin": 17487.97,
+     "montoMax": 378.63,
+     "montoBs": 110417033,
+     "prom": 11.4939
+    },
+    "BANCO MERCANTIL SANTA CRUZ": {
+     "n": 246,
+     "monto": 3356667.59,
+     "tco": 11.73,
+     "min": 10.58,
+     "max": 11.73,
+     "montoMin": 60702.2,
+     "montoMax": 2000000,
+     "montoBs": 39245541,
+     "prom": 10.685
+    },
+    "BANCO NACIONAL DE BOLIVIA": {
+     "n": 361,
+     "monto": 3341711.1,
+     "tco": 11.68,
+     "min": 11.18,
+     "max": 11.98,
+     "montoMin": 436350.22,
+     "montoMax": 28400,
+     "montoBs": 38756358,
+     "prom": 11.2867
+    },
+    "BANCO PRODEM": {
+     "n": 11,
+     "monto": 11594.35,
+     "tco": 11.38,
+     "min": 11.38,
+     "max": 11.4,
+     "montoMin": 11559.8,
+     "montoMax": 34.55,
+     "montoBs": 131944,
+     "prom": 11.3873
+    },
+    "BANCO PYME DE LA COMUNIDAD": {
+     "n": 2,
+     "monto": 1000.38,
+     "tco": 11.28,
+     "min": 11.28,
+     "max": 11.28,
+     "montoMin": 1000.38,
+     "montoMax": 1000.38,
+     "montoBs": 11284,
+     "prom": 11.28
+    },
+    "BANCO SOLIDARIO": {
+     "n": 87,
+     "monto": 4793136.09,
+     "tco": 11.7,
+     "min": 10.51,
+     "max": 11.711,
+     "montoMin": 10793.91,
+     "montoMax": 500000,
+     "montoBs": 56045238,
+     "prom": 10.7103
+    },
+    "BANCO UNION": {
+     "n": 46,
+     "monto": 24451.83,
+     "tco": 10.18,
+     "min": 10.18,
+     "max": 10.18,
+     "montoMin": 24451.83,
+     "montoMax": 24451.83,
+     "montoBs": 248920,
+     "prom": 10.18
+    }
+   },
+   "n": 2429,
+   "monto": 44629181.02,
+   "tco": 11.68,
+   "min": 10,
+   "max": 12,
+   "montoMin": 17705.89,
+   "montoMax": 378.63,
+   "montoBs": 520917217,
+   "p10": 11.65,
+   "p50": 11.68,
+   "p90": 11.72
   }
  ]
 }
